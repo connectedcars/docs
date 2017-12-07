@@ -4,23 +4,23 @@
 
 Messages will be pushed to different endpoints depending on type:
 
-* Account url: https POST endpoint where account feed will be pushed
-* Car url: https POST endpoint where car feed will be pushed
+* Account URL: https POST endpoint where account feed will be pushed
+* Car URL: https POST endpoint where car feed will be pushed
 
-URL's should be provided for staging/testing and production environments.
+URLs should be provided for staging/testing and production environments.
 
 Request Headers:
 
-* X-Request-id: Identifier for this request
+* `x-request-id`: Identifier for this request
 
 Acceptable return http codes:
 
 * 200: Messages have been consumed successfully
-* not 200: Something went wrong retry again
+* not 200: Something went wrong, retry
 
 Retry will be 5 times with 10 delay and back off with 1 min interval
 
-Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried.
+Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
 
 ## Account feed
 
@@ -31,7 +31,7 @@ Messages will be sent in bulk of up to 1000 at a time, in case of failure the fu
 | userId    | string   | uuid-v5         | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
 | firstName | string   | utf8            | Test Middlename                       | User first names                       |
 | lastName  | string   | utf8            | Testsen                               | User last name                         |
-| eMail     | string   | utf8            | test@testsen.dk                       | User e-mail                            |
+| email     | string   | utf8            | test@testsen.dk                       | User e-mail                            |
 
 Cars:
 
@@ -51,7 +51,7 @@ Example payload:
         "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
         "firstName": "Test",
         "lastName": "Testsen",
-        "eMail": "test@testsen.dk",
+        "email": "test@testsen.dk",
         "cars": [
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
