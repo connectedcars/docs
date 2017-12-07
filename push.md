@@ -11,14 +11,14 @@ URLs should be provided for staging/testing and production environments.
 
 Request Headers:
 
-* `x-request-id`: Identifier for this request
+* `X-Request-Id`: Identifier for this request
 
 Acceptable return http codes:
 
 * 200: Messages have been consumed successfully
 * not 200: Something went wrong, retry
 
-Retry will be 5 times with 10 delay and back off with 1 min interval
+Requests will be retried 3 times with 10 seconds delay and after that with an exponential backoff starting at 1 minute.
 
 Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
 
