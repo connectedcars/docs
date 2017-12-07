@@ -18,7 +18,7 @@ Acceptable return http codes:
 * 200: Messages have been consumed successfully
 * not 200: Something went wrong retry again
 
-Retry will be 5 times and back off with 1 min interval
+Retry will be 5 times with 10 delay and back off with 1 min interval
 
 Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried.
 
@@ -35,12 +35,12 @@ Messages will be sent in bulk of up to 1000 at a time, in case of failure the fu
 
 Cars:
 
-|   Name        |   Type   |  Unit/Format        | Example                              |          Description            |
-|:-------------:|:--------:|:-------------------:|--------------------------------------|---------------------------------|
-| carId         | string   | uuid-v5             | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
-| brand         | string   | utf8                | Audi                                 | Car brand                       |
-| make          | string   | utf8                | Q2 Sport                             | Car make                        |
-| licensePlate  | string   | utf8                | AB12345                              | Car license plate               |
+|   Name        |   Type   |  Unit/Format     | Example                              |          Description            |
+|:-------------:|:--------:|:----------------:|--------------------------------------|---------------------------------|
+| carId         | string   | uuid-v5          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
+| brand         | string   | utf8             | Audi                                 | Car brand                       |
+| make          | string   | utf8             | Q2 Sport                             | Car make                        |
+| licensePlate  | string   | utf8             | AB12345                              | Car license plate               |
 
 Example payload:
 
@@ -146,11 +146,11 @@ Example:
 ### position message - Position
 
 |   Name    |   Type   |  Unit/Format        | Example              |                   Description                   |
-|:---------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| lat       | decimal  | decimal degrees     | 51.12345             | Latitude part of vehicle position               |
-| long      | decimal  | decimal degrees     | -2.12345             | Longitude part of vehicle position              |
-| speed     | decimal  | km/h                | 60.0                 | Vehicle speed                                   |
-| direction | decimal  | degrees             | 180.0                | Vehicle direction                               |
+|:---------:|:-------------:|:-------------------:|----------------------|-------------------------------------------------|
+| lat       | decimal       | decimal degrees     | 51.12345             | Latitude part of vehicle position               |
+| long      | decimal       | decimal degrees     | -2.12345             | Longitude part of vehicle position              |
+| speed     | decimal/null  | km/h                | 60.0                 | Vehicle speed                                   |
+| direction | decimal/null  | degrees             | 180.0                | Vehicle direction                               |
 
 ``` json
 [
@@ -160,8 +160,8 @@ Example:
         "time": "2017-01-01T12:30:10Z",
         "lat": 51.12345,
         "lon": -2.12345,
-        "direction": 260.0, // can be null
-        "speed": 51.0 // can be null
+        "direction": 260.0,
+        "speed": 51.0
     }
 ]
 ```
