@@ -112,7 +112,7 @@ Example payload:
 
 |   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| carId    | integer  | integer number      | 60.0                 | Vehicle id                                      |
+| carId    | string   | integer number      | 60.0                 | Car id                                          |
 | time     | datetime | ISO 8601            | 2017-01-01T12:30:10Z | Time the data was recorded                      |
 
 ### ignition_on message - Ignition on
