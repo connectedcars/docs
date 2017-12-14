@@ -20,7 +20,9 @@ Acceptable return http codes:
 
 Requests will be retried 3 times with 10 seconds delay and after that with an exponential backoff starting at 1 minute.
 
-Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
+Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200. 
+
+Requests should only be rejected in case you have issues parsing, validating or storing the full bulk, fx. not knowing a carId should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
 ## Account feed
 
@@ -28,7 +30,7 @@ Messages will be sent in bulk of up to 1000 at a time, in case of failure the fu
 
 |   Name    |   Type   |  Unit/Format    | Example                               |          Description                   |
 |:---------:|:--------:|:---------------:|---------------------------------------|----------------------------------------|
-| userId    | string   | uuid-v5         | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
+| userId    | string   | uuid-v4         | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
 | firstName | string   | utf8            | Test Middlename                       | User first names                       |
 | lastName  | string   | utf8            | Testsen                               | User last name                         |
 | email     | string   | utf8            | test@testsen.dk                       | User e-mail                            |
@@ -37,7 +39,7 @@ Cars:
 
 |   Name        |   Type   |  Unit/Format     | Example                              |          Description            |
 |:-------------:|:--------:|:----------------:|--------------------------------------|---------------------------------|
-| carId         | string   | uuid-v5          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
+| carId         | string   | uuid-v4          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
 | brand         | string   | utf8             | Audi                                 | Car brand                       |
 | make          | string   | utf8             | Q2 Sport                             | Car make                        |
 | licensePlate  | string   | utf8             | AB12345                              | Car license plate               |
@@ -112,7 +114,7 @@ Example payload:
 
 |   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| carId    | integer  | integer number      | 60.0                 | Vehicle id                                      |
+| carId    | string   | integer number      | 60.0                 | Car id                                          |
 | time     | datetime | ISO 8601            | 2017-01-01T12:30:10Z | Time the data was recorded                      |
 
 ### ignition_on message - Ignition on
