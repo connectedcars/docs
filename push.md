@@ -77,24 +77,12 @@ Example payload:
 ]
 ```
 
-### car_remove message - Car was removed
-
-``` json
-[
-    {
-        "type": "car_add",
-        "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
-        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
-    }
-]
-```
-
 ### car_add message - Car was added
 
 ``` json
 [
     {
-        "type": "car_remove",
+        "type": "car_add",
         "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
         "cars": [
             {
@@ -104,6 +92,18 @@ Example payload:
                 "licensePlate": "AB12345"
             }
         ]
+    }
+]
+```
+
+### car_remove message - Car was removed
+
+``` json
+[
+    {
+        "type": "car_remove",
+        "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
     }
 ]
 ```
