@@ -112,11 +112,11 @@ Example payload:
 
 ### Standard information on all messages
 
-|   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
-|:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| carId    | string   |                     | 3bbcee75-3bbcee75    | Car id reference                                |
-| time     | datetime | ISO 8601            | 2017-01-01T12:30:10Z | Time the data was recorded                      |
-| type     | string   |                     | ignition_on          | Enum describing event type                      |
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| carId    | string   |                     | 3bbcee75-3bbcee75        | Car id reference                                |
+| time     | datetime | ISO 8601            | 2017-05-19T18:31:03.000Z | Time the data was recorded                      |
+| type     | string   |                     | ignition_on              | String enum describing event type               |
 
 ### ignition_on message - Ignition on
 
