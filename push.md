@@ -18,7 +18,7 @@ Acceptable return http codes:
 * 200: Messages have been consumed successfully
 * not 200: Something went wrong, retry
 
-Requests will be retried 3 times with 10 seconds delay and after that with an exponential backoff starting at 1 minute.
+Requests will be retried 3 times after 20 seconds delay. If no response is recieved on the first 3 retry attempts, each following attempt is made afterwards with an exponential backoff starting at 2 minutes.
 
 Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200. 
 
