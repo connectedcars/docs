@@ -42,6 +42,7 @@ Cars:
 | carId         | string   | uuid-v4          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
 | brand         | string   | utf8             | Audi                                 | Car brand                       |
 | make          | string   | utf8             | Q2 Sport                             | Car make                        |
+| year          | string   | utf8             | 2009                                 | Car model year                  |
 | licensePlate  | string   | utf8             | AB12345                              | Car license plate               |
 
 Example payload:
