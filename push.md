@@ -7,7 +7,7 @@ Messages will be pushed to different endpoints depending on type:
 * Account URL: https POST endpoint where account feed will be pushed
 * Car URL: https POST endpoint where car feed will be pushed
 
-URLs should be provided for staging/testing and production environments.
+URL's should be provided for staging/testing and production environments.
 
 Request Headers:
 
@@ -18,7 +18,7 @@ Acceptable return http codes:
 * 200: Messages have been consumed successfully
 * not 200: Something went wrong, retry
 
-Requests will be retried 3 times with 10 seconds delay and after that with an exponential back off starting at 1 minute.
+Requests will be retried 3 times after 20 seconds delay. If no response is received on the first 3 retry attempts, each following attempt is made afterwards with an exponential back off starting at 2 minutes.
 
 Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
 
@@ -42,6 +42,7 @@ Cars:
 | carId         | string   | uuid-v4          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
 | brand         | string   | utf8             | Audi                                 | Car brand                       |
 | make          | string   | utf8             | Q2 Sport                             | Car make                        |
+| year          | string   | utf8             | 2009                                 | Car model year                  |
 | licensePlate  | string   | utf8             | AB12345                              | Car license plate               |
 
 Example payload:
@@ -77,24 +78,12 @@ Example payload:
 ]
 ```
 
-### car_remove message - Car was removed
-
-``` json
-[
-    {
-        "type": "car_add",
-        "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
-        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
-    }
-]
-```
-
 ### car_add message - Car was added
 
 ``` json
 [
     {
-        "type": "car_remove",
+        "type": "car_add",
         "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
         "cars": [
             {
@@ -108,14 +97,27 @@ Example payload:
 ]
 ```
 
+### car_remove message - Car was removed
+
+``` json
+[
+    {
+        "type": "car_remove",
+        "userId": "90123e1c-7512-523e-bb28-76fab9f2f73d",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+    }
+]
+```
+
 ## Car feed
 
 ### Standard information on all messages
 
-|   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
-|:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| carId    | string   | integer number      | 60.0                 | Car id                                          |
-| time     | datetime | ISO 8601            | 2017-01-01T12:30:10Z | Time the data was recorded                      |
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| carId    | string   |                     | 3bbcee75-3bbcee75        | Car id reference                                |
+| time     | datetime | ISO 8601            | 2017-05-19T18:31:03.000Z | Time the data was recorded                      |
+| type     | string   |                     | ignition_on              | String enum describing event type               |
 
 ### ignition_on message - Ignition on
 
