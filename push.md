@@ -243,4 +243,5 @@ Nb: Fuel levels reported by each cars, note that this is only reported in whole 
 | vendor        | string   | string              | VAG                      | Which vendor the code comes from                |
 | type          | string   | string              | OBD2                     | Describes the type of error code                |
 | description   | string   | string              | Tire preasure warning    | Human redable translation of the error          |
-| code          | string   | SAE code            | P001                     | DTC error code                                  |
+| code          | string   | SAE code            | P001                     | Translated error code                           |
+| enabled       | boolean  |                     | true                     | Indicates if the error is currently present     |
