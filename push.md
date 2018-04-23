@@ -24,7 +24,7 @@ Messages will be sent in bulk of up to 1000 at a time, in case of failure the fu
 
 Requests should only be rejected in case you have issues parsing, validating or storing the full bulk, fx. not knowing a carId should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
-# IDs
+## IDs
 
 The ID format should be treated as an ascii string which is case insensitive and holds at most 64 characters
 
@@ -233,7 +233,9 @@ Nb: Fuel levels reported by each cars, note that this is only reported in whole 
 ]
 ```
 
-### NB: WORK IN PROGRESS
+### WORK IN PROGRESS
+
+This section is for apis that are currently beeing developed or in our road map
 
 #### Error codes and Diagnostic Trouble Codes 
 
