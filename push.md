@@ -24,13 +24,17 @@ Messages will be sent in bulk of up to 1000 at a time, in case of failure the fu
 
 Requests should only be rejected in case you have issues parsing, validating or storing the full bulk, fx. not knowing a carId should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
+# IDs
+
+The ID format should be treated as an ascii string which is case insensitive and holds at most 64 characters
+
 ## Account feed
 
 ### user_signup message - New user sign up
 
 |   Name    |   Type   |  Unit/Format    | Example                               |          Description                   |
 |:---------:|:--------:|:---------------:|---------------------------------------|----------------------------------------|
-| userId    | string   | uuid-v4         | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
+| userId    | string   | ID              | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
 | firstName | string   | utf8            | Test Middlename                       | User first names                       |
 | lastName  | string   | utf8            | Testsen                               | User last name                         |
 | email     | string   | utf8            | test@testsen.dk                       | User e-mail                            |
@@ -39,7 +43,7 @@ Cars:
 
 |   Name        |   Type   |  Unit/Format     | Example                              |          Description            |
 |:-------------:|:--------:|:----------------:|--------------------------------------|---------------------------------|
-| carId         | string   | uuid-v4          | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
+| carId         | string   | ID               | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
 | brand         | string   | utf8             | Audi                                 | Car brand                       |
 | make          | string   | utf8             | Q2 Sport                             | Car make                        |
 | year          | string   | utf8             | 2009                                 | Car model year                  |
@@ -149,7 +153,7 @@ Example:
 
 ### position message - Position
 
-|   Name    |   Type   |  Unit/Format        | Example              |                   Description                   |
+|   Name    |   Type        |  Unit/Format        | Example              |                   Description                   |
 |:---------:|:-------------:|:-------------------:|----------------------|-------------------------------------------------|
 | lat       | decimal       | decimal degrees     | 51.12345             | Latitude part of vehicle position               |
 | long      | decimal       | decimal degrees     | -2.12345             | Longitude part of vehicle position              |
@@ -187,11 +191,56 @@ Example:
 ]
 ```
 
-### dtc message - Diagnostic Trouble Code
 
-WORK IN PROGRESS
 
-|   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
-|:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| vendor   | string   | VAG                 | 51.12345             | Latitude part of vehicle position               |
-| code     | string   | SAE code            | P001                 | DTC error code                                  |
+### fuel_level message - Tank fuel level
+
+Nb: Fuel levels reported by each cars, note that this is only reported in whole liters
+
+|    Name    |   Type   |  Unit/Format        | Example              |                   Description                   |
+|:----------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
+| fuel_level | decimal  | whole liters        | 40                   | Fuel level as reported by the car               |
+
+
+``` json
+[
+    {
+        "type": "fuel_level",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "fuel_level": 40
+    }
+]
+```
+
+
+
+### fuel_consumed message - Fuel consumed since unit installation
+
+|      Name     |   Type   |  Unit/Format        | Example              |                   Description                   |
+|:-------------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
+| fuel_consumed | decimal  | liters              | 57.23                | Fuel consumption since unit instalation         |
+
+
+``` json
+[
+    {
+        "type": "fuel_consumed",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "fuel_level": 57.23
+    }
+]
+```
+
+### NB: WORK IN PROGRESS
+
+#### Error codes and Diagnostic Trouble Codes 
+
+
+|      Name     |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:-------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| vendor        | string   | string              | VAG                      | Which vendor the code comes from                |
+| type          | string   | string              | OBD2                     | Describes the type of error code                |
+| description   | string   | string              | Tire preasure warning    | Human redable translation of the error          |
+| code          | string   | SAE code            | P001                     | DTC error code                                  |
