@@ -28,6 +28,19 @@ Requests should only be rejected in case you have issues parsing, validating or 
 
 The ID format should be treated as an ascii string which is case insensitive and holds at most 64 characters
 
+## Scopes
+
+The feed will only output information corresponding the the requested and authorized scope, the scopes a service can request is:
+
+* `user_name`
+* `user_email`
+* `vehicle_license_plate`
+* `vehicle_make`
+* `vehicle_model`
+* `vehicle_ignition`
+* `vehicle_position`
+* `vehicle_odometer`
+
 ## Account feed
 
 ### user_signup message - New user sign up
