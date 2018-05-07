@@ -40,27 +40,37 @@ The feed will only output information corresponding the the requested and author
 * `vehicle_ignition`
 * `vehicle_position`
 * `vehicle_odometer`
+* `vehicle_fuel_level`
+* `vehicle_fuel_consumed`
+
+## User Consents
+
+Once your application is listed as a service provider in our third party section, users will be able to connect their vehicle to your system.
+
+Once a user initiates the connection to your application, two things will happen, first, we will initiate the sending of the account feed and car feed, as defined by the given scope. This will happen from our backend servers to your feed urls as you have provided. Secondly, the user will be prompted to continue on to your application service URL to finish the sign up. This happens via a redirect, where you will be able to ask the user for additinoal sign up info, as needed.
+
+The redirect point to the service URL which you have provided: `${serviceUrl}?userId=${userId}&carId=${carId}`
 
 ## Account feed
 
 ### user_signup message - New user sign up
 
-|   Name    |   Type   |  Unit/Format    | Example                               |          Description                   |
-|:---------:|:--------:|:---------------:|---------------------------------------|----------------------------------------|
-| userId    | string   | ID              | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                |
-| firstName | string   | utf8            | Test Middlename                       | User first names                       |
-| lastName  | string   | utf8            | Testsen                               | User last name                         |
-| email     | string   | utf8            | test@testsen.dk                       | User e-mail                            |
+|   Name    |   Type   |  Unit/Format    | Example                               |          Description                             |
+|:---------:|:--------:|:---------------:|---------------------------------------|--------------------------------------------------|
+| userId    | string   | ID              | 90123e1c-7512-523e-bb28-76fab9f2f73d  | User id                                          |
+| firstName | string   | utf8            | Test Middlename                       | User first names (Requires `user_name` scope)    |
+| lastName  | string   | utf8            | Testsen                               | User last name (Requires `user_name` scope)      |
+| email     | string   | utf8            | test@testsen.dk                       | User e-mail (Requires `user_email` scope)        |
 
 Cars:
 
-|   Name        |   Type   |  Unit/Format     | Example                              |          Description            |
-|:-------------:|:--------:|:----------------:|--------------------------------------|---------------------------------|
-| carId         | string   | ID               | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                          |
-| make          | string   | utf8             | Audi                                 | Car make                        |
-| model         | string   | utf8             | Q2 Sport                             | Car model                       |
-| year          | string   | utf8             | 2009                                 | Car model year                  |
-| licensePlate  | string   | utf8             | AB12345                              | Car license plate               |
+|   Name        |   Type   |  Unit/Format     | Example                              |          Description                                         |
+|:-------------:|:--------:|:----------------:|--------------------------------------|--------------------------------------------------------------|
+| carId         | string   | ID               | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                                                       |
+| make          | string   | utf8             | Audi                                 | Car make (Requires `vehicle_make` scope)                     |
+| model         | string   | utf8             | Q2 Sport                             | Car model (Requires `vehicle_model` scope)                   |
+| year          | string   | utf8             | 2009                                 | Car model year (Requires `vehicle_model` scope)              |
+| licensePlate  | string   | utf8             | AB12345                              | Car license plate (Requires `vehicle_license_plate` scope)   |
 
 Example payload:
 
@@ -138,6 +148,8 @@ Example payload:
 
 ### ignition_on message - Ignition on
 
+This message type requires the `vehicle_ignition` scope
+
 Example:
 
 ``` json
@@ -152,6 +164,8 @@ Example:
 
 ### ignition_off message - Ignition off
 
+This message type requires the `vehicle_ignition` scope
+
 Example:
 
 ``` json
@@ -165,6 +179,9 @@ Example:
 ```
 
 ### position message - Position
+
+This message type requires the `vehicle_position` scope
+
 
 |   Name    |   Type        |  Unit/Format        | Example              |                   Description                   |
 |:---------:|:-------------:|:-------------------:|----------------------|-------------------------------------------------|
@@ -189,6 +206,9 @@ Example:
 
 ### odometer message - Odometer
 
+This message type requires the `vehicle_odometer` scope
+
+
 |   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
 | odometer | decimal  | km                  | 45000.0              | Total distance travelled by vehicle since start |
@@ -207,6 +227,8 @@ Example:
 
 
 ### fuel_level message - Tank fuel level
+
+This message type requires the `vehicle_fuel_level` scope
 
 Nb: Fuel levels reported by each cars, note that this is only reported in whole liters
 
@@ -230,6 +252,8 @@ Nb: Fuel levels reported by each cars, note that this is only reported in whole 
 
 ### fuel_consumed message - Fuel consumed since unit installation
 
+This message type requires the `vehicle_fuel_consumed` scope
+
 |      Name     |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:-------------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
 | fuel_consumed | decimal  | liters              | 57.23                | Fuel consumption since unit instalation         |
@@ -250,7 +274,9 @@ Nb: Fuel levels reported by each cars, note that this is only reported in whole 
 
 This section is for apis that are currently beeing developed or in our road map
 
-#### Error codes and Diagnostic Trouble Codes 
+
+#### Error and warning lamps
+#### Error codes and Diagnostic Trouble Codes
 
 
 |      Name     |   Type   |  Unit/Format        | Example                  |                   Description                   |
@@ -260,3 +286,22 @@ This section is for apis that are currently beeing developed or in our road map
 | description   | string   | string              | Tire preasure warning    | Human redable translation of the error          |
 | code          | string   | SAE code            | P001                     | Translated error code                           |
 | enabled       | boolean  |                     | true                     | Indicates if the error is currently present     |
+
+
+#### Driver profiling events (Acceleration, Breaking, Hard Turns)
+#### Engine profiling events (High / Low RPM, Idle Time)
+
+#### door_lock message - Describes the lock state of the vehicle
+#### battery_voltage message - Describes the vehicle battery voltage
+#### service_interval_days message - Describes how many days must at most pass between services
+#### service_interval_km message - Describes how many km must at most be driven between services
+#### last_service_days message - Describes how many days has passed since the last service
+#### last_service_km message - Describes how many km has been driven since the last service
+#### next_oil_change_km - Describes how many km must at most be driven before next oil change
+#### next_oil_change_days - Describes how many days must at most pass before next oil change
+#### oil_quality_ok - Describes if the vehicle reports OK oil quality
+
+#### Tow away alert
+#### Wiper status
+#### Seat belt status
+#### Door open/close status
