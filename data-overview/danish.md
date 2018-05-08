@@ -4,7 +4,7 @@
 
 Denne funktion giver dig mulighed for at få historik over bilens kørte ture. Du kan se hvor du har kørt, hvor langt du har kørt, hvor lang tid du har kørt og hvor langt på literen du har kørt.
 
-| Parameter | Formål med behandling | Opbeavring |
+| Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens GPS position | Så brugeren kan se bilens rute på et kort | Gemmes indtil brugeren anmoder om sletning af turen |
 | Bilens retning | Så brugeren kan se bilens rute på et kort, anvendes til at kvalitetsoptimere rutevisning | Gemmes indtil brugeren anmoder om sletning af turen |
@@ -17,7 +17,7 @@ Denne funktion giver dig mulighed for at få historik over bilens kørte ture. D
 
 Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og tid til næste service og olieskift
 
-| Parameter | Formål med behandling | Opbeavring |
+| Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens GPS position | Så brugeren kan se hvor bilen er | 1 times historisk data og seneste værdi |
 | Tænding slået til | Anvendes til logikker, som kvalitetssikrer data | 7 dages historisk data og seneste værdi |
@@ -58,7 +58,7 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 
 Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne værksted baseret på data direkte fra bilen
 
-| Parameter | Formål med behandling | Opbeavring |
+| Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens kilometerstand | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens kilometerstand | 60 dages historisk data og seneste værdi |
 | Bilens serviceinterval i dage | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens serviceinterval | 7 dages historisk data og seneste værdi |
@@ -101,7 +101,7 @@ Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne vær
 
 Data, som er teknisk nødvendige for at garantere sikker og effektiv udlæsning af data fra bilen
 
-| Parameter | Formål med behandling | Opbeavring |
+| Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens stelnummer | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
 | Bilens tekniske konfiguration | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
