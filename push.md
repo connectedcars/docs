@@ -51,6 +51,10 @@ Once a user initiates the connection to your application, two things will happen
 
 The redirect point to the service URL which you have provided: `${serviceUrl}?userId=${userId}&carId=${carId}`
 
+See the consent flow from the user perspective below:
+
+![Image of user consent flow](https://raw.githubusercontent.com/connectedcars/docs/master/img/service-consent.png)
+
 ## Account feed
 
 ### user_signup message - New user sign up
