@@ -269,7 +269,7 @@ This message type requires the `vehicle_fuel_consumed` scope
         "type": "fuel_consumed",
         "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
         "time": "2017-01-01T12:30:10Z",
-        "fuel_level": 57.23
+        "fuel_consumed": 57.23
     }
 ]
 ```
