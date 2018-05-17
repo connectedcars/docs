@@ -8,7 +8,7 @@ Public documentation and sample code for integration with Connected Cars
 
 The push api provides a close to real time data steam for all the collected parameters.
 
-[Documentation](./push.md)
+[Read more here](./push.md)
 
 ## GraphQL API
 
