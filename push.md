@@ -120,7 +120,7 @@ Example payload:
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
                 "make": "Audi",
-                "brand": "Q2",
+                "model": "Q2",
                 "licensePlate": "AB12345"
             }
         ]
