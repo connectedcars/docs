@@ -89,8 +89,8 @@ Example payload:
         "cars": [
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
-                "brand": "Audi",
-                "make": "Q2",
+                "make": "Audi",
+                "model": "Q2",
                 "licensePlate": "AB12345"
             }
         ]
@@ -119,8 +119,8 @@ Example payload:
         "cars": [
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
-                "brand": "Audi",
-                "make": "Q2",
+                "make": "Audi",
+                "brand": "Q2",
                 "licensePlate": "AB12345"
             }
         ]
