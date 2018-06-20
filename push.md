@@ -91,6 +91,7 @@ Example payload:
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
                 "make": "Audi",
                 "model": "Q2",
+                "year": 2018,
                 "licensePlate": "AB12345"
             }
         ]
@@ -121,6 +122,7 @@ Example payload:
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
                 "make": "Audi",
                 "model": "Q2",
+                "year": 2018,
                 "licensePlate": "AB12345"
             }
         ]
