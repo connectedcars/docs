@@ -65,6 +65,7 @@ See the consent flow from the user perspective below:
 | firstName | string   | utf8            | Test Middlename                       | User first names (Requires `user_name` scope)    |
 | lastName  | string   | utf8            | Testsen                               | User last name (Requires `user_name` scope)      |
 | email     | string   | utf8            | test@testsen.dk                       | User e-mail (Requires `user_email` scope)        |
+| phone     | string   | utf8            | +4512345678                           | User phone number (Requires `user_phone` scope)        |
 
 Cars:
 
