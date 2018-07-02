@@ -34,6 +34,7 @@ The feed will only output information corresponding the the requested and author
 
 * `user_name`
 * `user_email`
+* `user_phone`
 * `vehicle_license_plate`
 * `vehicle_make`
 * `vehicle_model`
