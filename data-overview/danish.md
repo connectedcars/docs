@@ -25,13 +25,13 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Bilens kilometerstand | Så brugeren kan se bilens kilometerstand i app'en | 60 dages historisk data og seneste værdi |
 | Bilens brændstofsniveau | Så brugeren kan se bilens brændstofsniveau i app'en | 7 dages historisk data og seneste værdi |
 | Bilens låsestatus | Så brugeren kan se i app'en om bilen er låst eller ulåst | 7 dages historisk data og seneste værdi |
-| Bilens serviceinterval i dage | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Antal dage siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Antal kilometer siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Antal kilometer til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Antal dage til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
-| Bilens oliekvalitet (dårlig/ god)  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 7 dages historisk data og seneste værdi |
+| Bilens serviceinterval i dage | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal dage siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal kilometer siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal kilometer til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal dage til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Bilens oliekvalitet (dårlig/ god)  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Batteriets spænding | Så brugeren kan få advarsel hvis bilens batterispænding er lav | Gemmes indtil brugeren anmoder om sletning |
 | Batteriets helbred | Så brugeren kan få advarsel hvis bilens batterispænding er lav | Gemmes indtil brugeren anmoder om sletning |
 | Advarsel hvis bilen bliver bugseret | Så brugeren kan få advarsel hvis bilen skulle blive bugseret | 7 dages historisk data og seneste værdi |
@@ -61,13 +61,13 @@ Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne vær
 | Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens kilometerstand | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens kilometerstand | 60 dages historisk data og seneste værdi |
-| Bilens serviceinterval i dage | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens serviceinterval | 7 dages historisk data og seneste værdi |
-| Bilens serviceinterval i kilometer | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens serviceinterval | 7 dages historisk data og seneste værdi |
-| Antal dage siden sidste service | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 7 dages historisk data og seneste værdi |
-| Antal kilometer siden sidste service | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 7 dages historisk data og seneste værdi |
-| Antal kilometer til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 7 dages historisk data og seneste værdi |
-| Antal dage til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 7 dages historisk data og seneste værdi |
-| Bilens oliekvalitet (dårlig/ god) | | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 7 dages historisk data og seneste værdi |
+| Bilens serviceinterval i dage | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens serviceinterval | 60 dages historisk data og seneste værdi |
+| Bilens serviceinterval i kilometer | Så brugerens foretrukne værksted kan rådgive om det bedste service baseret på bilens serviceinterval | 60 dages historisk data og seneste værdi |
+| Antal dage siden sidste service | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
+| Antal kilometer siden sidste service | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
+| Antal kilometer til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
+| Antal dage til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
+| Bilens oliekvalitet (dårlig/ god) | | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
 | Kølervæskelampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på kølervæskesystemet | Gemmes indtil brugeren anmoder om sletning |
 | Bremsesystemslampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på bremsesystemet | Gemmes indtil brugeren anmoder om sletning |
 | Olielampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på oliesystemet | Gemmes indtil brugeren anmoder om sletning |
