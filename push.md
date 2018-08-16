@@ -280,7 +280,7 @@ This message type requires the `vehicle_fuel_consumed` scope
 ```
 
 
-### charge_level_percent message - Tank fuel level
+### charge_level_percent message - High voltage battery charge level in percent
 
 This message type requires the `vehicle_fuel_level` scope
 
