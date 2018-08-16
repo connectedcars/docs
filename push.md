@@ -297,7 +297,7 @@ Nb: The charge level describes the remaining charge percent on the high voltage 
         "type": "charge_level_percent",
         "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
         "time": "2017-01-01T12:30:10Z",
-        "fuel_level": 55
+        "percent": 55
     }
 ]
 ```
