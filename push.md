@@ -239,7 +239,7 @@ This message type requires the `vehicle_odometer` scope
 
 This message type requires the `vehicle_fuel_level` scope
 
-Nb: Fuel levels reported by each cars, note that this is only reported in whole liters
+Nb: Fuel levels reported by each cars, note that this is only reported in whole liters for some vehicles, as such it might not be sutible for all purposes
 
 |    Name    |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:----------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
@@ -275,6 +275,29 @@ This message type requires the `vehicle_fuel_consumed` scope
         "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
         "time": "2017-01-01T12:30:10Z",
         "fuel_consumed": 57.23
+    }
+]
+```
+
+
+### charge_level_percent message - Tank fuel level
+
+This message type requires the `vehicle_fuel_level` scope
+
+Nb: The charge level describes the remaining charge percent on the high voltage battery in electric and hybrid vehicles
+
+|         Name         |   Type   |  Unit/Format        | Example              |                   Description                   |
+|:--------------------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
+| charge_level_percent | decimal  | percent             | 55                   | Charge level as reported by the car               |
+
+
+``` json
+[
+    {
+        "type": "charge_level_percent",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "fuel_level": 55
     }
 ]
 ```
