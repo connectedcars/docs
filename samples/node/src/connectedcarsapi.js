@@ -54,17 +54,17 @@ class ConnectedCarsApi {
   /**
    * Create an instance of the Connected Cars api, which can be used to call the GraphQL api. Requires specifying service account key data and an environment
    * @param {string} ccServiceAccountKeyData a string containing the Connected Cars service account data
-   * @param {string} [environment] Specify which Connected Cars environment you want to use. Defaults to staging, to use production supply 'production' in any case
+   * @param {string} [endpoint] specify the connected cars api endpoint, default is production endpoint
+   * @param {string} [authEndpoint] specify the connected cars auth endpoint, default is production endpoint
    * @throws an error if the service account data is malformed
    */
-  constructor(ccServiceAccountKeyData, environment = 'staging') {
-    const production = environment.toLowerCase() === 'production'
-    this._API_ENDPOINT = production
-      ? 'https://api.connectedcars.io/graphql'
-      : 'https://api.staging.connectedcars.io/graphql'
-    this._AUTH_API_ENDPOINT = production
-      ? 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter'
-      : 'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter'
+  constructor(
+    ccServiceAccountKeyData,
+    endpoint = 'https://api.connectedcars.io/graphql',
+    authEndpoint = 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter'
+  ) {
+    this._API_ENDPOINT = endpoint
+    this._AUTH_API_ENDPOINT = authEndpoint
     this._ccAccessToken = null
     this._parsedServiceAccountInfo = _readServiceAccountData(
       ccServiceAccountKeyData

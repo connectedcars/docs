@@ -1,24 +1,18 @@
 const fs = require('fs')
-const util = require('util')
-const readFileAsync = util.promisify(fs.readFile)
 const ConnectedCarsApi = require('./connectedcarsapi')
 
-const createConnectedCarsApi = async () => {
-  const environment = process.env.CC_ENVIRONMENT
+const CC_API_ENDPOINT = process.env.CC_API_ENDPOINT
+const CC_AUTH_API_ENDPOINT = process.env.CC_AUTH_API_ENDPOINT
 
-  // Read the config however you like
-  const ccConfig = await readFileAsync(process.env.SERVICE_ACCOUNT_KEY_FILE, {
-    encoding: 'utf8'
-  })
+// Read the config however you like
+const ccConfig = fs.readFileSync(process.env.SERVICE_ACCOUNT_KEY_FILE, {
+  encoding: 'utf8'
+})
 
-  return new ConnectedCarsApi(ccConfig, environment)
-}
-let connectedCarsApi
-const getConnectedCarsApi = async () => {
-  if (!connectedCarsApi) {
-    connectedCarsApi = await createConnectedCarsApi()
-  }
-  return connectedCarsApi
-}
+const CCApi = new ConnectedCarsApi(
+  ccConfig,
+  CC_API_ENDPOINT,
+  CC_AUTH_API_ENDPOINT
+)
 
-module.exports = { getConnectedCarsApi }
+module.exports = CCApi
