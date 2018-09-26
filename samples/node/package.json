@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "SERVICE_ACCOUNT_KEY_FILE='./connectedcars_serviceaccount.pem' node src/index.js"
+    "start": "SERVICE_ACCOUNT_KEY_FILE='./connectedcars_serviceaccount.pem' CC_ENVIRONMENT='staging' node src/index.js"
   },
   "author": "",
   "license": "ISC",

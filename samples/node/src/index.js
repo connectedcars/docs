@@ -1,6 +1,7 @@
-const CCApi = require('./connectedcarsapi')
+const { getConnectedCarsApi } = require('./config')
 
 const example = async () => {
+  const CCApi = await getConnectedCarsApi()
   const getFirstname = `query Viewer {
                       viewer {
                         id

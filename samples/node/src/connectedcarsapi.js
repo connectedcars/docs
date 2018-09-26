@@ -1,15 +1,8 @@
-const fs = require('fs')
-const util = require('util')
-const readFileAsync = util.promisify(fs.readFile)
-const { JwtUtils } = require('@connectedcars/jwtutils')
 const axios = require('axios')
+const { JwtUtils } = require('@connectedcars/jwtutils')
 
-const _readServiceAccountFile = async fileName => {
-  const fileContent = await readFileAsync(fileName, {
-    encoding: 'utf8'
-  })
-
-  const [ccInfo, rsa] = fileContent.split(
+const _readServiceAccountData = ccServiceAccountKeyData => {
+  const [ccInfo, rsa] = ccServiceAccountKeyData.split(
     '----- END CONNECTEDCARS INFO -----\n'
   )
 
@@ -28,12 +21,8 @@ const _readServiceAccountFile = async fileName => {
   }
 }
 
-const _getServiceToken = async ccServiceAccountFile => {
+const _getToken = async (parsedServiceAccountInfo, authApiEndpoint) => {
   try {
-    const parsedServiceAccountInfo = await _readServiceAccountFile(
-      ccServiceAccountFile
-    )
-
     const unixNow = Math.floor(Date.now() / 1000)
 
     let jwtHeader = {
@@ -51,32 +40,41 @@ const _getServiceToken = async ccServiceAccountFile => {
 
     let jwt = JwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
 
-    const res = await axios.default.post(
-      'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter', // change to prod
-      { token: jwt }
-    )
+    const res = await axios.default.post(authApiEndpoint, { token: jwt })
     if (!res.data.token) {
       throw new Error('No token returned')
     }
     return res.data
   } catch (err) {
-    throw new Error(`Error response status: ${err.response.status}`)
+    throw err
   }
 }
 
-class ConnectedCarsToken {
+class ConnectedCarsApi {
   /**
-   * Set path to Connected Cars service account file
-   * @param {string} ccServiceAccountKeyFileData
+   * Create an instance of the Connected Cars api, which can be used to call the GraphQL api. Requires specifying service account key data and an environment
+   * @param {string} ccServiceAccountKeyData a string containing the Connected Cars service account data
+   * @param {string} [environment] Specify which Connected Cars environment you want to use. Defaults to staging, to use production supply 'production' in any case
+   * @throws an error if the service account data is malformed
    */
-  constructor(ccServiceAccountKeyFileData) {
+  constructor(ccServiceAccountKeyData, environment = 'staging') {
+    const production = environment.toLowerCase() === 'production'
+    this._API_ENDPOINT = production
+      ? 'https://api.connectedcars.io/graphql'
+      : 'https://api.staging.connectedcars.io/graphql'
+    this._AUTH_API_ENDPOINT = production
+      ? 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter'
+      : 'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter'
     this._ccAccessToken = null
-    this._ccServiceAccountKeyFileData = ccServiceAccountKeyFileData
+    this._parsedServiceAccountInfo = _readServiceAccountData(
+      ccServiceAccountKeyData
+    )
   }
 
   /**
-   * Get Connected Cars Access Token
+   * Gets a Connected Cars access token, if you want to interact with the api without using the call() method
    * @returns {Promise<string>}
+   * @throws an error if the CC auth api cannot validate your credentials
    */
   async getAccessToken() {
     const now = Date.now()
@@ -84,60 +82,59 @@ class ConnectedCarsToken {
       !this._ccAccessToken ||
       this._ccAccessToken.expires < now + 5 * 60 * 1000
     ) {
-      this._ccAccessToken = await _getServiceToken(
-        this._ccServiceAccountKeyFileData
+      this._ccAccessToken = await _getToken(
+        this._parsedServiceAccountInfo,
+        this._AUTH_API_ENDPOINT
       )
     }
     return this._ccAccessToken.token
   }
 
-  async clearToken() {
+  /**
+   * Clears the Connected Cars token, which will force a refetch next time call() is used.
+   * This is done automatically in case the token is invalid on a call()
+   */
+  async _clearToken() {
     this._ccAccessToken = null
   }
-}
 
-const CCToken = new ConnectedCarsToken(process.env.SERVICE_ACCOUNT_KEY_FILE)
+  /**
+   * Call the Connected Cars GraphQL api
+   * @param {Object} graphQLInput Should be valid graphql input, such as `query User {user(id:52163) {id firstname} }`
+   * @returns {Promise<Object>} returns a graphql response such as user: {id: "52163", firstname: null}
+   * @throws an error if the call to the CC api fails, or if the CC auth api cannot validate your credentials
+   */
+  async call(graphQLInput) {
+    const bearerToken = await this.getAccessToken()
 
-/**
- * Call the Connected Cars GraphQL api
- * @param {Object} graphQlInput Should be valid graphql input, such as `query User {user(id:52163) {id firstname} }`
- * @returns {Promise<Object>} returns a graphql response such as user: {id: "52163", firstname: null}
- * @throws an error if the call to the cc api fails, if the cc service file is malformed, or if the cc auth api cannot validate your credentials
- */
-const call = async graphQlInput => {
-  const bearerToken = await CCToken.getAccessToken()
-
-  const config = {
-    headers: { Authorization: 'Bearer ' + bearerToken }
-  }
-  const query = {
-    query: graphQlInput
-  }
-
-  try {
-    const result = await axios.default.post(
-      'https://api.staging.connectedcars.io/graphql',
-      query,
-      config
-    )
-    return result.data.data
-  } catch (err) {
-    // Retry once with a new token in case of 401
-    if (err.response && err.response.status === 401) {
-      await CCToken.clearToken()
-      const newBearerToken = await CCToken.getAccessToken()
-      const newConfig = {
-        headers: { Authorization: 'Bearer ' + newBearerToken }
-      }
-      const result = await axios.default.post(
-        'https://api.connectedcars.io/graphql',
-        graphQlInput,
-        newConfig
-      )
-      return result.data.data
+    const config = {
+      headers: { Authorization: 'Bearer ' + bearerToken }
     }
-    throw err
+    const query = {
+      query: graphQLInput
+    }
+
+    try {
+      const result = await axios.default.post(this._API_ENDPOINT, query, config)
+      return result.data.data
+    } catch (err) {
+      // Retry once with a new token in case of 401
+      if (err.response && err.response.status === 401) {
+        await this._clearToken()
+        const newBearerToken = await this.getAccessToken()
+        const newConfig = {
+          headers: { Authorization: 'Bearer ' + newBearerToken }
+        }
+        const result = await axios.default.post(
+          this._API_ENDPOINT,
+          graphQLInput,
+          newConfig
+        )
+        return result.data.data
+      }
+      throw err
+    }
   }
 }
 
-module.exports = { call }
+module.exports = ConnectedCarsApi
