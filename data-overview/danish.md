@@ -29,9 +29,9 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Antal dage siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Antal kilometer siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
-| Antal kilometer til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
-| Antal dage til næste olieskift  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
-| Bilens oliekvalitet (dårlig/ god)  | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal kilometer til næste olieskift | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Antal dage til næste olieskift | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
+| Bilens oliekvalitet (dårlig/god) | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Batteriets spænding | Så brugeren kan få advarsel hvis bilens batterispænding er lav | Gemmes indtil brugeren anmoder om sletning |
 | Batteriets helbred | Så brugeren kan få advarsel hvis bilens batterispænding er lav | Gemmes indtil brugeren anmoder om sletning |
 | Advarsel hvis bilen bliver bugseret | Så brugeren kan få advarsel hvis bilen skulle blive bugseret | 7 dages historisk data og seneste værdi |
@@ -67,7 +67,7 @@ Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne vær
 | Antal kilometer siden sidste service | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
 | Antal kilometer til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
 | Antal dage til næste olieskift | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
-| Bilens oliekvalitet (dårlig/ god) | | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
+| Bilens oliekvalitet (dårlig/god) | Så brugerens foretrukne værksted kan indkalde din bil når der er tid til service/ olieskift | 60 dages historisk data og seneste værdi |
 | Kølervæskelampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på kølervæskesystemet | Gemmes indtil brugeren anmoder om sletning |
 | Bremsesystemslampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på bremsesystemet | Gemmes indtil brugeren anmoder om sletning |
 | Olielampe | Så brugerens foretrukne værksted kan rådgive brugeren hvis der er en fejl på oliesystemet | Gemmes indtil brugeren anmoder om sletning |
@@ -93,9 +93,9 @@ Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne vær
 | OBD-enheds ID  Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
 | Bilens modelinformation | Så brugerens foretrukne værksted kan rådgive brugeren og booke korrekt service eller reparation hvis det er nødvendigt | Gemmes indtil brugeren anmoder om sletning |
 | Brugerens chat historik med foretrukne værksted | Så brugerens foretrukne værksted kan få indblik i bilens historik og tidligere dialog for bedst muligt at kunne guide brugeren | Gemmes indtil brugeren anmoder om sletning |
-| GPS status ok (ja/ nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | 7 dages historisk data og seneste værdi |
-| GPRS status ok (ja/ nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | 7 dages historisk data og seneste værdi |
-| OBD-enhed aktiveret (ja /nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | Gemmes indtil brugeren anmoder om sletning |
+| GPS status ok (ja/nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | 7 dages historisk data og seneste værdi |
+| GPRS status ok (ja/nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | 7 dages historisk data og seneste værdi |
+| OBD-enhed aktiveret (ja/nej) | Så brugeres foretrukne værksted kan sikre at der er ikke er fejl på OBD-enheden i bilen | Gemmes indtil brugeren anmoder om sletning |
 
 ## Accessorisk data
 
