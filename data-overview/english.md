@@ -2,7 +2,7 @@
 
 ## My Trips
 
-My Trips allows you to get a histrory of your cars trips. You can see where you have driven, how far, how long and how much gas you’ve used
+My Trips allows you to get a history of your cars trips. You can see where you have driven, how far, how long and how much gas you’ve used
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
