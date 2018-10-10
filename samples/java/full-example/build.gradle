@@ -1,0 +1,28 @@
+allprojects {
+    apply plugin: 'java'
+    group = 'org.gradle.sample'
+    version = '1.0'
+}
+
+group 'io.connectedcars.full.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+project.ext.SERVICE_ACCOUNT_KEY_FILE = "../connectedcars_serviceaccount.pem" // This is relative to the connectedcars-sample project
+project.ext.CC_API_ENDPOINT = "https://api.staging.connectedcars.io/graphql"
+project.ext.CC_AUTH_API_ENDPOINT = "https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter"
+
+project(':connectedcars-sample') {
+    dependencies {
+        compile project(':connectedcars-api')
+    }
+    task sample() {
+        dependsOn ":connectedcars-sample:runSample"
+    }
+}
