@@ -28,17 +28,18 @@ public class ServiceAccount {
                     String key = keyValue[0].trim();
                     String value = keyValue[1].trim();
 
-                    if(key.equals("iss")) {
-                        iss = value;
-
-                    } else if(key.equals("aud")) {
-                        aud = value;
-
-                    } else if(key.equals("kid")) {
-                        kid = value;
+                    switch (key) {
+                        case "iss":
+                            iss = value;
+                            break;
+                        case "aud":
+                            aud = value;
+                            break;
+                        case "kid":
+                            kid = value;
+                            break;
                     }
                 }
-
             } else if (line.startsWith("----- BEGIN CONNECTEDCARS INFO -----")) {
                 inHeader = true;
             }

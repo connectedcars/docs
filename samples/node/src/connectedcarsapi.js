@@ -52,7 +52,7 @@ const _getToken = async (parsedServiceAccountInfo, authApiEndpoint) => {
 
 class ConnectedCarsApi {
   /**
-   * Create an instance of the Connected Cars api, which can be used to call the GraphQL api. Requires specifying service account key data and an environment
+   * Create an instance of the Connected Cars api, which can be used to call the GraphQL api. Requires specifying service account key data and endpoints
    * @param {string} ccServiceAccountKeyData a string containing the Connected Cars service account data
    * @param {string} [endpoint] specify the connected cars api endpoint, default is production endpoint
    * @param {string} [authEndpoint] specify the connected cars auth endpoint, default is production endpoint

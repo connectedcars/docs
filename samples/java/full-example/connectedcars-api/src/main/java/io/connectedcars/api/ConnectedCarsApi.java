@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.time.Instant;
-import java.nio.file.*;
 import java.util.stream.Collectors;
 
 
@@ -24,12 +23,20 @@ public class ConnectedCarsApi {
     private String endpoint;
     private String authEndpoint;
 
-    private static ConnectedCarsApi instance = null;
     private ServiceAccount serviceAccount;
     private CCAccessToken CCAccessToken;
     private ObjectMapper mapper = new ObjectMapper();
     private HttpClient httpclient = HttpClients.createDefault();
 
+
+    /**
+     * Create an instance of the Connected Cars API, which can be used to call the GraphQL API. Requires specifying service account key data and endpoints
+     * @param ccServiceAccountKeyData a string containing the Connected Cars service account data
+     * @param endpoint specify the connected cars api endpoint, production is: https://api.connectedcars.io/graphql
+     * @param authEndpoint specify the connected cars auth endpoint, production is: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter
+     * @throws GeneralSecurityException
+     * @throws IOException
+     */
     public ConnectedCarsApi(String ccServiceAccountKeyData, String endpoint, String authEndpoint) throws GeneralSecurityException, IOException {
         this.serviceAccount = new ServiceAccount(ccServiceAccountKeyData);
         this.endpoint = endpoint;
@@ -62,9 +69,14 @@ public class ConnectedCarsApi {
                 return mapper.readValue(result, CCAccessToken.class);
             }
         }
-        return null; // TODO should probably be an error
+        throw new RuntimeException("Unknown error");
     }
 
+    /**
+     * Get an access token for the Connected Cars API
+     * @return an access token for the Connected Cars API
+     * @throws IOException
+     */
     public String getAccessToken() throws IOException {
         long unixTime = Instant.now().getEpochSecond();
         if (this.CCAccessToken == null || this.CCAccessToken.getExpires() < unixTime + 5 * 60 * 1000) {
@@ -77,6 +89,13 @@ public class ConnectedCarsApi {
         this.CCAccessToken = null;
     }
 
+    /**
+     * Call the Connected Cars GraphQL API
+     * @param graphQLInput Should be valid graphql input, such as "query User {user(id:52163) {id firstname} }"
+     * @return a graphql response such as user: {id: "52163", firstname: null}
+     * @throws RuntimeException
+     * @throws IOException
+     */
     public String call(String graphQLInput) throws RuntimeException, IOException {
         String accessToken = this.getAccessToken();
 

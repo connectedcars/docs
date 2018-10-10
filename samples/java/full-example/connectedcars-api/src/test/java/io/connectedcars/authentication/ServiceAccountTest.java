@@ -9,7 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ServiceAccountTest {
 
-    private static String pemEncodedPrivateKey =
+    private static String connectedCarsServiceData =
+        "----- BEGIN CONNECTEDCARS INFO -----\n" +
+        "iss: workshop-selector@semler.serviceaccount.connectedcars.io\n" +
+        "aud: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter\n" +
+        "kid: 1\n" +
+                "----- END CONNECTEDCARS INFO -----\n" +
         "-----BEGIN RSA PRIVATE KEY-----\n" +
         "MIICWwIBAAKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw\n" +
         "33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW\n" +
@@ -24,17 +29,11 @@ class ServiceAccountTest {
         "fSSjAkLRi54PKJ8TFUeOP15h9sQzydI8zJU+upvDEKZsZc/UhT/SySDOxQ4G/523\n" +
         "Y0sz/OZtSWcol/UMgQJALesy++GdvoIDLfJX5GBQpuFgFenRiRDabxrE9MNUZ2aP\n" +
         "FaFp+DyAe+b4nDwuJaW2LURbr8AEZga7oQj0uYxcYw==\n" +
-        "-----END RSA PRIVATE KEY-----\n" +
-        "-----BEGIN CONNECTED CARS HEADER-----\n" +
-        "Type: service_account\n" +
-        "AccountName: service.mycompany.serviceaccount.connectedcars.io\n" +
-        "DefaultSubject: default@service.mycompany.serviceaccount.connectedcars.io\n" +
-        "KeyId: 334201c552e192224ee43a92052d8d17dd606566\n" +
-        "-----END CONNECTED CARS HEADER-----\n";
+        "-----END RSA PRIVATE KEY-----\n";
 
     @Test
     void getToken() throws GeneralSecurityException, IOException {
-        ServiceAccount serviceAccount = new ServiceAccount(pemEncodedPrivateKey);
+        ServiceAccount serviceAccount = new ServiceAccount(connectedCarsServiceData);
         String token = serviceAccount.getToken();
         assertNotNull(token);
     }
