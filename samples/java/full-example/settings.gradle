@@ -1,0 +1,3 @@
+rootProject.name = 'io.connectedcars.full.example'
+
+include 'connectedcars-sample', 'connectedcars-api'
