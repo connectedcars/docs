@@ -40,8 +40,8 @@ The production endpoints are:
 `auth: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter`
 `api: https://api.connectedcars.io/graphql`
 
-##IntelliJ IDEA
-You should be able to import the folder `full-example` as an existing gradle project in IntelliJ and simply have everything set up for you for through the built-in gradle setup.
+## IntelliJ IDEA
+You should be able to import the folder `full-example` as an existing gradle project in IntelliJ and simply have everything set up for you for through the built-in gradle setup. You can then run the `sample` task through gradle in IntelliJ as well.
 
 
 TODO: Include information about the GraphQL API itself.
