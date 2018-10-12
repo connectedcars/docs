@@ -1,5 +1,32 @@
 # Java service account sample
 
+## Getting access to the API
+In order to give you access Connected Cars will create a service account for you.  
+A service account has data that looks like the following:
+```
+----- BEGIN CONNECTEDCARS INFO -----
+iss: XXX@XXX.serviceaccount.connectedcars.io
+aud: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter
+kid: XXX
+----- END CONNECTEDCARS INFO -----
+-----BEGIN RSA PRIVATE KEY-----
+YOU_CREATE_THIS
+-----END RSA PRIVATE KEY-----
+
+```
+After you receive your service account data you must generate an RSA key pair.  
+This can be done as follows:  
+```bash
+# Here the key is encrypted with aes256
+openssl genrsa -aes256 -out private.pem 2048
+```
+Then generate public key from the private key:
+```bash
+openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+```
+
+Now put your private key into the RSA key block of your service account data. Then send Connected Cars your public key. After confirmation from Connected Cars you will have access.
+
 ## Installation
 From this directory run `gradle build`
 
