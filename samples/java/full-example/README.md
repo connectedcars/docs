@@ -30,7 +30,7 @@ Then generate public key from the unencrypted private key:
 openssl rsa -in private_unencrypted.pem -outform PEM -pubout -out public.pem
 ```
 
-Now put your private key into the RSA key block of your service account data. Then send Connected Cars your public key. After confirmation from Connected Cars you will have access to the staging environment.  
+Now put your unencrypted private key into the RSA key block of your service account data. Then send Connected Cars your public key. After confirmation from Connected Cars you will have access to the staging environment.  
 After confirming that you can call the staging API you can get access to the production API.
 
 ## Installation
