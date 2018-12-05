@@ -20,9 +20,14 @@ This can be done as follows:
 # Here the key is encrypted with aes256
 openssl genrsa -aes256 -out private.pem 2048
 ```
-Then generate public key from the private key:
+Note: openssl now requires you to set a pass phrase for your private key, which you have to enter when running the above command. This is used to encrypt the key.  
+To create an unencrypted key, do the following (you will be prompted for your pass phrase):
 ```bash
-openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+openssl rsa -in private.pem -out private_unencrypted.pem
+```
+Then generate public key from the unencrypted private key:
+```bash
+openssl rsa -in private_unencrypted.pem -outform PEM -pubout -out public.pem
 ```
 
 Now put your private key into the RSA key block of your service account data. Then send Connected Cars your public key. After confirmation from Connected Cars you will have access to the staging environment.  
