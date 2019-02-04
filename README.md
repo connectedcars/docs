@@ -14,6 +14,8 @@ The push api provides a close to real time data steam for all the collected para
 
 The GraphQL API provides a pull API that gives access to all collected parameters with a flexible extraction.
 
+[Read more here](https://api.connectedcars.io/graphql/graphiql/)
+
 ## FTPS/SFTP
 
 Legacy integration can be done with FTPS and SFTP but we try to avoid it.
