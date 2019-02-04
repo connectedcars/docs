@@ -23,8 +23,6 @@ Sample code and service account creation:
 
 Source code: https://github.com/connectedcars/docs/tree/master/samples/
 
-[Service account]
-
 ## FTPS/SFTP
 
 Legacy integration can be done with FTPS and SFTP but we try to avoid it.
