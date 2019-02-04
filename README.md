@@ -16,6 +16,15 @@ The GraphQL API provides a pull API that gives access to all collected parameter
 
 [Read more here](https://api.connectedcars.io/graphql/graphiql/)
 
+Sample code and service account creation:
+
+* [Java](./samples/java/full-example/README.md)
+* [NodeJS](./samples/node/README.md)
+
+Source code: https://github.com/connectedcars/docs/tree/master/samples/
+
+[Service account]
+
 ## FTPS/SFTP
 
 Legacy integration can be done with FTPS and SFTP but we try to avoid it.
