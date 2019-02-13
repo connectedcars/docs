@@ -73,6 +73,7 @@ Cars:
 |   Name        |   Type   |  Unit/Format     | Example                              |          Description                                         |
 |:-------------:|:--------:|:----------------:|--------------------------------------|--------------------------------------------------------------|
 | carId         | string   | ID               | 90123e1c-7512-523e-bb28-76fab9f2f73d | Car id                                                       |
+| vin           | string   | utf8             | WAUZZZ3GXJA123456                    | Car VIN                                                          |
 | make          | string   | utf8             | Audi                                 | Car make (Requires `vehicle_make` scope)                     |
 | model         | string   | utf8             | Q2 Sport                             | Car model (Requires `vehicle_model` scope)                   |
 | year          | string   | utf8             | 2009                                 | Car model year (Requires `vehicle_model` scope)              |
@@ -92,6 +93,7 @@ Example payload:
         "cars": [
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+                "vin": "WAUZZZ3GXJA123456",
                 "make": "Audi",
                 "model": "Q2",
                 "year": 2018,
@@ -123,6 +125,7 @@ Example payload:
         "cars": [
             {
                 "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+                "vin": "WAUZZZ3GXJA123456",
                 "make": "Audi",
                 "model": "Q2",
                 "year": 2018,

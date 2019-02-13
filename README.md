@@ -14,10 +14,19 @@ The push api provides a close to real time data steam for all the collected para
 
 The GraphQL API provides a pull API that gives access to all collected parameters with a flexible extraction.
 
-### FTPS/SFTP
+[Read more here](https://api.connectedcars.io/graphql/graphiql/)
 
-Legacy integration can be done with FTPS and SFTP but we try to avoid it.
+Sample code and service account creation:
+
+* [Java](./samples/java/full-example/README.md)
+* [NodeJS](./samples/node/README.md)
+
+Source code: https://github.com/connectedcars/docs/tree/master/samples/
 
 ### Workshop
 
 The "Frontend API" for the Workshop product. Explains how to prefill forms, pre-select buttons, etc.
+
+### FTPS/SFTP
+
+Legacy integration can be done with FTPS and SFTP but we try to avoid it.
