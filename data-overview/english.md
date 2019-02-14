@@ -108,3 +108,18 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 | Scan of car's electronical configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
 | CAN-Bus raw data | Used for troubleshooting | Always |
 | CAN-Bus activity on/off | Used for quality assurance of collected data | 7 days historical data and most recent value |
+
+## FIND PASSENDE TITEL
+
+Brugeren får konkrete informationer om hændelser og konditioner for sine ture vist i sin app og opsummeret i et benchmark, hvorigennem brugeren kan følge sin forbedring til mere sikker kørsel. Opsamlet data vises i app'en og anvendes til konkret at vise brugeren de forbedringsmuligheder denne har for at køre mere sikkert.
+
+| Parameter | Purpose of data processing | Storage |
+|-----------|-----------------------|------------|
+| Speed (with position) | Speed is known to be the single most important component of traffic accidents. It is necessary rely on speed to advise users on how and where to improve their driving | Kept until the user requests deletion. Values +120 Km/h are reduced to 130 km/h as speeds above this level is not rlevant |
+| Use of wind wipers | Driving in rain is associated with risks of aqua planing and many accidents every year. It is necessary to rely on use of wind wipers to detect if car is driving in rain, and therefore more risky. In short aggressive, fast driving in rain is much riskier than in the dry | Kept until the user requests deletion |
+| Outside temperature | Driving at cold temperatures is associated with slippery and potentially icy conditions. Slippery conditions because of cold weather is associated with multiple accidents every year. Outside temperature is an indicator for slippery conditions. Therefore, it is necessary rely on temperature to advise users on how to improve their driving | Kept until the user requests deletion |
+| Vehicle accelleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore accelleration events must be used to advice drivers on where  and when they make mistakes | Kept until the user requests deletion |
+| ESP deactivation light | The ESP-system of the ensures its stability should it loose traction on one or more wheels. Disabling the ESP-system poses a very significant risks for driving. Therefore, It is necessary to advise users who disable the ESP-system users on how to improve their driving | Kept until the user requests deletion |
+| ESP activation light | Activation of the ESP-system indicates slippery surface, and therefore more risky driving conditions. Therefore, It is necessary rely on signals from the ESP-system to advise users on how to take better care of  their driving in slippery conditions | Kept until the user requests deletion |
+| High beam activated | Driving in dark conditions is associated with higher risk than driving in day light or where street lights are installed. Country roads are especially at dusk and at night much more risky to drive than at daylight. Use of high beam is an indicator for driving on dark and hazardous roads. Therefore, It is necessary to rely on use of high beam to advise users to slow down in dark conditions | Kept until the user requests deletion |
+| Fog lights activated | Driving in foggy conditions is hazardous and the cause of many accidation every year. Use of fog lights is an indicator for foggy conditions. Therefore, It is necessary to rely on use of fog lights to advise users to slow down in foggy conditions | Kept until the user requests deletion |
