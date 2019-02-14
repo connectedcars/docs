@@ -27,6 +27,8 @@ Source code: https://github.com/connectedcars/docs/tree/master/samples/
 
 The "Frontend API" for the Workshop product. Explains how to prefill forms, pre-select buttons, etc.
 
+[Read more here](./workshop.md)
+
 ### FTPS/SFTP
 
 Legacy integration can be done with FTPS and SFTP but we try to avoid it.
