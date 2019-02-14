@@ -111,7 +111,7 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 
 ## FIND PASSENDE TITEL
 
-Brugeren får konkrete informationer om hændelser og konditioner for sine ture vist i sin app og opsummeret i et benchmark, hvorigennem brugeren kan følge sin forbedring til mere sikker kørsel. Opsamlet data vises i app'en og anvendes til konkret at vise brugeren de forbedringsmuligheder denne har for at køre mere sikkert.
+This feature gives you information about incidents and conditions for your car's trips shown in your app and summed up in benchmarks where you can track your improvements regarding safe driving. Collected data is shown in the app and used to provide you concrete areas of imporvement to be a safer driver.
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
