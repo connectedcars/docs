@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-All endpoints accepts `token` in the URL query/search param, which will be used for authentication. If no token is provided in the request, the client will look for one saved in the browser's storage. If no token is available the client will be redirected to the Auth service.
+All endpoints accepts `token` in the URL hash/fragment param (eg. `#token=foobar`), which will be used for authentication. If no token is provided in the request, the client will look for one saved in the browser's storage. If no token is available the client will be redirected to the Auth service.
 
 ### `GET /integration/vehicle/add`
 
