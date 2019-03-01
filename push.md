@@ -268,7 +268,7 @@ This message type requires the `vehicle_fuel_consumed` scope
 
 |      Name     |   Type   |  Unit/Format        | Example              |                   Description                   |
 |:-------------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
-| fuel_consumed | decimal  | liters              | 57.23                | Fuel consumption since unit instalation         |
+| fuel_consumed | decimal  | liters              | 57.23                | Fuel consumption since unit installation        |
 
 
 ``` json
@@ -305,24 +305,39 @@ Nb: The charge level describes the remaining charge percent on the high voltage 
 ]
 ```
 
+
+### profiling - Vehicle acceleration / braking / turning
+This message requires the `vehicle_profiling` scope
+
+Each unit is instrumented with a gsensor that monitors the gravitational force on the car. The g-force has to be minimum 0.2 before it's getting reported by the unit.
+
+|         Name         |   Type   |  Unit/Format                                         | Example               |                   Description                                                       |
+|:--------------------:|:--------:|:----------------------------------------------------:|-----------------------|-------------------------------------------------------------------------------------|
+|        g_force       | decimal  | ratio in g's                                         | 0.4                   | [gravitational force](https://en.wikipedia.org/wiki/G-force) experienced by the car |
+|       direction      | string   | `acceleration`, `brake`, `turn_left`, `turn_right` | `acceleration`        | the direction that caused the change in gravity                                     |
+
+### idle_time - Vehicle idle time in seconds
+This message requires the `vehicle_idle_time` scope
+
+|         Name         |   Type   |  Unit/Format                                         | Example               |                   Description                                                       |
+|:--------------------:|:--------:|:----------------------------------------------------:|-----------------------|-------------------------------------------------------------------------------------|
+|        idle_time     | decimal  | seconds                                              | 220                   | Total number of seconds a car has been idling since the last ignition_on.           |
+
+### dtc - Diagnostic Trouble Codes
+This message requires the `vehicle_dtc` scope
+
+|         Name         |   Type   |  Unit/Format                                         | Example               |                   Description             |
+|:--------------------:|:--------:|:----------------------------------------------------:|-----------------------|-------------------------------------------|
+|        vendor        | string   |                                                      | `VAG`                 |    The unit provider                      |
+|        code          | string   | DTC code (can be propriatary in context to `vendor`) | `TLB147918`           |    Remote diagnostic info on the vehicle  |
+|        description   |  json    | JSON array                                           | `{"german": "..", "english": "..", "swedish": ".."}`  |    Description of DTC codes in different languages. A language may be `null` if we can't find any description in that particular language |
+|       enabled        | boolean  |                                                      | `true`                | Whether the DTC code started appearing    |
+
 ### WORK IN PROGRESS
 
 This section is for apis that are currently beeing developed or in our road map
 
-
 #### Error and warning lamps
-#### Error codes and Diagnostic Trouble Codes
-
-
-|      Name     |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:-------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| vendor        | string   | string              | VAG                      | Which vendor the code comes from                |
-| type          | string   | string              | OBD2                     | Describes the type of error code                |
-| description   | string   | string              | Tire preasure warning    | Human redable translation of the error          |
-| code          | string   | SAE code            | P001                     | Translated error code                           |
-| enabled       | boolean  |                     | true                     | Indicates if the error is currently present     |
-
-
 #### Driver profiling events (Acceleration, Breaking, Hard Turns)
 #### Engine profiling events (High / Low RPM, Idle Time)
 
