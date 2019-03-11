@@ -109,7 +109,7 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 | CAN-Bus raw data | Used for troubleshooting | Always |
 | CAN-Bus activity on/off | Used for quality assurance of collected data | 7 days historical data and most recent value |
 
-## Driving conditions
+## Driving events
 
 This feature gives you information about incidents and conditions for your car's trips shown in your app and summed up in benchmarks where you can track your improvements regarding safe driving. Collected data is shown in the app and used to provide you concrete areas of imporvement to be a safer driver.
 

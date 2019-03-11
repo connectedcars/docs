@@ -109,7 +109,7 @@ Data, som er teknisk nødvendige for at garantere sikker og effektiv udlæsning 
 | CAN-Bus rå-data | Anvendes til fejlfinding | Altid |
 | CAN-Bus aktivitet on/off | Anvendes til kvalitetssikring af indsamlet data | 7 dages historisk data og seneste værdi |
 
-## Kørselsforhold
+## Kørselshændelser
 
 Brugeren får konkrete informationer om hændelser og konditioner for sine ture vist i sin app og opsummeret i et benchmark, hvorigennem brugeren kan følge sin forbedring til mere sikker kørsel. Opsamlet data vises i app'en og anvendes til konkret at vise brugeren de forbedringsmuligheder denne har for at køre mere sikkert.
 
