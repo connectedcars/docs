@@ -108,3 +108,18 @@ Data, som er teknisk nødvendige for at garantere sikker og effektiv udlæsning 
 | Scanning af bilens elektroniske configuration | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
 | CAN-Bus rå-data | Anvendes til fejlfinding | Altid |
 | CAN-Bus aktivitet on/off | Anvendes til kvalitetssikring af indsamlet data | 7 dages historisk data og seneste værdi |
+
+## Kørselshændelser
+
+Brugeren får konkrete informationer om hændelser og konditioner for sine ture vist i sin app og opsummeret i et benchmark, hvorigennem brugeren kan følge sin forbedring til mere sikker kørsel. Opsamlet data vises i app'en og anvendes til konkret at vise brugeren de forbedringsmuligheder denne har for at køre mere sikkert.
+
+| Parameter | Formål med behandling | Opbevaring |
+|-----------|-----------------------|------------|
+| Hastighed (med position) | Hastighed er kendt som den aller vigtigste faktor for trafiksikkerhed. Det er nødvendigt at bruge hastighed til at advisere brugere om, hvordan og hvor de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning. Værdier +130 Km/h er reduceret til 130 km/h da hastigheder over dette niveau ikke er relevant. |
+| Brug af vinduesviskere | Kørsel i regn er associeret med risiko for akvaplaning og mange ulykker hvert år. Det er nødvendigt at anvende brug af vinduesviskere til at detektere om en bil kører i regn og derfor er udsat for højere risiko for uheld | Gemmes indtil brugeren anmoder om sletning |
+| Udendørs temperatur | Kørsel i kolde temperaturer er associeret med glatte og potentielt isede forhold. Glatte forhold grundet koldt vejr er associeret med adskillige uheld hvert år. Udendørs temperatur er en indikator for glatte forhold. Derfor er det nødvendigt at anvende temperatur for at advisere brugere om, hvordan de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
+| Køretøj accelleration over 0.2G (alle retninger), med position | Pludselige og ofte ændringer i retning (forhøjelse/nedsættelse af hastighed såvel som sving) er portentielt risikofyldte handlinger foretaget af chaufføren. Jævn kørsel er ofte sikker kørsel, derfor kan accelerationer anvendes til at rådgive brugere om, hvor og de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
+| ESP deaktiveringslampe | Bilens ESP-system sikrer stabilitet, hvis der mistes friktion mod underlaget for et eller flere hjul. Slås ESP-systemet fra udgør det en potentielt signifikant risiko for kørsel. Derfor er det nødvendigt at advisere brugere, som har slået ESP systemet fra om, hvordan de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
+| ESP aktiveringslampe | Aktivering af ESP systemet indikerer glat føre og derfor mindre sikre kørselsforhold. Derfor er det nødvendigt at bero på signaler fra ESP-systemet for at advisere brugere om, hvordan de kan køre sikrere i vådt føre | Gemmes indtil brugeren anmoder om sletning |
+| Langt lys aktiveret | Kørsel i mørke forhold er associeret med højere risiko i forhold til kørsel i dagslys eller belyste veje. Især kørsel på landeveje ved skumring og nat udgør højere risiko end kørsel i dagslys. Brug af det lange lys er en indikator på kørsel i mørke. Derfor er det nødvendigt at anvende brugen af langt lys til at advisere brugere om at forbedre sin kørsel i mørke forhold | Gemmes indtil brugeren anmoder om sletning |
+| Tågelys aktiveret | Kørsel i tåge under lav sigtbarhed er årsag til mange ulykker hvert år. Brug af tågelys er en indikator for tågede forhold. Derfor er det nødvendigt at bero på brugen af tågelys til at advisere brugere om sikrere kørsel under tågede forhold | Gemmes indtil brugeren anmoder om sletning |
