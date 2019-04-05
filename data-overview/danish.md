@@ -20,8 +20,8 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
 | Bilens GPS position | Så brugeren kan se hvor bilen er | 1 times historisk data og seneste værdi |
-| Tænding slået til | Anvendes til logikker, som kvalitetssikrer data | 7 dages historisk data og seneste værdi |
-| Tænding slået fra | Anvendes til logikker, som kvalitetssikrer data | 7 dages historisk data og seneste værdi |
+| Tænding slået til | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
+| Tænding slået fra | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Bilens kilometerstand | Så brugeren kan se bilens kilometerstand i app'en | 60 dages historisk data og seneste værdi |
 | Bilens brændstofsniveau | Så brugeren kan se bilens brændstofsniveau i app'en | 7 dages historisk data og seneste værdi |
 | Bilens låsestatus | Så brugeren kan se i app'en om bilen er låst eller ulåst | 7 dages historisk data og seneste værdi |

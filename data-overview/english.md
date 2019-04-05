@@ -20,8 +20,8 @@ This feature gives you an overview of the current satus of your car / errors and
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
 | Car GPS position | So the user can see where the car is | 1 hour historical data and most recent value |
-| Ignition on | Used for logic, which quality assures data | 7 days historical data and most recent value |
-| Ignition off | Used for logic, which quality assures data | 7 days historical data and most recent value |
+| Ignition on | Used for logic, which quality assures data | 60 days historical data and most recent value |
+| Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Car fuel level | So the user can see the car's fuel level in the app | 7 days historical data and most recent value |
 | Car lock status | So the user can see in the app if the car is locked or unlocked | 7 days historical data and most recent value |
