@@ -22,7 +22,8 @@ public class Config {
 
             String endpoint = System.getenv("CC_API_ENDPOINT");
             String authEndpoint = System.getenv("CC_AUTH_API_ENDPOINT");
-            CCApi = new ConnectedCarsApi(fileContents, endpoint, authEndpoint);
+            String organizationNamespace = "myOrganization:myNamespace";
+            CCApi = new ConnectedCarsApi(fileContents, endpoint, authEndpoint, organizationNamespace);
         }
         return CCApi;
     }
