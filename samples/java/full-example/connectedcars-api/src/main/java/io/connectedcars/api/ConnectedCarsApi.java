@@ -22,6 +22,7 @@ import org.apache.http.impl.client.HttpClients;
 public class ConnectedCarsApi {
     private String endpoint;
     private String authEndpoint;
+    private String organizationNamespace;
 
     private ServiceAccount serviceAccount;
     private CCAccessToken CCAccessToken;
@@ -37,10 +38,11 @@ public class ConnectedCarsApi {
      * @throws GeneralSecurityException
      * @throws IOException
      */
-    public ConnectedCarsApi(String ccServiceAccountKeyData, String endpoint, String authEndpoint) throws GeneralSecurityException, IOException {
+    public ConnectedCarsApi(String ccServiceAccountKeyData, String endpoint, String authEndpoint, String organizationNamespace) throws GeneralSecurityException, IOException {
         this.serviceAccount = new ServiceAccount(ccServiceAccountKeyData);
         this.endpoint = endpoint;
         this.authEndpoint = authEndpoint;
+        this.organizationNamespace = organizationNamespace;
     }
 
     private CCAccessToken getToken() throws IOException {
@@ -120,6 +122,7 @@ public class ConnectedCarsApi {
 
             post.addHeader("content-type", "application/json");
             post.addHeader("Authorization","Bearer " + newAccessToken);
+            post.addHeader("X-Organization-Namespace", this.organizationNamespace);
             post.setEntity(new StringEntity(mapper.writeValueAsString(query)));
 
             //Execute and get the response.
