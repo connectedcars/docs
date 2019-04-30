@@ -333,6 +333,28 @@ This message requires the `vehicle_dtc` scope
 |        description   |  json    | JSON array                                           | `{"german": "..", "english": "..", "swedish": ".."}`  |    Description of DTC codes in different languages. A language may be `null` if we can't find any description in that particular language |
 |       enabled        | boolean  |                                                      | `true`                | Whether the DTC code started appearing    |
 
+### refuel - Vehicle refuel event
+This message requires the `vehicle_fuel_level` scope
+
+|         Name         |   Type   |  Unit/Format                                         | Example               |                   Description                                                       |
+|:--------------------:|:--------:|:----------------------------------------------------:|-----------------------|-------------------------------------------------------------------------------------|
+|    liters_before     | decimal  | whole liters                                         | 10                    | Fuel level before refueling as reported by the car.           |
+|    liters_after      | decimal  | whole liters                                         | 40                    | Fuel level after refueling as reported by the car.           |
+|    liters_added      | decimal  | whole liters                                         | 30                    | Fuel level added as calculated from the two above values.           |
+
+``` json
+[
+    {
+        "type": "refuel",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "liters_before": 10,
+        "liters_after": 40,
+        "liters_added": 30
+    }
+]
+```
+
 ### WORK IN PROGRESS
 
 This section is for apis that are currently beeing developed or in our road map
