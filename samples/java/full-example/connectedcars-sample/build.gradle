@@ -13,6 +13,7 @@ task runSample(type:JavaExec) {
     environment("SERVICE_ACCOUNT_KEY_FILE", project.SERVICE_ACCOUNT_KEY_FILE)
     environment("CC_API_ENDPOINT", project.CC_API_ENDPOINT)
     environment("CC_AUTH_API_ENDPOINT", project.CC_AUTH_API_ENDPOINT)
+    environment("ORGANIZATION_NAMESPACE", project.ORGANIZATION_NAMESPACE)
     classpath = sourceSets.main.runtimeClasspath
     main = "io.connectedcars.sample.Sample"
 }
