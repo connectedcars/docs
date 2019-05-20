@@ -35,6 +35,7 @@ public class ConnectedCarsApi {
      * @param ccServiceAccountKeyData a string containing the Connected Cars service account data
      * @param endpoint specify the connected cars api endpoint, production is: https://api.connectedcars.io/graphql
      * @param authEndpoint specify the connected cars auth endpoint, production is: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter
+     * @param organizationNamespace specify your organization namespace, contact Connected Cars to learn more
      * @throws GeneralSecurityException
      * @throws IOException
      */
@@ -54,6 +55,7 @@ public class ConnectedCarsApi {
         serviceAccountToken.token = this.serviceAccount.getToken();
 
         httppost.addHeader("content-type", "application/json");
+        httppost.addHeader("X-Organization-Namespace", this.organizationNamespace);
         httppost.setEntity(new StringEntity(mapper.writeValueAsString(serviceAccountToken)));
 
         //Execute and get the response.
@@ -109,6 +111,7 @@ public class ConnectedCarsApi {
 
         httppost.addHeader("content-type", "application/json");
         httppost.addHeader("Authorization","Bearer " + accessToken);
+        httppost.addHeader("X-Organization-Namespace", this.organizationNamespace);
         httppost.setEntity(new StringEntity(mapper.writeValueAsString(query)));
 
         //Execute and get the response.

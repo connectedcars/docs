@@ -21,7 +21,11 @@ const _readServiceAccountData = ccServiceAccountKeyData => {
   }
 }
 
-const _getToken = async (parsedServiceAccountInfo, authApiEndpoint) => {
+const _getToken = async (
+  parsedServiceAccountInfo,
+  authApiEndpoint,
+  organizationNamespace
+) => {
   try {
     const unixNow = Math.floor(Date.now() / 1000)
 
@@ -40,7 +44,10 @@ const _getToken = async (parsedServiceAccountInfo, authApiEndpoint) => {
 
     let jwt = JwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
 
-    const res = await axios.default.post(authApiEndpoint, { token: jwt })
+    const res = await axios.default.post(authApiEndpoint, {
+      token: jwt,
+      'X-Organization-Namespace': organizationNamespace
+    })
     if (!res.data.token) {
       throw new Error('No token returned')
     }
@@ -56,15 +63,18 @@ class ConnectedCarsApi {
    * @param {string} ccServiceAccountKeyData a string containing the Connected Cars service account data
    * @param {string} [endpoint] specify the connected cars api endpoint, default is production endpoint
    * @param {string} [authEndpoint] specify the connected cars auth endpoint, default is production endpoint
+   * @param {string} [organizationNamespace] specify the organization namespace, ask Connected Cars for more info
    * @throws an error if the service account data is malformed
    */
   constructor(
     ccServiceAccountKeyData,
     endpoint = 'https://api.connectedcars.io/graphql',
-    authEndpoint = 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter'
+    authEndpoint = 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
+    organizationNamespace = 'myOrganization:myNamespace'
   ) {
     this._API_ENDPOINT = endpoint
     this._AUTH_API_ENDPOINT = authEndpoint
+    this._ORGANIZATION_NAMESPACE = organizationNamespace
     this._ccAccessToken = null
     this._parsedServiceAccountInfo = _readServiceAccountData(
       ccServiceAccountKeyData
@@ -84,7 +94,8 @@ class ConnectedCarsApi {
     ) {
       this._ccAccessToken = await _getToken(
         this._parsedServiceAccountInfo,
-        this._AUTH_API_ENDPOINT
+        this._AUTH_API_ENDPOINT,
+        this._ORGANIZATION_NAMESPACE
       )
     }
     return this._ccAccessToken.token
@@ -108,7 +119,10 @@ class ConnectedCarsApi {
     const bearerToken = await this.getAccessToken()
 
     const config = {
-      headers: { Authorization: 'Bearer ' + bearerToken }
+      headers: {
+        Authorization: 'Bearer ' + bearerToken,
+        'X-Organization-Namespace': this._ORGANIZATION_NAMESPACE
+      }
     }
     const query = {
       query: graphQLInput
@@ -123,7 +137,10 @@ class ConnectedCarsApi {
         await this._clearToken()
         const newBearerToken = await this.getAccessToken()
         const newConfig = {
-          headers: { Authorization: 'Bearer ' + newBearerToken }
+          headers: {
+            Authorization: 'Bearer ' + newBearerToken,
+            'X-Organization-Namespace': this._ORGANIZATION_NAMESPACE
+          }
         }
         const result = await axios.default.post(
           this._API_ENDPOINT,

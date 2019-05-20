@@ -17,6 +17,7 @@ repositories {
 project.ext.SERVICE_ACCOUNT_KEY_FILE = "../connectedcars_serviceaccount.pem" // This is relative to the connectedcars-sample project
 project.ext.CC_API_ENDPOINT = "https://api.staging.connectedcars.io/graphql"
 project.ext.CC_AUTH_API_ENDPOINT = "https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter"
+project.ext.ORGANIZATION_NAMESPACE = "myOrganization:myNamespace"
 
 project(':connectedcars-sample') {
     dependencies {
