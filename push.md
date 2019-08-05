@@ -262,6 +262,30 @@ Nb: Fuel levels reported by each cars, note that this is only reported in whole 
 
 
 
+### fuel_level_percent message - Tank fuel level in percent
+
+This message type requires the `vehicle_fuel_level` scope
+
+Nb: Fuel levels reported by each cars, note that this is only reported in whole percent for some vehicles, as such it might not be sutible for all purposes
+
+|        Name        |   Type   |  Unit/Format   | Example              |                   Description                   |
+|:------------------:|:--------:|:--------------:|----------------------|-------------------------------------------------|
+| fuel_level_percent | decimal  | percent        | 67                   | Fuel level in percent as reported by the car               |
+
+
+``` json
+[
+    {
+        "type": "fuel_level_percent",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "fuel_level_percent": 67
+    }
+]
+```
+
+
+
 ### fuel_consumed message - Fuel consumed since unit installation
 
 This message type requires the `vehicle_fuel_consumed` scope
