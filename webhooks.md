@@ -19,7 +19,7 @@ Requests should only be rejected in case you have issues parsing, validating or 
 
 ## Event structure
 
-Every event will also contain an event identifier, the type of event, a timestamp and a data object.
+Every event will contain an event identifier, the type of event, a timestamp and a data object.
 
 The timestamp is when the action triggering the webhook occurred. The data object might be an empty object.
 
