@@ -11,7 +11,7 @@ Acceptable return HTTP codes:
 * 200: Messages have been consumed successfully
 * not 200: Something went wrong, retry
 
-Requests will be retried 3 times after 20 seconds delay. If no response is received on the first 3 retry attempts, each following attempt is made afterwards with an exponential back off starting at 2 minutes.
+Requests will be retried 3 times after 20 seconds delay. If no response is received on the first 3 retry attempts, each following attempt is made afterwards with an exponential backoff starting at 2 minutes.
 
 Messages will be sent one at a time. Order is not guaranteed, but timestamps are included in the messages.
 
