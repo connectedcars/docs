@@ -13,7 +13,7 @@ Acceptable return HTTP codes:
 
 Requests will be retried 3 times after 20 seconds delay. If no response is received on the first 3 retry attempts, each following attempt is made afterwards with an exponential back off starting at 2 minutes.
 
-Messages will be one at a time. Order is not guaranteed, but timestamps are included in the message.
+Messages will be sent one at a time. Order is not guaranteed, but timestamps are included in the messages.
 
 Requests should only be rejected in case you have issues parsing, validating or storing the event, for example not recognizing the VIN should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
