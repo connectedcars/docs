@@ -6,7 +6,7 @@ Events will be pushed to the endpoint URL defined in organization settings in th
 
 Request Headers:
 * `X-Request-Id`: Identifier for this request
-* `Authorization`: Authorization header storing a [JWT](https://jwt.io/) containing the request identifier signed with a private key corresponding to the public key found at http://api.connectedcars.io/public-key
+* `Authorization`: Authorization header storing a [JWT](https://jwt.io/) containing the request identifier signed with a private key corresponding to the public key found at http://api.connectedcars.io/webhooks/public-keys
 
 Acceptable return HTTP codes:
 * 200: Messages have been consumed successfully
