@@ -19,7 +19,7 @@ Messages will be sent one at a time. Order is not guaranteed, but timestamps are
 Requests should only be rejected in case you have issues parsing, validating or storing the event, for example not recognizing the VIN should not result in a rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
 ## Security
-The `X-Request-Signature` header includes a [JWT](https://jwt.io/) containing the request identifier (`rid`) and an HMAC of the request payload computed with the SHA256 hash function (`sub`).
+The `X-Request-Signature` header includes a [JWT](https://jwt.io/) containing the request identifier (`rid`) and a SHA256 hash of the request payload (`sub`).
 
 The JWT can be verified via the public key found at http://api.connectedcars.io/webhooks/public-keys. Use the issue time (`iat`) to determine whether the the timing is within your tolerance.
 
