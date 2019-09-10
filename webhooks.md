@@ -6,7 +6,7 @@ Events will be pushed to the endpoint URL defined in organization settings in th
 
 Request Headers:
 * `X-Request-Id`: Identifier for this request
-* `Authorization`: Authorization header storing a [JWT](https://jwt.io/) containing the request identifier signed with a private key corresponding to the public key found at http://api.connectedcars.io/webhooks/public-keys
+* `X-Request-Signature`: See security paragraph
 
 Acceptable return HTTP codes:
 * 200: Messages have been consumed successfully
@@ -17,6 +17,11 @@ Requests will be retried 3 times after 20 seconds delay. If no response is recei
 Messages will be sent one at a time. Order is not guaranteed, but timestamps are included in the messages.
 
 Requests should only be rejected in case you have issues parsing, validating or storing the event, for example not recognizing the VIN should not result in a rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
+
+## Security
+The `X-Request-Signature` header includes a [JWT](https://jwt.io/) containing the request identifier (`rid`) and a SHA256 hash of the request payload encoded as base64 (`sub`).
+
+The JWT can be verified via the public key found at http://api.connectedcars.io/webhooks/public-keys. Use the issue time (`iat`) to determine whether the the timing is within your tolerance.
 
 ## Event structure
 
