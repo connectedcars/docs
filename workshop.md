@@ -4,6 +4,8 @@
 
 All endpoints accepts `token` in the URL hash/fragment param (eg. `#token=foobar`), which will be used for authentication. If no token is provided in the request, the client will look for one saved in the browser's storage. If no token is available the client will be redirected to the Auth service.
 
+**Please note that all URI components must be encoded.**
+
 ### `GET /integration/vehicle/add`
 
 Prefill form data on the "Add vehicle" page and the "vehicle activation guide" if customer details are included in the request as well.
@@ -27,5 +29,5 @@ Prefill form data on the "Add vehicle" page and the "vehicle activation guide" i
 Example request:
 
 ```
-/integration/vehicle/add?queryType=vin&source=some_system&vehicleVin=WVWZZZ1KZAW123456&customerEmail=johnsmith@example.com
+/integration/vehicle/add?queryType=vin&source=some_system&vehicleVin=WVWZZZ1KZAW123456&customerEmail=johnsmith%40example.com
 ```
