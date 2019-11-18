@@ -8,9 +8,9 @@ Denne funktion giver dig mulighed for at få historik over bilens kørte ture. D
 |-----------|-----------------------|------------|
 | Bilens GPS position | Så brugeren kan se bilens rute på et kort | Gemmes indtil brugeren anmoder om sletning af turen |
 | Bilens retning | Så brugeren kan se bilens rute på et kort, anvendes til at kvalitetsoptimere rutevisning | Gemmes indtil brugeren anmoder om sletning af turen |
-| Bilens brændstofniveau | Så brugeren kan se bilens estimeret brændstofforbrug | 8 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
+| Bilens brændstofniveau | Så brugeren kan se bilens estimeret brændstofforbrug | 60 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
 | Bilens kilometerstand | Så brugeren kan se antal kørte kilometer for hver tur | 60 dages historisk data. Udregnet distance på ture gemmes indtil brugeren anmoder om sletning af turen |
-| Bilens brændstofforbrug | Så brugeren kan se bilens estimeret brændstofforbrug for hver tur | 8 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
+| Bilens brændstofforbrug | Så brugeren kan se bilens estimeret brændstofforbrug for hver tur | 60 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
 | Køreturen i tid | Så brugeren kan se køreturens varighed | Gemmes indtil brugeren anmoder om sletning af turen |
 
 ## Aktuel status på din bil
@@ -23,7 +23,7 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Tænding slået til | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Tænding slået fra | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Bilens kilometerstand | Så brugeren kan se bilens kilometerstand i app'en | 60 dages historisk data og seneste værdi |
-| Bilens brændstofniveau | Så brugeren kan se bilens brændstofniveau i app'en | 7 dages historisk data og seneste værdi |
+| Bilens brændstofniveau | Så brugeren kan se bilens brændstofniveau i app'en | 60 dages historisk data og seneste værdi |
 | Bilens låsestatus | Så brugeren kan se i app'en om bilen er låst eller ulåst | 7 dages historisk data og seneste værdi |
 | Bilens serviceinterval i dage | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |

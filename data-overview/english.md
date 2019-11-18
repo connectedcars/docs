@@ -8,9 +8,9 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 |-----------|-----------------------|------------|
 | Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
 | Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
-| Car fuel level | So the user can see the car's estimated fuel consumption | 8 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
-| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 8 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
 
 ## Current status of your car
@@ -23,7 +23,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Ignition on | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
-| Car fuel level | So the user can see the car's fuel level in the app | 7 days historical data and most recent value |
+| Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | Car lock status | So the user can see in the app if the car is locked or unlocked | 7 days historical data and most recent value |
 | Car service interval in days | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Car service interval in kilometers | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
