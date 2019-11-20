@@ -8,14 +8,14 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 |-----------|-----------------------|------------|
 | Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
 | Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
-| Car fuel level | So the user can see the car's estimated fuel consumption | 8 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
-| Car fuel consumtion | So the user can see the car's estimated fuel consumption for each trip | 8 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
 
 ## Current status of your car
 
-This feature gives you an overview of the current satus of your car / errors and time to next service and oil change
+This feature gives you an overview of the current status of your car / errors and time to next service and oil change
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
@@ -23,7 +23,7 @@ This feature gives you an overview of the current satus of your car / errors and
 | Ignition on | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
-| Car fuel level | So the user can see the car's fuel level in the app | 7 days historical data and most recent value |
+| Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | Car lock status | So the user can see in the app if the car is locked or unlocked | 7 days historical data and most recent value |
 | Car service interval in days | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Car service interval in kilometers | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
@@ -87,14 +87,14 @@ This feature ensures that you get the right advice from your preferred workshop 
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
 | User phone number | So the user's preferred workshop has contact information | Saved until the user requests deletion |
 | User email | So the user's preferred workshop has contact information | Saved until the user requests deletion |
-| Car chasis number | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
+| Car chassis number | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | Car registration number | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | User ID | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | OBD device ID  So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | Car model information | So the user's preferred workshop can advise the user and book the correct service or repair if necessary | Saved until the user requests deletion |
 | User chat history with preferred workshop | So the user's preferred workshop can get an insight into the car's history and previous dialogue to best guide the user | Saved until the user requests deletion |
-| GPS status ok (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
-| GPRS status ok (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
+| GPS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
+| GPRS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
 | OBD device activated (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | Saved until the user requests deletion |
 
 ## Ancillary data
@@ -103,23 +103,23 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Car chasis number | Used to ensure that the correct software is loaded on the OBD device | Always |
+| Car chassis number | Used to ensure that the correct software is loaded on the OBD device | Always |
 | Car technical configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
-| Scan of car's electronical configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
+| Scan of car's electronic configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
 | CAN-Bus raw data | Used for troubleshooting | Always |
 | CAN-Bus activity on/off | Used for quality assurance of collected data | 7 days historical data and most recent value |
 
 ## Driving events
 
-This feature gives you information about incidents and conditions for your car's trips shown in your app and summed up in benchmarks where you can track your improvements regarding safe driving. Collected data is shown in the app and used to provide you concrete areas of imporvement to be a safer driver.
+This feature gives you information about incidents and conditions for your car's trips shown in your app and summed up in benchmarks where you can track your improvements regarding safe driving. Collected data is shown in the app and used to provide you concrete areas of improvement to be a safer driver.
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
 | Speed (with position) | Speed is known to be the single most important component of traffic accidents. It is necessary rely on speed to advise users on how and where to improve their driving | Kept until the user requests deletion. Values +130 Km/h are reduced to 130 km/h as speeds above this level is not relevant |
 | Use of wind wipers | Driving in rain is associated with risks of aqua planing and many accidents every year. It is necessary to rely on use of wind wipers to detect if car is driving in rain, and therefore more risky | Kept until the user requests deletion |
 | Outside temperature | Driving at cold temperatures is associated with slippery and potentially icy conditions. Slippery conditions because of cold weather is associated with multiple accidents every year. Outside temperature is an indicator for slippery conditions. Therefore, it is necessary rely on temperature to advise users on how to improve their driving | Kept until the user requests deletion |
-| Vehicle accelleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore accelleration events must be used to advice drivers on where  and when they make mistakes | Kept until the user requests deletion |
+| Vehicle acceleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore acceleration events must be used to advice drivers on where  and when they make mistakes | Kept until the user requests deletion |
 | ESP deactivation light | The ESP-system of the vehicle ensures stability should it loose traction on one or more wheels. Disabling the ESP-system poses a very significant risks for driving. Therefore, It is necessary to advise users who disable the ESP-system users on how to improve their driving | Kept until the user requests deletion |
 | ESP activation light | Activation of the ESP-system indicates slippery surface, and therefore more risky driving conditions. Therefore, It is necessary to rely on signals from the ESP-system to advise users on how to take better care when driving in slippery conditions | Kept until the user requests deletion |
 | High beam activated | Driving in dark conditions is associated with higher risk than driving in day light or where street lights are installed. Country roads are especially at dusk and at night much more risky to drive than at daylight. Use of high beam is an indicator for driving on dark. Therefore, It is necessary to rely on use of high beam to advise users to slow down in dark conditions | Kept until the user requests deletion |
-| Fog lights activated | Driving in foggy conditions is hazardous and the cause of many accidation every year. Use of fog lights is an indicator for foggy conditions. Therefore, It is necessary to rely on use of fog lights to advise users on safer driving in foggy conditions | Kept until the user requests deletion |
+| Fog lights activated | Driving in foggy conditions is hazardous and the cause of many accidents every year. Use of fog lights is an indicator for foggy conditions. Therefore, It is necessary to rely on use of fog lights to advise users on safer driving in foggy conditions | Kept until the user requests deletion |

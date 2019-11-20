@@ -8,9 +8,9 @@ Denne funktion giver dig mulighed for at få historik over bilens kørte ture. D
 |-----------|-----------------------|------------|
 | Bilens GPS position | Så brugeren kan se bilens rute på et kort | Gemmes indtil brugeren anmoder om sletning af turen |
 | Bilens retning | Så brugeren kan se bilens rute på et kort, anvendes til at kvalitetsoptimere rutevisning | Gemmes indtil brugeren anmoder om sletning af turen |
-| Bilens brændstofsniveau | Så brugeren kan se bilens estimeret brændstofsforbrug | 8 dages historisk data. Udregnet brændstofsforbrug gemmes indtil brugeren anmoder om sletning af turen |
+| Bilens brændstofniveau | Så brugeren kan se bilens estimeret brændstofforbrug | 60 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
 | Bilens kilometerstand | Så brugeren kan se antal kørte kilometer for hver tur | 60 dages historisk data. Udregnet distance på ture gemmes indtil brugeren anmoder om sletning af turen |
-| Bilens brændstofsforbrug | Så brugeren kan se bilens estimeret brændstofsforbrug for hver tur | 8 dages historisk data. Udregnet brændstofsforbrug gemmes indtil brugeren anmoder om sletning af turen |
+| Bilens brændstofforbrug | Så brugeren kan se bilens estimeret brændstofforbrug for hver tur | 60 dages historisk data. Udregnet brændstofforbrug gemmes indtil brugeren anmoder om sletning af turen |
 | Køreturen i tid | Så brugeren kan se køreturens varighed | Gemmes indtil brugeren anmoder om sletning af turen |
 
 ## Aktuel status på din bil
@@ -23,7 +23,7 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Tænding slået til | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Tænding slået fra | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Bilens kilometerstand | Så brugeren kan se bilens kilometerstand i app'en | 60 dages historisk data og seneste værdi |
-| Bilens brændstofsniveau | Så brugeren kan se bilens brændstofsniveau i app'en | 7 dages historisk data og seneste værdi |
+| Bilens brændstofniveau | Så brugeren kan se bilens brændstofniveau i app'en | 60 dages historisk data og seneste værdi |
 | Bilens låsestatus | Så brugeren kan se i app'en om bilen er låst eller ulåst | 7 dages historisk data og seneste værdi |
 | Bilens serviceinterval i dage | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
@@ -56,7 +56,7 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 
 ## Teknisk hjælp af dit foretrukne værksted
 
-Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne værksted baseret på data direkte fra bilen
+Denne funktion sikrer at du kan få den rette rådgivning fra dit foretrukne værksted baseret på data direkte fra bilen
 
 | Parameter | Formål med behandling | Opbevaring |
 |-----------|-----------------------|------------|
@@ -88,7 +88,7 @@ Denne funktion sikrer at du kan få den rette rådgiving fra dit foretrukne vær
 | Brugerens telefonnummer | Så brugerens foretrukne værksted har kontaktoplysninger | Gemmes indtil brugeren anmoder om sletning |
 | Brugerens email | Så brugerens foretrukne værksted har kontaktoplysninger | Gemmes indtil brugeren anmoder om sletning |
 | Bilens stelnummer | Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
-| Bilens registeringsnummer | Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
+| Bilens registreringsnummer | Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
 | Bruger ID | Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
 | OBD-enheds ID  Så brugerens foretrukne værksted kan identificere bilen | Gemmes indtil brugeren anmoder om sletning |
 | Bilens modelinformation | Så brugerens foretrukne værksted kan rådgive brugeren og booke korrekt service eller reparation hvis det er nødvendigt | Gemmes indtil brugeren anmoder om sletning |
@@ -105,7 +105,7 @@ Data, som er teknisk nødvendige for at garantere sikker og effektiv udlæsning 
 |-----------|-----------------------|------------|
 | Bilens stelnummer | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
 | Bilens tekniske konfiguration | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
-| Scanning af bilens elektroniske configuration | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
+| Scanning af bilens elektroniske konfiguration | Anvendes til at sikre at den korrekte software indlæses på OBD-enheden | Altid |
 | CAN-Bus rå-data | Anvendes til fejlfinding | Altid |
 | CAN-Bus aktivitet on/off | Anvendes til kvalitetssikring af indsamlet data | 7 dages historisk data og seneste værdi |
 
@@ -118,7 +118,7 @@ Brugeren får konkrete informationer om hændelser og konditioner for sine ture 
 | Hastighed (med position) | Hastighed er kendt som den aller vigtigste faktor for trafiksikkerhed. Det er nødvendigt at bruge hastighed til at advisere brugere om, hvordan og hvor de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning. Værdier +130 Km/h er reduceret til 130 km/h da hastigheder over dette niveau ikke er relevant. |
 | Brug af vinduesviskere | Kørsel i regn er associeret med risiko for akvaplaning og mange ulykker hvert år. Det er nødvendigt at anvende brug af vinduesviskere til at detektere om en bil kører i regn og derfor er udsat for højere risiko for uheld | Gemmes indtil brugeren anmoder om sletning |
 | Udendørs temperatur | Kørsel i kolde temperaturer er associeret med glatte og potentielt isede forhold. Glatte forhold grundet koldt vejr er associeret med adskillige uheld hvert år. Udendørs temperatur er en indikator for glatte forhold. Derfor er det nødvendigt at anvende temperatur for at advisere brugere om, hvordan de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
-| Køretøj accelleration over 0.2G (alle retninger), med position | Pludselige og ofte ændringer i retning (forhøjelse/nedsættelse af hastighed såvel som sving) er portentielt risikofyldte handlinger foretaget af chaufføren. Jævn kørsel er ofte sikker kørsel, derfor kan accelerationer anvendes til at rådgive brugere om, hvor og de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
+| Køretøj acceleration over 0.2G (alle retninger), med position | Pludselige og ofte ændringer i retning (forhøjelse/nedsættelse af hastighed såvel som sving) er potentielt risikofyldte handlinger foretaget af chaufføren. Jævn kørsel er ofte sikker kørsel, derfor kan accelerationer anvendes til at rådgive brugere om, hvor og de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
 | ESP deaktiveringslampe | Bilens ESP-system sikrer stabilitet, hvis der mistes friktion mod underlaget for et eller flere hjul. Slås ESP-systemet fra udgør det en potentielt signifikant risiko for kørsel. Derfor er det nødvendigt at advisere brugere, som har slået ESP systemet fra om, hvordan de kan forbedre deres kørsel | Gemmes indtil brugeren anmoder om sletning |
 | ESP aktiveringslampe | Aktivering af ESP systemet indikerer glat føre og derfor mindre sikre kørselsforhold. Derfor er det nødvendigt at bero på signaler fra ESP-systemet for at advisere brugere om, hvordan de kan køre sikrere i vådt føre | Gemmes indtil brugeren anmoder om sletning |
 | Langt lys aktiveret | Kørsel i mørke forhold er associeret med højere risiko i forhold til kørsel i dagslys eller belyste veje. Især kørsel på landeveje ved skumring og nat udgør højere risiko end kørsel i dagslys. Brug af det lange lys er en indikator på kørsel i mørke. Derfor er det nødvendigt at anvende brugen af langt lys til at advisere brugere om at forbedre sin kørsel i mørke forhold | Gemmes indtil brugeren anmoder om sletning |
