@@ -24,7 +24,6 @@ This feature gives you an overview of the current status of your car / errors an
 | Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
-| Car lock status | So the user can see in the app if the car is locked or unlocked | 7 days historical data and most recent value |
 | Car service interval in days | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Car service interval in kilometers | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Number of days since last service | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
@@ -73,7 +72,6 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Oil light | So the user's preferred workshop can advise the user if there is an error on the oil system | Saved until the user requests deletion |
 | Airbag activated | So the user's preferred workshop can advise the user if there is an error on the airbag system | Saved until the user requests deletion |
 | Power failure on OBD device | So the user's preferred workshop can advise the user if there is a power failure on the OBD device in the car | Saved until the user requests deletion |
-| Oil level i mm | So the user's preferred workshop can advise the user if the car's oil level is too low | Saved until the user requests deletion |
 | Oil temperature | So the user's preferred workshop can advise the user if the car's oil temperature becomes too high | Saved until the user requests deletion |
 | Tire pressure alarm | So the user's preferred workshop can advise the user if the car lacks air in one or more tires | Saved until the user requests deletion |
 | Brake fluid light | So the user's preferred workshop can advise the user if the car lacks brake fluid | Saved until the user requests deletion |
