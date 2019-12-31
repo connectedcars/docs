@@ -24,7 +24,6 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Tænding slået fra | Anvendes til logikker, som kvalitetssikrer data | 60 dages historisk data og seneste værdi |
 | Bilens kilometerstand | Så brugeren kan se bilens kilometerstand i app'en | 60 dages historisk data og seneste værdi |
 | Bilens brændstofniveau | Så brugeren kan se bilens brændstofniveau i app'en | 60 dages historisk data og seneste værdi |
-| Bilens låsestatus | Så brugeren kan se i app'en om bilen er låst eller ulåst | 7 dages historisk data og seneste værdi |
 | Bilens serviceinterval i dage | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Bilens serviceinterval i kilometer | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
 | Antal dage siden sidste service | Bruges til beregning, så brugeren kan se hvornår bilen skal til service igen | 60 dages historisk data og seneste værdi |
@@ -43,7 +42,6 @@ Denne funktion, giver dig et overblik over din bils aktuelle tilstand/ status og
 | Fejlkoder fra bilen | Så brugeren kan få advarsel om tekniske fejl på bilen, som ikke udløser advarselslamper | 7 dages historisk data og seneste værdi |
 | Strømafbrydelse på OBD-enhed | Så brugeren kan få advarsel hvis OBD-enheden i bilen demonteres | 7 dages historisk data og seneste værdi |
 | Mistanke om kollision | Så brugeren kan få advarsel hvis der er mistanke om en kollision | 7 dages historisk data og seneste værdi |
-| Olieniveau i mm | Så brugeren kan få advarsel hvis bilens olieniveau er for lavt | 7 dages historisk data og seneste værdi |
 | Olietemperatur | Så brugeren kan få advarsel hvis bilens olietemperatur er for høj | 7 dages historisk data og seneste værdi |
 | Dæktryksalarm | Så brugeren kan få advarsel om lavt dæktryk | 7 dages historisk data og seneste værdi |
 | Bremsevæskelampe | Så brugeren kan få advarsel hvis bremsevæskelampen lyser i bilen | 7 dages historisk data og seneste værdi |
