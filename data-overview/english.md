@@ -37,17 +37,12 @@ This feature gives you an overview of the current status of your car / errors an
 | Windshield wiper fluid light | So the user can get a warning if the windshield wiper fluid light is on the car | 7 days historical data and most recent value |
 | Coolant light | So the user can get a warning if the coolant light is on the car | 7 days historical data and most recent value |
 | Brake system light | So the user can get a warning if the brake system light is on the car | 7 days historical data and most recent value |
-| Oil light | So the user can get a warning if the oil light is on the car | 7 days historical data and most recent value |
-| Airbag activated | So the user can get a warning if the airbag is activated in the car or the airbag is broken | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
 | Power failure on OBD device | So the user can get a warning if the OBD device in the car is demounted | 7 days historical data and most recent value |
 | Suspected collision | So the user can get a warning if a collision is suspected | 7 days historical data and most recent value |
-| Oil level in mm | So the user can get a warning if the car's oil level is too low | 7 days historical data and most recent value |
-| Oil temperature | So the user can get a warning if the car's oil temperature is too high | 7 days historical data and most recent value |
 | Tire pressure alarm | So the user can get a warning about low tire pressure | 7 days historical data and most recent value |
 | Brake fluid light | So the user can get a warning if the brake fluid light is on the car | 7 days historical data and most recent value |
 | Low oil warning | So the user can get a low oil level warning | 7 days historical data and most recent value |
-| ABS warning light | So the user can get a warning if there is an error on the ABS system | 7 days historical data and most recent value |
 | ESP deactivation light | So the user can get a warning if the ESP is disabled or broken | 7 days historical data and most recent value |
 | ESP activation light | So the user can get a warning if the ESP is disabled or broken | 7 days historical data and most recent value |
 | Warning for low battery voltage on the car battery | So the user can get a warning if the car's battery voltage is low | 7 days historical data and most recent value |
@@ -69,16 +64,10 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Car oil quality (bad/good) | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
 | Coolant light | So the user's preferred workshop can advise the user if there is an error on the cooling fluid system | Saved until the user requests deletion |
 | Brake system light | So the user's preferred workshop can advise the user if there is an error on the braking system | Saved until the user requests deletion |
-| Oil light | So the user's preferred workshop can advise the user if there is an error on the oil system | Saved until the user requests deletion |
-| Airbag activated | So the user's preferred workshop can advise the user if there is an error on the airbag system | Saved until the user requests deletion |
 | Power failure on OBD device | So the user's preferred workshop can advise the user if there is a power failure on the OBD device in the car | Saved until the user requests deletion |
-| Oil temperature | So the user's preferred workshop can advise the user if the car's oil temperature becomes too high | Saved until the user requests deletion |
 | Tire pressure alarm | So the user's preferred workshop can advise the user if the car lacks air in one or more tires | Saved until the user requests deletion |
 | Brake fluid light | So the user's preferred workshop can advise the user if the car lacks brake fluid | Saved until the user requests deletion |
 | Low oil warning | So the user's preferred workshop can advise the user if the car needs oil | Saved until the user requests deletion |
-| ABS warning light | So the user's preferred workshop can advise the user if the ABS system is defective | Saved until the user requests deletion |
-| ESP deactivation light | So the user's preferred workshop can advise in connection with problems with the ESP system | Saved until the user requests deletion |
-| ESP activation light |  So the user's preferred workshop can advise in connection with problems with the ESP system | Saved until the user requests deletion |
 | Warning for low battery voltage on the car battery | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Warning on changes to the car's battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
@@ -117,7 +106,3 @@ This feature gives you information about incidents and conditions for your car's
 | Use of wind wipers | Driving in rain is associated with risks of aqua planing and many accidents every year. It is necessary to rely on use of wind wipers to detect if car is driving in rain, and therefore more risky | Kept until the user requests deletion |
 | Outside temperature | Driving at cold temperatures is associated with slippery and potentially icy conditions. Slippery conditions because of cold weather is associated with multiple accidents every year. Outside temperature is an indicator for slippery conditions. Therefore, it is necessary rely on temperature to advise users on how to improve their driving | Kept until the user requests deletion |
 | Vehicle acceleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore acceleration events must be used to advice drivers on where  and when they make mistakes | Kept until the user requests deletion |
-| ESP deactivation light | The ESP-system of the vehicle ensures stability should it loose traction on one or more wheels. Disabling the ESP-system poses a very significant risks for driving. Therefore, It is necessary to advise users who disable the ESP-system users on how to improve their driving | Kept until the user requests deletion |
-| ESP activation light | Activation of the ESP-system indicates slippery surface, and therefore more risky driving conditions. Therefore, It is necessary to rely on signals from the ESP-system to advise users on how to take better care when driving in slippery conditions | Kept until the user requests deletion |
-| High beam activated | Driving in dark conditions is associated with higher risk than driving in day light or where street lights are installed. Country roads are especially at dusk and at night much more risky to drive than at daylight. Use of high beam is an indicator for driving on dark. Therefore, It is necessary to rely on use of high beam to advise users to slow down in dark conditions | Kept until the user requests deletion |
-| Fog lights activated | Driving in foggy conditions is hazardous and the cause of many accidents every year. Use of fog lights is an indicator for foggy conditions. Therefore, It is necessary to rely on use of fog lights to advise users on safer driving in foggy conditions | Kept until the user requests deletion |
