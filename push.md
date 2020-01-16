@@ -20,7 +20,7 @@ Acceptable return http codes:
 
 Requests will be retried 3 times after 20 seconds delay. If no response is received on the first 3 retry attempts, each following attempt is made afterwards with an exponential back off starting at 2 minutes.
 
-Messages will be sent in bulk of up to 1000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
+Messages will be sent in bulk of up to 10000 at a time, in case of failure the full bulk will be retried. Which means you should discard the entire request, if you return anything other than 200.
 
 Requests should only be rejected in case you have issues parsing, validating or storing the full bulk, fx. not knowing a carId should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
 
