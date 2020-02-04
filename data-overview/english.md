@@ -43,8 +43,6 @@ This feature gives you an overview of the current status of your car / errors an
 | Tire pressure alarm | So the user can get a warning about low tire pressure | 7 days historical data and most recent value |
 | Brake fluid light | So the user can get a warning if the brake fluid light is on the car | 7 days historical data and most recent value |
 | Low oil warning | So the user can get a low oil level warning | 7 days historical data and most recent value |
-| ESP deactivation light | So the user can get a warning if the ESP is disabled or broken | 7 days historical data and most recent value |
-| ESP activation light | So the user can get a warning if the ESP is disabled or broken | 7 days historical data and most recent value |
 | Warning for low battery voltage on the car battery | So the user can get a warning if the car's battery voltage is low | 7 days historical data and most recent value |
 | Warning on changes to the car's battery voltage | So the user can get a warning if there is a change in the car's battery voltage | 7 days historical data and most recent value |
 
