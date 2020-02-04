@@ -32,15 +32,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Number of days to next oil change | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Car oil quality (bad/good) | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
 | Battery voltage | So the user can get a warning if the car's battery voltage is low | Saved until the user requests deletion |
-| Battery health | So the user can get a warning if the car's battery voltage is low | Saved until the user requests deletion |
-| Warning if the car is towed | So the user can get a warning if the car is towed | 7 days historical data and most recent value |
-| Windshield wiper fluid light | So the user can get a warning if the windshield wiper fluid light is on the car | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
-| Power failure on OBD device | So the user can get a warning if the OBD device in the car is demounted | 7 days historical data and most recent value |
-| Suspected collision | So the user can get a warning if a collision is suspected | 7 days historical data and most recent value |
-| Tire pressure alarm | So the user can get a warning about low tire pressure | 7 days historical data and most recent value |
-| Brake fluid light | So the user can get a warning if the brake fluid light is on the car | 7 days historical data and most recent value |
-| Low oil warning | So the user can get a low oil level warning | 7 days historical data and most recent value |
 | Warning for low battery voltage on the car battery | So the user can get a warning if the car's battery voltage is low | 7 days historical data and most recent value |
 | Warning on changes to the car's battery voltage | So the user can get a warning if there is a change in the car's battery voltage | 7 days historical data and most recent value |
 
@@ -58,12 +50,6 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Number of kilometers to next oil change | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
 | Number of days to next oil change | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
 | Car oil quality (bad/good) | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
-| Coolant light | So the user's preferred workshop can advise the user if there is an error on the cooling fluid system | Saved until the user requests deletion |
-| Brake system light | So the user's preferred workshop can advise the user if there is an error on the braking system | Saved until the user requests deletion |
-| Power failure on OBD device | So the user's preferred workshop can advise the user if there is a power failure on the OBD device in the car | Saved until the user requests deletion |
-| Tire pressure alarm | So the user's preferred workshop can advise the user if the car lacks air in one or more tires | Saved until the user requests deletion |
-| Brake fluid light | So the user's preferred workshop can advise the user if the car lacks brake fluid | Saved until the user requests deletion |
-| Low oil warning | So the user's preferred workshop can advise the user if the car needs oil | Saved until the user requests deletion |
 | Warning for low battery voltage on the car battery | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Warning on changes to the car's battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
