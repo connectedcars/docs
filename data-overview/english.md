@@ -35,8 +35,6 @@ This feature gives you an overview of the current status of your car / errors an
 | Battery health | So the user can get a warning if the car's battery voltage is low | Saved until the user requests deletion |
 | Warning if the car is towed | So the user can get a warning if the car is towed | 7 days historical data and most recent value |
 | Windshield wiper fluid light | So the user can get a warning if the windshield wiper fluid light is on the car | 7 days historical data and most recent value |
-| Coolant light | So the user can get a warning if the coolant light is on the car | 7 days historical data and most recent value |
-| Brake system light | So the user can get a warning if the brake system light is on the car | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
 | Power failure on OBD device | So the user can get a warning if the OBD device in the car is demounted | 7 days historical data and most recent value |
 | Suspected collision | So the user can get a warning if a collision is suspected | 7 days historical data and most recent value |
