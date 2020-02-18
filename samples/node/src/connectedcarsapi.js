@@ -44,10 +44,15 @@ const _getToken = async (
 
     let jwt = JwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
 
-    const res = await axios.default.post(authApiEndpoint, {
-      token: jwt,
-      'X-Organization-Namespace': organizationNamespace
-    })
+    const res = await axios.default.post(
+      authApiEndpoint,
+      {
+        token: jwt
+      },
+      {
+        headers: { 'x-organization-namespace': organizationNamespace }
+      }
+    )
     if (!res.data.token) {
       throw new Error('No token returned')
     }
