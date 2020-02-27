@@ -14,9 +14,10 @@ import io.connectedcars.authentication.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 
 public class ConnectedCarsApi {
@@ -27,7 +28,8 @@ public class ConnectedCarsApi {
     private ServiceAccount serviceAccount;
     private CCAccessToken CCAccessToken;
     private ObjectMapper mapper = new ObjectMapper();
-    private HttpClient httpclient = HttpClients.createDefault();
+    private RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(20 * 1000).setSocketTimeout((20 * 1000)).build();
+    private HttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).build();
 
 
     /**
@@ -44,6 +46,7 @@ public class ConnectedCarsApi {
         this.endpoint = endpoint;
         this.authEndpoint = authEndpoint;
         this.organizationNamespace = organizationNamespace;
+
     }
 
     private CCAccessToken getToken() throws IOException {
@@ -70,7 +73,10 @@ public class ConnectedCarsApi {
             try (InputStream inStream = entity.getContent()) {
                 String result = new BufferedReader(new InputStreamReader(inStream))
                         .lines().collect(Collectors.joining("\n"));
-                return mapper.readValue(result, CCAccessToken.class);
+                CCAccessToken token = mapper.readValue(result, CCAccessToken.class);
+                long unixTime = Instant.now().getEpochSecond();
+                token.setExpires(unixTime + token.getExpires());
+                return token;
             }
         }
         throw new RuntimeException("Unknown error");
@@ -83,7 +89,7 @@ public class ConnectedCarsApi {
      */
     public String getAccessToken() throws IOException {
         long unixTime = Instant.now().getEpochSecond();
-        if (this.CCAccessToken == null || this.CCAccessToken.getExpires() < unixTime + 5 * 60 * 1000) {
+        if (this.CCAccessToken == null || this.CCAccessToken.getExpires() < unixTime + 5 * 60) {
             this.CCAccessToken = this.getToken();
         }
         return this.CCAccessToken.getToken();

@@ -1,0 +1,18 @@
+{
+  "extends": ["plugin:prettier/recommended"],	
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "no-unused-vars": "error",
+    "prettier/prettier": ["error", {
+      "printWidth": 120,
+      "singleQuote": true,
+      "semi": false
+    }]
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
