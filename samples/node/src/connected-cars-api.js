@@ -2,12 +2,16 @@ const axios = require('axios')
 const { JwtUtils } = require('@connectedcars/jwtutils')
 
 const _readServiceAccountData = ccServiceAccountKeyData => {
-  const [ccInfo, rsa] = ccServiceAccountKeyData.split(
-    '----- END CONNECTEDCARS INFO -----\n'
-  )
+  const [ccInfo, rsa] = ccServiceAccountKeyData.split('----- END CONNECTEDCARS INFO -----\n')
 
   const ccRegex = /----- BEGIN CONNECTEDCARS INFO -----\niss: (.*)\naud: (.*)\nkid: (.*)\n/
-  const [totalMatch, iss, aud, kid] = ccInfo.match(ccRegex)
+  const match = ccInfo.match(ccRegex)
+  if (!match) {
+    throw new Error('Malformed service account file')
+  }
+  const iss = match[1]
+  const aud = match[2]
+  const kid = match[3]
 
   if (!(iss && aud && kid)) {
     throw new Error('Malformed service account file')
@@ -21,11 +25,7 @@ const _readServiceAccountData = ccServiceAccountKeyData => {
   }
 }
 
-const _getToken = async (
-  parsedServiceAccountInfo,
-  authApiEndpoint,
-  organizationNamespace
-) => {
+const _getToken = async (parsedServiceAccountInfo, authApiEndpoint, organizationNamespace) => {
   try {
     const unixNow = Math.floor(Date.now() / 1000)
 
@@ -53,10 +53,13 @@ const _getToken = async (
         headers: { 'x-organization-namespace': organizationNamespace }
       }
     )
-    if (!res.data.token) {
+    if (!res.data.token || !res.data.expires) {
       throw new Error('No token returned')
     }
-    return res.data
+
+    const expires = Date.now() + res.data.expires * 1000
+
+    return { token: res.data.token, expires }
   } catch (err) {
     throw err
   }
@@ -75,15 +78,13 @@ class ConnectedCarsApi {
     ccServiceAccountKeyData,
     endpoint = 'https://api.connectedcars.io/graphql',
     authEndpoint = 'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
-    organizationNamespace = 'myOrganization:myNamespace'
+    organizationNamespace = 'semler:workshop'
   ) {
     this._API_ENDPOINT = endpoint
     this._AUTH_API_ENDPOINT = authEndpoint
     this._ORGANIZATION_NAMESPACE = organizationNamespace
     this._ccAccessToken = null
-    this._parsedServiceAccountInfo = _readServiceAccountData(
-      ccServiceAccountKeyData
-    )
+    this._parsedServiceAccountInfo = _readServiceAccountData(ccServiceAccountKeyData)
   }
 
   /**
@@ -93,10 +94,8 @@ class ConnectedCarsApi {
    */
   async getAccessToken() {
     const now = Date.now()
-    if (
-      !this._ccAccessToken ||
-      this._ccAccessToken.expires < now + 5 * 60 * 1000
-    ) {
+    // If no token or the token would expire within 5 minutes refresh
+    if (!this._ccAccessToken || this._ccAccessToken.expires < now + 5 * 60 * 1000) {
       this._ccAccessToken = await _getToken(
         this._parsedServiceAccountInfo,
         this._AUTH_API_ENDPOINT,
@@ -126,7 +125,7 @@ class ConnectedCarsApi {
     const config = {
       headers: {
         Authorization: 'Bearer ' + bearerToken,
-        'X-Organization-Namespace': this._ORGANIZATION_NAMESPACE
+        'x-organization-namespace': this._ORGANIZATION_NAMESPACE
       }
     }
     const query = {
@@ -144,14 +143,10 @@ class ConnectedCarsApi {
         const newConfig = {
           headers: {
             Authorization: 'Bearer ' + newBearerToken,
-            'X-Organization-Namespace': this._ORGANIZATION_NAMESPACE
+            'x-organization-namespace': this._ORGANIZATION_NAMESPACE
           }
         }
-        const result = await axios.default.post(
-          this._API_ENDPOINT,
-          graphQLInput,
-          newConfig
-        )
+        const result = await axios.default.post(this._API_ENDPOINT, query, newConfig)
         return result.data.data
       }
       throw err

@@ -8,7 +8,7 @@ public class CCAccessToken {
     @JsonProperty("level")
     private String level;
     @JsonProperty("expires")
-    private int expires;
+    private long expires;
 
     public String getToken() {
         return token;
@@ -26,11 +26,11 @@ public class CCAccessToken {
         this.level = level;
     }
 
-    public int getExpires() {
+    public long getExpires() {
         return expires;
     }
 
-    public void setExpires(int expires) {
+    public void setExpires(long expires) {
         this.expires = expires;
     }
 }
