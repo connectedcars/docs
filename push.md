@@ -379,6 +379,26 @@ This message requires the `vehicle_fuel_level` scope
 ]
 ```
 
+### can_odometer message - CAN Odometer
+
+This message type requires the `vehicle_odometer` scope
+
+
+|   Name   |   Type   |  Unit/Format        | Example              |                   Description                   |
+|:--------:|:--------:|:-------------------:|----------------------|-------------------------------------------------|
+| odometer | decimal  | km                  | 45000.0              | Total distance travelled by vehicle since start |
+
+``` json
+[
+    {
+        "type": "can_odometer",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "odometer": 123123.0
+    }
+]
+```
+
 ### WORK IN PROGRESS
 
 This section is for apis that are currently beeing developed or in our road map
