@@ -12,13 +12,15 @@ This feature gives you an overview of the current status of your car / errors an
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | Car service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
-| Battery voltage | So the user can get a warning if the car's battery voltage is low or suddenly drops | Saved until the user requests deletion |
+| Battery voltage | So the user can see the car's current battery voltage | Saved until the user requests deletion |
 | Car dashboard warning lights | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
-| Warning for low battery voltage on the car battery | So the user can get a warning if the car's battery voltage is low | 7 days historical data and most recent value |
-| Warning on changes to the car's battery voltage | So the user can get a warning if there is a change in the car's battery voltage | 7 days historical data and most recent value |
+| Warning for car battery voltage drop | So the user can get a warning if the car's battery voltage suddenly drops | 7 days historical data and most recent value |
+| Warning on poor battery health | So the user can get a warning if the car's battery health is poor | 7 days historical data and most recent value |
 | Bump detection* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
 | Power failure on OBD device* | So the user can get a warning if the device is unplugged | Saved until the user requests deletion |
+
+Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
 
 ## Technical help from your preferred workshop
 
@@ -28,8 +30,8 @@ This feature ensures that you get the right advice from your preferred workshop 
 |-----------|-----------------------|------------|
 | Car mileage | So the user's preferred workshop can advise on the best service based on the car's mileage | 60 days historical data and most recent value |
 | Car service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
-| Warning for low battery voltage on the car battery | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Warning on changes to the car's battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
+| Warning for car battery voltage drop | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
+| Warning on poor battery health | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Car dashboard warning lights | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
@@ -45,6 +47,8 @@ This feature ensures that you get the right advice from your preferred workshop 
 | GPRS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
 | OBD device activated (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | Saved until the user requests deletion |
 | Power failure on OBD device* | So user's preferred workshop can advise the user if the device is unplugged | Saved until the user requests deletion |
+
+Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
 
 ## Ancillary data
 
@@ -68,8 +72,17 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
 | Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
-| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 | Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
+| Road toll* | So the user can get an estimate of toll cost per trip in the trip export | Saved until user requests deletion of trip |
+
+Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
+
+## Fuel used per trip
+This feature allows you to get an estimate of much fuel you used on a particular trip in liters. It can be used to indicate the fuel cost of a trip.
+
+| Parameter | Purpose of data processing | Storage |
+|-----------|-----------------------|------------|
+| Car fuel consumption | So the user can see the car's estimated fuel used for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
 
 ## Driving events
 
