@@ -1,18 +1,5 @@
 # Data overview
 
-## My Trips
-
-My Trips allows you to get a history of your cars trips. You can see where you have driven, how far, how long and how much gas you’ve used
-
-| Parameter | Purpose of data processing | Storage |
-|-----------|-----------------------|------------|
-| Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
-| Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
-| Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
-| Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
-| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
-| Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
-
 ## Current status of your car
 
 This feature gives you an overview of the current status of your car / errors and time to next service and oil change
@@ -24,17 +11,14 @@ This feature gives you an overview of the current status of your car / errors an
 | Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
-| Car service interval in days | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Car service interval in kilometers | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Number of days since last service | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Number of kilometers since last service | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Number of kilometers to next oil change | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Number of days to next oil change | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Car oil quality (bad/good) | Used for calculation so that the user can see when the car needs service again | 60 days historical data and most recent value |
-| Battery voltage | So the user can get a warning if the car's battery voltage is low | Saved until the user requests deletion |
+| Car service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
+| Battery voltage | So the user can get a warning if the car's battery voltage is low or suddenly drops | Saved until the user requests deletion |
+| Car dashboard warning lights | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
 | Warning for low battery voltage on the car battery | So the user can get a warning if the car's battery voltage is low | 7 days historical data and most recent value |
 | Warning on changes to the car's battery voltage | So the user can get a warning if there is a change in the car's battery voltage | 7 days historical data and most recent value |
+| Bump detection* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
+| Power failure on OBD device* | So the user can get a warning if the device is unplugged | Saved until the user requests deletion |
 
 ## Technical help from your preferred workshop
 
@@ -43,15 +27,10 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
 | Car mileage | So the user's preferred workshop can advise on the best service based on the car's mileage | 60 days historical data and most recent value |
-| Car service interval in days | So the user's preferred workshop can advise on the best service based on the car's service interval | 60 days historical data and most recent value |
-| Car service interval in kilometers | So the user's preferred workshop can advise on the best service based on the car's service interval | 60 days historical data and most recent value |
-| Number of days since last service | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
-| Number of kilometers since last service | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
-| Number of kilometers to next oil change | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
-| Number of days to next oil change | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
-| Car oil quality (bad/good) | So the user's preferred workshop can call in the user's car when there is time for service / oil change | 60 days historical data and most recent value |
+| Car service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
 | Warning for low battery voltage on the car battery | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Warning on changes to the car's battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
+| Car dashboard warning lights | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
 | User phone number | So the user's preferred workshop has contact information | Saved until the user requests deletion |
@@ -65,6 +44,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | GPS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
 | GPRS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
 | OBD device activated (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | Saved until the user requests deletion |
+| Power failure on OBD device* | So user's preferred workshop can advise the user if the device is unplugged | Saved until the user requests deletion |
 
 ## Ancillary data
 
@@ -77,6 +57,19 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 | Scan of car's electronic configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
 | CAN-Bus raw data | Used for troubleshooting | Always |
 | CAN-Bus activity on/off | Used for quality assurance of collected data | 7 days historical data and most recent value |
+
+## My Trips
+
+My Trips allows you to get a history of your cars trips. You can see where you have driven, how far, how long and how much gas you’ve used
+
+| Parameter | Purpose of data processing | Storage |
+|-----------|-----------------------|------------|
+| Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
+| Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
+| Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
+| Car fuel consumption | So the user can see the car's estimated fuel consumption for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
 
 ## Driving events
 
