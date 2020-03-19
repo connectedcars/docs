@@ -42,7 +42,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Car chassis number | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | Car registration number | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | User ID | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
-| OBD device ID  So the user's preferred workshop can identify the car | Saved until the user requests deletion |
+| OBD device ID | So the user's preferred workshop can identify the car | Saved until the user requests deletion |
 | Car model information | So the user's preferred workshop can advise the user and book the correct service or repair if necessary | Saved until the user requests deletion |
 | User chat history with preferred workshop | So the user's preferred workshop can get an insight into the car's history and previous dialogue to best guide the user | Saved until the user requests deletion |
 | GPS status OK (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | 7 days historical data and most recent value |
