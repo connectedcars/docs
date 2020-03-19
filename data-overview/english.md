@@ -13,10 +13,12 @@ This feature gives you an overview of the current status of your car / errors an
 | Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | Car service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
 | Battery voltage | So the user can see the car's current battery voltage | Saved until the user requests deletion |
+| Adblue remaining in km* | So the user can see the car's remaining km until next refuel of adblue is needed | 7 days historical data and most recent value |
 | Car dashboard warning lights | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
 | Warning for car battery voltage drop | So the user can get a warning if the car's battery voltage suddenly drops | 7 days historical data and most recent value |
 | Warning on poor battery health | So the user can get a warning if the car's battery health is poor | 7 days historical data and most recent value |
+| Warning on AdBlue* | So the user can get a warning if there is a short distance to the adblue runs out | 7 days historical data and most recent value |
 | Bump detection* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
 | Power failure on OBD device* | So the user can get a warning if the device is unplugged | Saved until the user requests deletion |
 
