@@ -14,7 +14,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Car service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
 | Battery voltage | So the user can see the car's current battery voltage | Saved until the user requests deletion |
 | Adblue remaining in km* | So the user can see the car's remaining km until next refuel of adblue is needed | 7 days historical data and most recent value |
-| Car dashboard warning lights | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
+| Car dashboard warning lights* | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
 | Warning for car battery voltage drop | So the user can get a warning if the car's battery voltage suddenly drops | 7 days historical data and most recent value |
 | Warning on poor battery health | So the user can get a warning if the car's battery health is poor | 7 days historical data and most recent value |
@@ -34,7 +34,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Car service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
 | Warning for car battery voltage drop | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Warning on poor battery health | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Car dashboard warning lights | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
+| Car dashboard warning lights* | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
 | User phone number | So the user's preferred workshop has contact information | Saved until the user requests deletion |
