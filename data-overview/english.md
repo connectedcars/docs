@@ -34,6 +34,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Car service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
 | Warning for car battery voltage drop | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Warning on poor battery health | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
+| Warning on Adblue* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
 | Car dashboard warning lights* | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
@@ -63,6 +64,7 @@ Data that is technically necessary to ensure safe and efficient reading of data 
 | Scan of car's electronic configuration | Used to ensure that the correct software is loaded on the OBD device | Always |
 | CAN-Bus raw data | Used for troubleshooting | Always |
 | CAN-Bus activity on/off | Used for quality assurance of collected data | 7 days historical data and most recent value |
+| Power failure on OBD device | Used for quality assurance | Always |
 
 ## My Trips
 
@@ -71,20 +73,21 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
 | Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
-| Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion of trip |
-| Car fuel level | So the user can see the car's estimated fuel consumption | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
-| Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion of trip |
-| Drive in time | So the user can see the duration of the trip | Saved until user requests deletion of trip |
-| Road toll* | So the user can get an estimate of toll cost per trip in the trip export | Saved until user requests deletion of trip |
+| Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion |
+| Car fuel consumption | So the user can see the car's estimated fuel consumption | Saved until user requests deletion |
+| Car refuel events | So the user can see when the car was refueled and how much | Saved until user requests deletion |
+| Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
+| Drive in time | So the user can see the duration of the trip | Saved until user requests deletion |
+| Road toll* | So the user can get an estimate of toll cost per trip in the trip export | Saved until user requests deletion |
 
 Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
 
-## Fuel used per trip
+## Fuel usage
 This feature allows you to get an estimate of much fuel you used on a particular trip in liters. It can be used to indicate the fuel cost of a trip.
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Car fuel consumption | So the user can see the car's estimated fuel used for each trip | 60 days historical data. Calculated fuel consumption is saved until user requests deletion of trip |
+| Car fuel used per trip | So the user can see the car's estimated fuel used for each trip | 60 days historical data |
 
 ## Driving events
 
@@ -92,6 +95,6 @@ This feature gives you information about incidents and conditions for your car's
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Speed (with position) | Speed is known to be the single most important component of traffic accidents. It is necessary rely on speed to advise users on how and where to improve their driving | Kept until the user requests deletion. Values +130 Km/h are reduced to 130 km/h as speeds above this level is not relevant |
-| Outside temperature | Driving at cold temperatures is associated with slippery and potentially icy conditions. Slippery conditions because of cold weather is associated with multiple accidents every year. Outside temperature is an indicator for slippery conditions. Therefore, it is necessary rely on temperature to advise users on how to improve their driving | Kept until the user requests deletion |
-| Vehicle acceleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore acceleration events must be used to advice drivers on where  and when they make mistakes | Kept until the user requests deletion |
+| Speed (with position) | Speed is known to be the single most important component of traffic accidents. It is necessary rely on speed to advise users on how and where to improve their driving | Saved until user requests deletion. Values +130 Km/h are reduced to 130 km/h as speeds above this level is not relevant |
+| Outside temperature | Driving at cold temperatures is associated with slippery and potentially icy conditions. Slippery conditions because of cold weather is associated with multiple accidents every year. Outside temperature is an indicator for slippery conditions. Therefore, it is necessary rely on temperature to advise users on how to improve their driving | Saved until user requests deletion |
+| Vehicle acceleration above 0.2G (any direction), with position | Sudden and often change of direction (increase/decrease of speed as well as turning) are risky actions by the driver. Smooth driving is safe driving therefore acceleration events must be used to advice drivers on where and when they make mistakes. The acceleration events will also be used to calculate a driver score so the user can compare against other drivers | Saved until user requests deletion |
