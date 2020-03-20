@@ -7,19 +7,15 @@ This feature gives you an overview of the current status of your car / errors an
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
 | Car GPS position | So the user can see where the car is | 1 hour historical data and most recent value |
-| Ignition on | Used for logic, which quality assures data | 60 days historical data and most recent value |
-| Ignition off | Used for logic, which quality assures data | 60 days historical data and most recent value |
+| Ignition | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Car mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Car fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | Car service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
-| Battery voltage | So the user can see the car's current battery voltage | Saved until the user requests deletion |
-| Adblue remaining in km* | So the user can see the car's remaining km until next refuel of adblue is needed | 7 days historical data and most recent value |
+| Battery voltage | So the user can see the car's current battery voltage and get a warning if it suddenly drops or if the overall health of the battery is poor | Saved until the user requests deletion |
+| Adblue range* | So the user can see the car's remaining km until next refill of adblue is needed and get a warning | 7 days historical data and most recent value |
 | Car dashboard warning lights* | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
-| Warning for car battery voltage drop | So the user can get a warning if the car's battery voltage suddenly drops | 7 days historical data and most recent value |
-| Warning on poor battery health | So the user can get a warning if the car's battery health is poor | 7 days historical data and most recent value |
-| Warning on AdBlue* | So the user can get a warning if there is a short distance to the adblue runs out | 7 days historical data and most recent value |
-| Bump detection* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
+| Acceleration when parked* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
 | Power failure on OBD device* | So the user can get a warning if the device is unplugged | Saved until the user requests deletion |
 
 Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
@@ -32,9 +28,8 @@ This feature ensures that you get the right advice from your preferred workshop 
 |-----------|-----------------------|------------|
 | Car mileage | So the user's preferred workshop can advise on the best service based on the car's mileage | 60 days historical data and most recent value |
 | Car service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
-| Warning for car battery voltage drop | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Warning on poor battery health | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Warning on Adblue* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
+| Battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
+| Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
 | Car dashboard warning lights* | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
@@ -72,13 +67,14 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Car GPS position | So the user can see the car's route on a map | Saved until user requests deletion of trip |
+| Car GPS position | So the user can see the car's route on a map and get contextual information such as road toll fees | Saved until user requests deletion |
 | Direction of car | So the user can see the car's route on a map, used to optimize route viewing | Saved until user requests deletion |
+| Ignition | So the user can see the car's trip history | Saved until user requests deletion |
 | Car fuel consumption | So the user can see the car's estimated fuel consumption | Saved until user requests deletion |
 | Car refuel events | So the user can see when the car was refueled and how much | Saved until user requests deletion |
 | Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
 | Time consumption | So the user can see the duration of the trip. It is also used to calculate an idle time | Saved until user requests deletion |
-| Road toll* | So the user can get an estimate of toll cost per trip in the trip export | Saved until user requests deletion |
+| Car dashboard warning lights* | So the user can see where the road was slippery | Saved until user requests deletion |
 
 Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
 
