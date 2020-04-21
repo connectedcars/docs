@@ -18,7 +18,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Acceleration when parked* | So the user can get a warning if something bumps into the vehicle while its parked | Saved until the user requests deletion |
 | Power failure on OBD device* | So the user can get a warning if the device is unplugged | Saved until the user requests deletion |
 
-Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
+Data points marked with "*", are also collected with the purpose of optimizing and improving the services of the application.
 
 ## Technical help from your preferred workshop
 
@@ -46,7 +46,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | OBD device activated (yes/no) | So user's preferred workshop can ensure that there is no fault with the OBD device in the car | Saved until the user requests deletion |
 | Power failure on OBD device* | So user's preferred workshop can advise the user if the device is unplugged | Saved until the user requests deletion |
 
-Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
+Data points marked with "*", are also collected with the purpose of optimizing and improving the services of the application.
 
 ## Ancillary data
 
@@ -76,7 +76,7 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Time consumption | So the user can see the duration of the trip. It is also used to calculate an idle time | Saved until user requests deletion |
 | Car dashboard warning lights* | So the user can see where the road was slippery | Saved until user requests deletion |
 
-Data points marked with "*", are collected with the purpose of optimizing and improving the services of the application.
+Data points marked with "*", are also collected with the purpose of optimizing and improving the services of the application.
 
 ## Fuel usage
 This feature allows you to get an estimate of much fuel you used on a particular trip in liters. It can be used to indicate the fuel cost of a trip.
