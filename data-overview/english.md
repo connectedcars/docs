@@ -74,6 +74,8 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Car refuel events | So the user can see when the car was refueled and how much | Saved until user requests deletion |
 | Car mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
 | Time consumption | So the user can see the duration of the trip. It is also used to calculate an idle time | Saved until user requests deletion |
+| Idle time* | So the user can see for how long the vehicles has been idling. | Saved until user requests deletion |
+| Engine RPM* | So the user can see for how long time the engine RPM has been above 3500 RPM. | Saved until user requests deletion |
 | Car dashboard warning lights* | So the user can see where the road was slippery | Saved until user requests deletion |
 
 Data points marked with "*", are also collected with the purpose of optimizing and improving the services of the application.
