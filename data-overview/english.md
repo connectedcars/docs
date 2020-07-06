@@ -10,7 +10,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Ignition | Used for logic, which quality assures data | 60 days historical data and most recent value |
 | Mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
 | Fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
-| High-voltage battery level | So the user can see the car's battery level in the app | 60 days historical data and most recent value |
+| High-voltage battery level | So the user can see the car's battery level in the app. Relevant for hybrid- and electric cars. | 60 days historical data and most recent value |
 | Service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
 | Battery voltage | So the user can see the car's current battery voltage and get a warning if it suddenly drops or if the overall health of the battery is poor | Saved until the user requests deletion |
 | Adblue range* | So the user can see the car's remaining km until next refill of adblue is needed and get a warning | 7 days historical data and most recent value |
