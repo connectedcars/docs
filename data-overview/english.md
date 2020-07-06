@@ -8,7 +8,8 @@ This feature gives you an overview of the current status of your car / errors an
 |-----------|-----------------------|------------|
 | GPS position | So the user can see where the car is | 1 hour historical data and most recent value |
 | Ignition | Used for logic, which quality assures data | 60 days historical data and most recent value |
-| Mileage | So the user can see the car's mileage in the app | 60 days historical data and most recent value |
+| Odometer | So the user can see the car's odometer in the app | 60 days historical data and most recent value |
+| GPS Odometer | So the user can see the car's odometer in the app | 60 days historical data and most recent value |
 | Fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | High-voltage battery level | So the user can see the car's battery level in the app. Relevant for hybrid- and electric cars. | 60 days historical data and most recent value |
 | Service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
@@ -27,7 +28,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Mileage | So the user's preferred workshop can advise on the best service based on the car's mileage | 60 days historical data and most recent value |
+| Odometer | So the user's preferred workshop can advise on the best service based on the car's odometer | 60 days historical data and most recent value |
 | Service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
 | Battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
 | Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
@@ -73,7 +74,7 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Ignition | So the user can see the car's trip history | Saved until user requests deletion |
 | Fuel consumption | So the user can see the car's estimated fuel consumption | Saved until user requests deletion |
 | Refuel events | So the user can see when the car was refueled and how much | Saved until user requests deletion |
-| Mileage | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
+| Odometer | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
 | Time consumption | So the user can see the duration of the trip. It is also used to calculate an idle time | Saved until user requests deletion |
 | Idle time* | So the user can see for how long the vehicles has been idling. | Saved until user requests deletion |
 | Engine RPM* | So the user can see for how long time the engine RPM has been above 3500 RPM. | Saved until user requests deletion |
