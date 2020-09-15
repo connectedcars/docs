@@ -74,7 +74,7 @@ My Trips allows you to get a history of your cars trips. You can see where you h
 | Ignition | So the user can see the car's trip history | Saved until user requests deletion |
 | Fuel consumption | So the user can see the car's estimated fuel consumption | Saved until user requests deletion |
 | Refuel events | So the user can see when the car was refueled and how much | Saved until user requests deletion |
-| Odometer | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on trip is saved until user requests deletion |
+| Odometer | So the user can see the number of kilometers traveled for each trip | 60 days historical data. Calculated distance on a trip as well as start and end odometer of a trip is saved until user requests deletion |
 | Time consumption | So the user can see the duration of the trip. It is also used to calculate an idle time | Saved until user requests deletion |
 | Idle time* | So the user can see for how long the vehicles has been idling. | Saved until user requests deletion |
 | Engine RPM* | So the user can see for how long time the engine RPM has been above 3500 RPM. | Saved until user requests deletion |
@@ -87,7 +87,7 @@ This feature allows you to get an estimate of much fuel you used on a particular
 
 | Parameter | Purpose of data processing | Storage |
 |-----------|-----------------------|------------|
-| Fuel used per trip | So the user can see the car's estimated fuel used for each trip | 60 days historical data |
+| Fuel used per trip | So the user can see the car's estimated fuel used for each trip | Saved until user requests deletion. |
 
 ## Driving events
 
