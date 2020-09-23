@@ -35,5 +35,4 @@ Legacy integration can be done with FTPS and SFTP but we try to avoid it.
 
 ### Data overview
 
-* [Danish](./data-overview/danish.md)
 * [English](./data-overview/english.md)
