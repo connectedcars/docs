@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "917eb3b2-10dd-4fd5-996c-ce8630fcf633",
+		"name": "API collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get access token by service account (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"TOKEN_GENERATED_VIA_PRIVATE_KEY\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter",
+					"protocol": "https",
+					"host": [
+						"auth-api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"auth",
+						"login",
+						"serviceAccountConverter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create personal access token (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"deviceName\":\"Some service client 001\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://auth-api.staging.connectedcars.io/user/registerDevice",
+					"protocol": "https",
+					"host": [
+						"auth-api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"user",
+						"registerDevice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get access token by personal access token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-organization-namespace",
+						"type": "text",
+						"value": "connectedcars:workshop"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"deviceToken\":\"DEVICE_TOKEN\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://auth-api.staging.connectedcars.io/auth/login/deviceToken",
+					"protocol": "https",
+					"host": [
+						"auth-api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"auth",
+						"login",
+						"deviceToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for fleet by VAT number (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Fleet($vatNumber: String) {\n    fleet(vatNumber: $vatNumber) {\n        id\n        name\n    }\n}",
+						"variables": "{\n    \"vatNumber\": \"DE12345678\"\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.staging.connectedcars.io/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create fleet (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation AddFleet($input: AddFleetInput!) {\n    addFleet(input: $input) {\n        id\n        name\n    }\n}",
+						"variables": "{\n    \"input\": {\n        \"organizationKey\": \"connectfleet\",\n        \"vatNumber\": \"DE12345678\",\n        \"name\": \"Test Fleet 1\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.staging.connectedcars.io/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search existing vehicle or lookup unit serial by VIN (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query SearchVehicle($vin: String) {\n    searchVehicle(vin: $vin) {\n        ... on Vehicle {\n            id\n        }\n        ... on BaseVehicle {\n            unitProvider\n            unitSerial\n        }\n    }\n}",
+						"variables": "{\n    \"vin\": \"SOME_VIN\"\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.staging.connectedcars.io/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create vehicle (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation AddVehicle($input: AddVehicleInput!) {\n    addVehicle(input: $input) {\n        id\n    }\n}",
+						"variables": "{\n    \"input\": {\n        \"vin\": \"SOME_VIN\",\n        \"registrationCountryCode\": \"DK\",\n        \"licensePlate\": \"AB00000\",\n        \"unitProvider\": \"traffilog\",\n        \"unitSerial\": \"1234567\",\n        \"name\": \"SEAT Mii Style 1,0 60HK 5G\",\n        \"brand\": \"seat\",\n        \"model\": \"Mii\",\n        \"year\": 2019,\n        \"engineCode\": \"CHY\",\n        \"fuelType\": \"gasoline\",\n        \"workshopId\": 123\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.staging.connectedcars.io/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add vehicle to fleet (staging)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ACCESS_TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "x-organization-namespace",
+						"value": "connectedcars:workshop",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation AddVehicleToFleet($input: AddVehicleToFleetInput!) {\n    addVehicleToFleet(input: $input) {\n        id\n    }\n}",
+						"variables": "{\n    \"input\": {\n        \"vehicleId\": \"VEHICLE_ID\",\n        \"fleetId\": \"FLEET_ID\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.staging.connectedcars.io/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"staging",
+						"connectedcars",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
