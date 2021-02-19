@@ -329,6 +329,26 @@ Nb: The charge level describes the remaining charge percent on the high voltage 
 ]
 ```
 
+### high_voltage_battery_temperature message - High voltage battery temperature
+
+This message type requires the `vehicle_fuel_level` scope
+
+|               Name               |   Type   |  Unit/Format        | Example              |                     Description                      |
+|:--------------------------------:|:--------:|:-------------------:|----------------------|------------------------------------------------------|
+| high_voltage_battery_temperature | decimal  | degrees, celsius    | 24.13                | High voltage battery temperature reported by the car |
+
+
+``` json
+[
+    {
+        "type": "high_voltage_battery_temperature",
+        "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
+        "time": "2017-01-01T12:30:10Z",
+        "fuel_consumed": 24.13
+    }
+]
+```
+
 
 ### profiling - Vehicle acceleration / braking / turning
 This message requires the `vehicle_profiling` scope
