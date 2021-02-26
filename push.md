@@ -344,7 +344,7 @@ This message type requires the `vehicle_fuel_level` scope
         "type": "high_voltage_battery_temperature",
         "carId": "3bbcee75-cecc-5b56-8031-b6641c1ed1f1",
         "time": "2017-01-01T12:30:10Z",
-        "fuel_consumed": 24.13
+        "celsius": 24.13
     }
 ]
 ```
