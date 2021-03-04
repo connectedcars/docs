@@ -74,6 +74,42 @@ Example payload:
 }
 ```
 
+### Vehicle connected
+
+|   Name    |   Type   |  Unit/Format    | Example | Description |
+|:---------:|:--------:|:---------------:|---------|-------------|
+| vin       | string   | utf8            | `WVWZZZ3HZKE123456` | Vehicle identification number |
+
+Example payload:
+```json
+{
+  "id": "90123e1c-7512-523e-bb28-76fab9f2f73d",
+  "type": "vehicle_connected",
+  "time": "2019-08-06T13:37:00.000Z",
+  "data": {
+    "vin": "WVWZZZ3HZKE123456"
+  }
+}
+```
+
+### Vehicle disconnected
+
+|   Name    |   Type   |  Unit/Format    | Example | Description |
+|:---------:|:--------:|:---------------:|---------|-------------|
+| vin       | string   | utf8            | `WVWZZZ3HZKE123456` | Vehicle identification number |
+
+Example payload:
+```json
+{
+  "id": "90123e1c-7512-523e-bb28-76fab9f2f73d",
+  "type": "vehicle_disconnected",
+  "time": "2019-08-06T13:37:00.000Z",
+  "data": {
+    "vin": "WVWZZZ3HZKE123456"
+  }
+}
+```
+
 ## Future features
 
 ### Vehicle unit dismounted
