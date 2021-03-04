@@ -39,6 +39,7 @@ The timestamp defines when the action triggering the webhook occurred. The data 
 ## Events
 
 ### Vehicle activated
+When vehicle was marked for activation (normally fleet/user added).
 
 |   Name    |   Type   |  Unit/Format    | Example | Description |
 |:---------:|:--------:|:---------------:|---------|-------------|
@@ -57,6 +58,7 @@ Example payload:
 ```
 
 ### Vehicle deactivated
+When vehicle was marked for deactivation (normally fleet/user removed).
 
 |   Name    |   Type   |  Unit/Format    | Example | Description |
 |:---------:|:--------:|:---------------:|---------|-------------|
@@ -75,6 +77,7 @@ Example payload:
 ```
 
 ### Vehicle connected
+When unit was instructed to start sending data.
 
 |   Name    |   Type   |  Unit/Format    | Example | Description |
 |:---------:|:--------:|:---------------:|---------|-------------|
@@ -93,6 +96,7 @@ Example payload:
 ```
 
 ### Vehicle disconnected
+When unit was instructed to stop sending data.
 
 |   Name    |   Type   |  Unit/Format    | Example | Description |
 |:---------:|:--------:|:---------------:|---------|-------------|
