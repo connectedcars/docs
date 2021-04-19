@@ -493,7 +493,7 @@ Status: 200 OK
 ```
 
 ### Initiate password recovery
-Initiates a password recovery flow which will send an email to user with a link to set a new password.
+Initiates a password recovery flow which will send an email to the user with a link to set a new password.
 
 ```
 POST /auth/recover/password/init
