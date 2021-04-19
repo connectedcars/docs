@@ -456,7 +456,7 @@ Status: 200 OK
 ```
 
 ### Refresh access token
-Returns a new access token authorized by a previous access token expired most one hour ago.
+Returns a new access token authorized by a previous access token expired at most one hour ago.
 
 ```
 GET /auth/tokenRefresh
