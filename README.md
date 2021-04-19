@@ -10,6 +10,12 @@ The push api provides a close to real time data steam for all the collected para
 
 [Read more here](./push.md)
 
+### Auth API
+
+The auth API provides a RESTful API that gives access to registering, authorizing and in a limited capacity manage users.
+
+[Read more here](./auth-api.md)
+
 ### GraphQL API
 
 The GraphQL API provides a pull API that gives access to all collected parameters with a flexible extraction.
