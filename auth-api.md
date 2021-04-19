@@ -1149,7 +1149,7 @@ Status: 200 OK
 ```
 
 ### Service account login
-Logs in a service account in the specified organization namespace. This requires a service account set up by Connected Cars, for reference see [example in Java](https://github.com/connectedcars/docs/tree/master/samples/java/full-example).
+Logs in a service account in the specified organization namespace. This requires a service account set up by Connected Cars, for reference see [example in Java](https://github.com/connectedcars/docs/tree/master/samples/java/full-example) or [example in Node.js](https://github.com/connectedcars/docs/tree/master/samples/node).
 
 ```
 POST /auth/login/serviceAccountConverter
