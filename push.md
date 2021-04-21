@@ -418,26 +418,3 @@ This message type requires the `vehicle_odometer` scope
     }
 ]
 ```
-
-### WORK IN PROGRESS
-
-This section is for apis that are currently beeing developed or in our road map
-
-#### Error and warning lamps
-#### Driver profiling events (Acceleration, Breaking, Hard Turns)
-#### Engine profiling events (High / Low RPM, Idle Time)
-
-#### door_lock message - Describes the lock state of the vehicle
-#### battery_voltage message - Describes the vehicle battery voltage
-#### service_interval_days message - Describes how many days must at most pass between services
-#### service_interval_km message - Describes how many km must at most be driven between services
-#### last_service_days message - Describes how many days has passed since the last service
-#### last_service_km message - Describes how many km has been driven since the last service
-#### next_oil_change_km - Describes how many km must at most be driven before next oil change
-#### next_oil_change_days - Describes how many days must at most pass before next oil change
-#### oil_quality_ok - Describes if the vehicle reports OK oil quality
-
-#### Tow away alert
-#### Wiper status
-#### Seat belt status
-#### Door open/close status
