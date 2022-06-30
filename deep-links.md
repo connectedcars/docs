@@ -43,7 +43,7 @@ Combine the two into one link and you get a better user friendly experience.
 | Audi - Video channel | /videoChannel |
 | Audi - MyGarage | /myGarage |
 
-## Example
+### Example
 
 Each deep link would look like this for MinVolkswagen:
 
@@ -52,5 +52,3 @@ Each deep link would look like this for MinVolkswagen:
 or
 
 - https://app.minvolkswagen.dk/booking/[vehicleID]
-
-For all of the ones including [vehicleID] in the deep link will default to what is already selected in the app if no vehicleID is attached to the deep link.
