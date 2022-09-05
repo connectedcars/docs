@@ -1186,6 +1186,40 @@ Status: 200 OK
 ```
 
 ### List public keys
+Returns a list of valid public keys.
+
+```
+GET /certs
+```
+
+#### Code samples
+
+```sh
+curl \
+  -X GET \
+  https://auth-api.connectedcars.io/certs
+```
+
+#### Response
+```
+Status: 200 OK
+```
+
+```json
+{
+  "keys": [
+    {
+      "kid": "2",
+      "alg": "RS256",
+      "use": "sig",
+      "kty": "RSA",
+      "n": "o_Xh5DmJJRn20zk-1i2YBxlTrILn3-S9_bt48c1DzGwNrRZaU3l2g_qZs3ui78nU_12J8i7aqWbKK9l9QbSLSspYQSEMWJvur8hb1xHPH9w7uV9MfkScDtvQKoiotaeay6DBZ5FkZTEazsiYLrhMFoI9zD0IrvJ5hROQ3TdMJu5Gse9VKq5DV0TjAomlebKlRPN4PSIBbcBSasH9l7Fli1MU0csyWj69-4UdM0SVwT3aOGlYinHLHlxNVOrEhIDroPN6hzNjSL5hq3Ssa6yVdeTyC0drEGwqjGQmG5KaZCLLbTW7OVinfsY6xFvPfYl_PjMbsUIumvwRgHyFZyzTZQ",
+      "e": "AQAB"}
+  ]
+}
+```
+
+### [Deprecated] List public keys
 Returns an object with valid public keys.
 
 ```
