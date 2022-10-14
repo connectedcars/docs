@@ -789,7 +789,7 @@ Example:
     {
         "type": "can_oil_degration_percent",
         "id": 433642,
-        "value": 0,
+        "value": 5,
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
