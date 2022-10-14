@@ -13,29 +13,10 @@ The following fields are present on all vehicle events
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
 | time     | datetime | ISO 8601            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
-| type     | string   |                     | can_ignition             | String enum describing event type, see types below               |
+| type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
 
-### can_mil_lamp
-
-|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value  | boolean      |                     | true                   | whether the mil lamp is off (false) or on (true)       |
-
-Example:
-
-``` json
-[
-    {
-        "type": "can_mil_lamp",
-        "id": 123,
-        "value": false,
-        "vehicleId": 1337,
-        "time": "2022-01-01T12:30:10Z",
-    }
-]
-```
 ### gps_position
 
 Gps position from vehicle
@@ -96,7 +77,7 @@ Example:
 ``` json
 [
     {
-        "type": "car_odometer_km",
+        "type": "can_odometer_km",
         "id": 433642,
         "value": 94636,
         "vehicleId": 1337,
@@ -106,7 +87,7 @@ Example:
 ```
 ### car_odometer_km
 
-The odometer from the vehicle in kilometers, from can or gps
+The odometer from the vehicle in kilometers, from CAN or gps
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
@@ -569,6 +550,7 @@ Example:
 ### can_oil_change_interval_variable_days
 
 The maximum number of days between oil service for variable oil service
+
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | value    | integer   | days                    | 730                | max number of days between oil service       |
@@ -704,7 +686,7 @@ Example:
 ``` json
 [
     {
-        "type": "can_ignition",
+        "type": "car_ignition",
         "value": false,
         "carId": "1337",
         "time": "2022-01-01T12:30:10Z",
@@ -1031,6 +1013,28 @@ Example:
         "type": "can_engine_code",
         "id": 433642,
         "value": "DFBA",
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+### can_mil_lamp
+
+[MIL](https://en.wikipedia.org/wiki/Check_engine_light) on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | boolean  |                     | false                    | whether the mil lamp has turned off (false) or on (true)       |
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_mil_lamp",
+        "id": 123,
+        "value": false,
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
