@@ -1040,3 +1040,48 @@ Example:
     }
 ]
 ```
+
+### vehicle_added_to_fleet
+
+Sent when a vehicle is added to a fleet
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | 32 bit integer  |                  | 47583                    | the id of the fleet the vehicle was added to    |
+
+Example:
+
+``` json
+[
+    {
+        "type": "vehicle_added_to_fleet",
+        "id": 123,
+        "value": 47583,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+
+### vehicle_removed_from_fleet
+
+Sent when a vehicle is removed from a fleet
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | 32 bit integer  |                   | 47583                    | the id of the fleet the vehicle was removed from|
+
+Example:
+
+``` json
+[
+    {
+        "type": "vehicle_removed_from_fleet",
+        "id": 123,
+        "value": 47583,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
