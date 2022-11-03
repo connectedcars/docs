@@ -1085,3 +1085,81 @@ Example:
     }
 ]
 ```
+
+### access_granted_to_vehicle
+
+Sent when a vehicle grants the integration owning the data stream access to the vehicle
+
+Example:
+
+``` json
+[
+    {
+        "type": "access_granted_to_vehicle",
+        "id": 123,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+### access_removed_from_vehicle
+
+Sent when a vehicle removes access from the integration owning the data stream
+
+Example:
+
+``` json
+[
+    {
+        "type": "access_removed_from_vehicle",
+        "id": 123,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+### access_granted_to_fleet
+
+Sent when a fleet grants the integration owning the data stream access to the fleet
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | 32 bit integer  |              | 47583               | the id of the fleet access was granted to |
+
+Example:
+
+``` json
+[
+    {
+        "type": "access_granted_to_fleet",
+        "id": 123,
+        "vehicleId": 1337,
+        "value": 47583,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+### access_removed_from_fleet
+
+Sent when a fleet removes access from the integration owning the data stream
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | 32 bit integer  |              | 47583               | the id of the fleet access was removed from |
+
+
+Example:
+
+``` json
+[
+    {
+        "type": "access_removed_from_fleet",
+        "id": 123,
+        "vehicleId": 1337,
+        "value": 47583,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
