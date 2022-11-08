@@ -1041,6 +1041,8 @@ Example:
 ]
 ```
 
+## Admin events types
+
 ### vehicle_added_to_fleet
 
 Sent when a vehicle is added to a fleet
@@ -1062,7 +1064,6 @@ Example:
     }
 ]
 ```
-
 
 ### vehicle_removed_from_fleet
 
@@ -1134,7 +1135,6 @@ Example:
     {
         "type": "access_granted_to_fleet",
         "id": 123,
-        "vehicleId": 1337,
         "value": 47583,
         "time": "2022-01-01T12:30:10Z",
     }
@@ -1157,7 +1157,6 @@ Example:
     {
         "type": "access_removed_from_fleet",
         "id": 123,
-        "vehicleId": 1337,
         "value": 47583,
         "time": "2022-01-01T12:30:10Z",
     }
