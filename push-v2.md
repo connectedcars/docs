@@ -12,7 +12,7 @@ The following fields are present on all vehicle events
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
-| time     | datetime | ISO 8601            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
 | type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
@@ -1043,13 +1043,24 @@ Example:
 
 ## Admin events types
 
-### vehicle_added_to_fleet
-
-Sent when a vehicle is added to a fleet
+The following fields are present on all admin events.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | 32 bit integer  |                  | 47583                    | the id of the fleet the vehicle was added to    |
+| id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
+| type     | string   |                     | vehicle_added_to_fleet             | String enum describing event type, see types below               |
+
+See the following list for a description of each event type.
+
+### vehicle_added_to_fleet
+
+Sent when a vehicle is added to a fleet. If a vehicle is moved from one fleet to another, we'll first send a `vehicle_removed_from_fleet` event followed by a `vehicle_added_to_fleet` event for the new fleet.
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| fleetId    | 32 bit integer  |                  | 47583                    | the id of the fleet the vehicle was added to    |
+| vehicleId| 32 bit integer   |       | 324122                   | vehicle id reference                            |
 
 Example:
 
@@ -1058,7 +1069,7 @@ Example:
     {
         "type": "vehicle_added_to_fleet",
         "id": 123,
-        "value": 47583,
+        "fleetId": 47583,
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
@@ -1067,11 +1078,12 @@ Example:
 
 ### vehicle_removed_from_fleet
 
-Sent when a vehicle is removed from a fleet
+Sent when a vehicle is removed from a fleet. If a vehicle is moved from one fleet to another, we'll first send a `vehicle_removed_from_fleet` event followed by a `vehicle_added_to_fleet` event for the new fleet.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | 32 bit integer  |                   | 47583                    | the id of the fleet the vehicle was removed from|
+| fleetId    | 32 bit integer  |                   | 47583                    | the id of the fleet the vehicle was removed from|
+| vehicleId| 32 bit integer   |       | 324122                   | vehicle id reference                            |
 
 Example:
 
@@ -1080,7 +1092,7 @@ Example:
     {
         "type": "vehicle_removed_from_fleet",
         "id": 123,
-        "value": 47583,
+        "fleetId": 47583,
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
@@ -1089,7 +1101,11 @@ Example:
 
 ### access_granted_to_vehicle
 
-Sent when a vehicle grants the integration owning the data stream access to the vehicle
+Sent when a vehicle grants the integration owning the data stream access to the vehicle.
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
 
 Example:
 
@@ -1106,7 +1122,12 @@ Example:
 
 ### access_removed_from_vehicle
 
-Sent when a vehicle removes access from the integration owning the data stream
+Sent when a vehicle removes access from the integration owning the data stream.
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
+
 
 Example:
 
@@ -1122,11 +1143,11 @@ Example:
 ```
 ### access_granted_to_fleet
 
-Sent when a fleet grants the integration owning the data stream access to the fleet
+Sent when a fleet grants the integration owning the data stream access to the fleet.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | 32 bit integer  |              | 47583               | the id of the fleet access was granted to |
+| fleetId    | 32 bit integer  |              | 47583               | the id of the fleet access was granted to |
 
 Example:
 
@@ -1135,7 +1156,7 @@ Example:
     {
         "type": "access_granted_to_fleet",
         "id": 123,
-        "value": 47583,
+        "fleetId": 47583,
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1143,11 +1164,11 @@ Example:
 
 ### access_removed_from_fleet
 
-Sent when a fleet removes access from the integration owning the data stream
+Sent when a fleet removes access from the integration owning the data stream. If a fleet is completely removed from our system, this event will also be sent.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | 32 bit integer  |              | 47583               | the id of the fleet access was removed from |
+| fleetId    | 32 bit integer  |              | 47583               | the id of the fleet access was removed from |
 
 
 Example:
@@ -1157,7 +1178,7 @@ Example:
     {
         "type": "access_removed_from_fleet",
         "id": 123,
-        "value": 47583,
+        "fleetId": 47583,
         "time": "2022-01-01T12:30:10Z",
     }
 ]
