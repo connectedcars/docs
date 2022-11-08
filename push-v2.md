@@ -12,7 +12,7 @@ The following fields are present on all vehicle events
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
-| time     | datetime | ISO 8601            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
 | type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
@@ -1048,7 +1048,7 @@ The following fields are present on all admin events.
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
-| time     | datetime | ISO 8601            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
 | type     | string   |                     | vehicle_added_to_fleet             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
