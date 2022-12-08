@@ -1,5 +1,7 @@
+[Go back to Integrations](./integrations/intro)
+
 # Generic integrations via pull API
-The pull API is using [GraphQL](https://graphql.org/learn/). This API can be used for a wide range of integrations as this API is powering ConnectedWorkshop, ConnectedFleet and MyConnectedCar. The pull API relies on the [Auth API](../auth-api) for creating users and authenticating requests (via short-living JWT).
+The pull API is using [GraphQL](https://graphql.org/learn/). This API can be used for a wide range of integrations as this API is powering ConnectedWorkshop, ConnectedFleet and MyConnectedCar. The pull API relies on the [Auth API](./auth-api) for creating users and authenticating requests (via short-living JWT).
 
 ## Starting with the API explorer
 1. Go to https://api.connectedcars.io/graphql/graphiql
