@@ -17,7 +17,7 @@ See our [samples](https://github.com/connectedcars/docs/tree/master/samples/) fo
 Use the Auth API for authenticating and run `POST https://api.connectedcars.io/graphql` requests with the JWT in the `Authorization` header.
 
 Example in cURL (replace `my-jwt` and `my-custom-integration/v1`):
-```
+```sh
 curl 'https://api.connectedcars.io/graphql' \
   -X POST
   -H 'Authorization: Bearer my-jwt'
