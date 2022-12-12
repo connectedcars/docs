@@ -8,6 +8,7 @@ The pull API is using [GraphQL](https://graphql.org/learn/). This API can be use
 2. To authenticate, click the Connected Cars login in the left menu and follow the instructions
 3. Write your GraphQL in the left pane (documentation can be expanded via the left menu) and see the result in the right pane
 
+_Screenshot of GraphiQL_
 ![Screenshot of GraphiQL](./pull-api-graphiql-screenshot.png)
 
 ## Starting with example code

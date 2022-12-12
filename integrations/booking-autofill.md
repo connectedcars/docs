@@ -18,4 +18,5 @@ There is an example of some of the available variables below but to get the curr
 
 The booking links can be populated with various variables (see screenshot below) like `https://example.com/your-page?odometer=${odometer}&licensePlate=${licensePlate}`.
 
+_Screenshot of booking autofill variables_
 ![Booking autofill variables](./booking-autofill-variables-screenshot.png)
