@@ -26,3 +26,6 @@ curl 'https://api.connectedcars.io/graphql' \
   -H 'User-Agent: my-custom-integration/v1'
   --data-raw '{"query":"query Viewer { viewer { id, email, firstname, lastname, lastLoginTime } }","operationName":"Viewer"}'
 ```
+
+_Sequence diagram_
+![Sequence diagram](./pull-api-sequence-diagram.png)
