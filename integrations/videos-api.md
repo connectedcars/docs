@@ -14,8 +14,8 @@ Once the endpoint is ready, provide Connected Cars with the details. Connected C
 | `content`     | String                                   | `Some content description`                          | Required                                           |
 | `url`         | String                                   | `https://example.com/videos/get-your-car-connected` | Required                                           |
 | `tags`        | Array of strings                         | `["connected", "car"]`                              | Optional                                           |
-| `thumbnails`  | Array of [images](?id=image-description) | ``                                                  | Required                                           |
-| `videos`      | Array of [videos](?id=video-description) | ``                                                  | Required                                           |
+| `thumbnails`  | Array of [images](?id=image-description) | See below                                           | Required                                           |
+| `videos`      | Array of [videos](?id=video-description) | See below                                           | Required                                           |
 | `publishedAt` | Datetime, RFC3339                        | `2022-08-06T12:00:00.000Z`                          | Optional, will default to be published immediately |
 | `createdAt`   | Datetime, RFC3339                        | `2022-08-01T13:37:00.000Z`                          | Required                                           |
 
