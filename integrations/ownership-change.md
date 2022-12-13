@@ -8,13 +8,13 @@ The endpoint should be available via HTTPS and can require authentication via a 
 Once the endpoint is ready, provide Connected Cars with the details. Connected Cars will then implement the automatic removal of vehicle access based on the provided endpoint.
 
 ## Field descriptions
-| Key            | Type                                         | Example                 | Notes    |
-|:---------------|:---------------------------------------------|:------------------------|:---------|
-| `vin`          | String                                       | `WVWZZZAUZKW123456`     | Required |
-| `changedAt`    | Datetime, ISO 8601                           | `2022-08-23T13:37:00Z`  | Required |
-| `reason`       | Enum(`deregistration`, `new_owner`, `other`) | `deregistration`        | Optional |
-| `previousUser` | String                                       | `old-email@example.com` | Optional |
-| `newUser`      | String                                       | `new-email@example.com` | Optional |
+| Key            | Type                                         | Example                    | Notes    |
+|:---------------|:---------------------------------------------|:---------------------------|:---------|
+| `vin`          | String                                       | `WVWZZZAUZKW123456`        | Required |
+| `changedAt`    | Datetime, RFC3339                            | `2022-08-23T13:37:00.000Z` | Required |
+| `reason`       | Enum(`deregistration`, `new_owner`, `other`) | `deregistration`           | Optional |
+| `previousUser` | String                                       | `old-email@example.com`    | Optional |
+| `newUser`      | String                                       | `new-email@example.com`    | Optional |
 
 ## Example request and output
 ```
@@ -26,13 +26,13 @@ X-Api-Key: some-api-key
 [
   {
     "vin": "WVWZZZAUZKW123456",
-    "changedAt": "2022-08-23T13:37:00Z",
+    "changedAt": "2022-08-23T13:37:00.000Z",
     "reason": "deregistration",
     "oldUser": "old-email@example.com"
   },
   {
     "vin": "WVWZZZAUZKW654321",
-    "changedAt": "2022-08-25T12:00:00Z",
+    "changedAt": "2022-08-25T12:00:00.000Z",
     "reason": "new_owner",
     "oldUser": "old-email@example.com",
     "newUser": "new-email@example.com"
