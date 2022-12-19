@@ -907,9 +907,9 @@ Example:
     }
 ]
 ```
-### calc_engine_idle_time
+### calc_idle_time
 
-How long the vehicle has idled in a row
+Number of seconds the car has been idling since the last ignition on
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
@@ -920,7 +920,7 @@ Example:
 ``` json
 [
     {
-        "type": "calc_engine_idle_time",
+        "type": "calc_idle_time",
         "id": 433642,
         "value": 155,
         "vehicleId": 1337,
