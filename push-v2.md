@@ -39,7 +39,8 @@ Example:
     "time": "2022-10-12T07:06:45.000Z",
     "latitude": 60.613747999999994,
     "longitude": 17.414016999999998,
-    "speed": 3
+    "speed": 3,
+    "direction": 120
   }
 ]
 ```
