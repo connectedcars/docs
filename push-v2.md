@@ -908,27 +908,6 @@ Example:
     }
 ]
 ```
-### calc_idle_time
-
-Number of seconds the car has been idling since the last ignition on
-
-|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | integer   | seconds                    | 155                        | idling time in seconds       |
-
-Example:
-
-``` json
-[
-    {
-        "type": "calc_idle_time",
-        "id": 433642,
-        "value": 155,
-        "vehicleId": 1337,
-        "time": "2022-01-01T12:30:10Z",
-    }
-]
-```
 ### can_dtc
 
 Raw vehicle diagnostic codes
