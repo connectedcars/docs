@@ -12,7 +12,7 @@ The following fields are present on all vehicle events
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique since each shard has their own counter.   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
-| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded                      |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded. Millisecond presicion is only available for some events |
 | type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
@@ -688,8 +688,9 @@ Example:
 [
     {
         "type": "car_ignition",
+        "id": 433642,
         "value": false,
-        "carId": "1337",
+        "vehicleId": "1337",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
