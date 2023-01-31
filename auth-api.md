@@ -1148,6 +1148,47 @@ Status: 200 OK
 {}
 ```
 
+
+### Sign fleet ids
+Creates a signed jwt token confirming that the user calling this endpoint is
+fleet owner of the supplied fleet ids
+
+```
+POST /user/signFleetIds
+```
+
+#### Parameters      
+
+| Name | Type | In | Description |
+|:-----|:-----|:---|:------------|
+| `X-Organization-Namespace` | string | header | - |
+| `Content-Type` | string | header | should be `application/json` |
+|`fleetIds`| number[] | body | The `fleetIds` that the user is owner of and should be in the returned token |
+
+#### Code samples
+
+```sh
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "X-Organization-Namespace: organization:namespace" \
+  -H "Authorization: Bearer TOKEN" \
+  https://auth-api.connectedcars.io/user/signFleetIds \
+  -d '{"fleetIds":[1,2,3]}'
+```
+
+#### Response
+```
+Status: 200 OK
+```
+
+```json
+{
+  "token": "JWT",
+  "expires": 3600
+}
+```
+
 ### Service account login
 Logs in a service account in the specified organization namespace. This requires a service account set up by Connected Cars, for reference see [example in Java](https://github.com/connectedcars/docs/tree/master/samples/java/full-example) or [example in Node.js](https://github.com/connectedcars/docs/tree/master/samples/node).
 

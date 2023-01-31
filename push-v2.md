@@ -19,7 +19,7 @@ See the following list for a description of each event type.
 
 ### calc_total_fuel_used_liters
 
-Total liters of fuel used by the vehicle
+Total liters of fuel used by the vehicle since the unit was installed
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
