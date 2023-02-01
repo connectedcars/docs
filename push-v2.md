@@ -17,28 +17,6 @@ The following fields are present on all vehicle events
 
 See the following list for a description of each event type.
 
-### calc_total_fuel_used_liters
-
-Total liters of fuel used by the vehicle since the unit was installed
-
-|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | decimal   | liters                    | 1844.2                        | how many liters of fuel the vehicle has used       |
-
-Example:
-
-``` json
-[
-    {
-        "type": "calc_total_fuel_used_liters",
-        "id": 433642,
-        "value": 1844.2,
-        "vehicleId": 1337,
-        "time": "2022-01-01T12:30:10Z",
-    }
-]
-```
-
 ### calc_vehicle_idle
 
 Vehicle is idling or not
