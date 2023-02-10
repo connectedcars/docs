@@ -35,6 +35,12 @@ The "Frontend API" for the Workshop product. Explains how to prefill forms, pre-
 
 [Read more here](./workshop.md)
 
+### Deep links
+
+Deep links allows to redirect a user from an email, sms or in-app notification directly to a specific page in the app.
+
+[Read more here](./deep-links.md)
+
 ### FTPS/SFTP
 
 Legacy integration can be done with FTPS and SFTP but we try to avoid it.
