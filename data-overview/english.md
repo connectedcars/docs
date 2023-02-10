@@ -31,7 +31,7 @@ This feature ensures that you get the right advice from your preferred workshop 
 | Odometer | So the user's preferred workshop can advise on the best service based on the car's odometer | 60 days historical data and most recent value |
 | Service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
 | Battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
+| Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | 60 days historical data and most recent value |
 | Dashboard warning lights* | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
