@@ -1,4 +1,4 @@
-# Push integration
+# Push integration (legacy)
 
 ## Endpoints
 
