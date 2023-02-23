@@ -13,7 +13,7 @@ This feature gives you an overview of the current status of your car / errors an
 | Fuel level | So the user can see the car's fuel level in the app | 60 days historical data and most recent value |
 | High-voltage battery level | So the user can see the car's battery level in the app. Relevant for hybrid- and electric cars. | 60 days historical data and most recent value |
 | Service and oil change data | Used for calculation so that the user can see when the car needs service or oil change again | 60 days historical data and most recent value |
-| Battery voltage | So the user can see the car's current battery voltage and get a warning if it suddenly drops or if the overall health of the battery is poor | Saved until the user requests deletion |
+| Battery voltage | So the user can see the car's current battery voltage and get a warning if it suddenly drops or if the overall health of the battery is poor | 60 days historical data and most recent value |
 | Adblue range* | So the user can see the car's remaining km until next refill of adblue is needed and get a warning | 7 days historical data and most recent value |
 | Dashboard warning lights* | So the user can get a warning about the warning light and advise on how to proceed | 7 days historical data and most recent value |
 | Error codes from car | So the user can get a warning about technical errors on the car that does not trigger warning lights | 7 days historical data and most recent value |
@@ -30,8 +30,8 @@ This feature ensures that you get the right advice from your preferred workshop 
 |-----------|-----------------------|------------|
 | Odometer | So the user's preferred workshop can advise on the best service based on the car's odometer | 60 days historical data and most recent value |
 | Service and oil change data | So the user's preferred workshop can advise the car's next service or oil | 60 days historical data and most recent value |
-| Battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | Saved until the user requests deletion |
-| Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | Saved until the user requests deletion |
+| Battery voltage | So the user's preferred workshop can advise the user in case of battery and / or starting problems | 60 days historical data and most recent value |
+| Adblue range* | So the user's preferred workshop can advise the user in case of remaining km to next Adblue refill is low | 60 days historical data and most recent value |
 | Dashboard warning lights* | So the user's preferred workshop can advise the user about the warning light and advise on how to proceed | Saved until the user requests deletion |
 | Error codes from car | So the user's preferred workshop can advise the user about technical faults on the car | Saved until the user requests deletion |
 | User full name | So the user's preferred workshop has contact information | Saved until the user requests deletion |
