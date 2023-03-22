@@ -492,6 +492,40 @@ Status: 200 OK
 }
 ```
 
+### Logout
+Revokes an active access token. Can revoke tokens that have expired at most one hour ago.
+
+```
+GET /auth/logoutToken
+```
+
+#### Parameters
+
+| Name | Type | In | Description |
+|:-----|:-----|:---|:------------|
+| `X-Organization-Namespace` | string | header | - |
+| `Authorization` | string | header | Use format `Bearer TOKEN`. |
+
+#### Code samples
+```sh
+curl \
+    -X GET \
+    -H "X-Organization-Namespace: organization:namespace" \
+    -H "Authorization: Bearer TOKEN" \
+    https://auth-api.connectedcars.io/auth/logoutToken
+```
+
+#### Response
+```
+Status: 200 OK
+```
+
+```json
+{
+  "status": "ok"
+}
+```
+
 ### Initiate password recovery
 Initiates a password recovery flow which will send an email to the user with a link to set a new password.
 
@@ -1258,6 +1292,37 @@ Status: 200 OK
       "e": "AQAB"}
   ]
 }
+```
+
+### List revoked tokens
+Returns the list of all available revoked tokens
+
+```
+GET /auth/revokedTokens
+```
+      
+
+#### Code samples
+```sh
+curl \
+  -X GET \
+  https://auth-api.connectedcars.io/auth/revokedTokens
+```
+
+#### Response
+```
+Status: 200 OK
+```
+
+```json
+ {
+   "revokedTokens": [
+     {
+       "jti": "f2b85a99-4a3b-49e8-b616-af0cf68793e9",
+       "revokedAt": "2023-03-16 05:53:51.065"
+     }
+   ]
+ }
 ```
 
 ### [Deprecated] List public keys
