@@ -181,7 +181,7 @@ The engine coolant temperature in degrees celsius
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value  | intger   | celsius           | 75                        | temperature celsius degrees       |
+| value  | integer   | celsius           | 75                        | temperature celsius degrees       |
 
 Example:
 
@@ -1019,6 +1019,8 @@ Gps position from vehicle
 | longitude| decimal   | decimal degrees            | 17.414016999999998       | Longitude of the position. NB: We work with the unaltered coordinates as floats from our GPS sensor, which can have many decimals in the coordinates. However, it should not be expected that the accuracy of the GPS positions from cars is better than around 10m. This accuracy is heavily influenced by factors such as high buildings, heavy tree cover, hills, tunnels, and parking cellars.       |
 | speed    | 16 bit integer/null   | km/h      | 50                       | The travelling speed of the vehicle when the position was recorded. This value is available based on the hardware.      |
 | direction| 16 bit integer/null   | degrees      | 0                        | The degree in which the vehicle is travelling (between 0 to 360, where both 0 and 360 is north). This value may be null in cases where speed is 0, as the travelling direction of the vehicle cannot be calculated between the last two positions.       |
+| eph | 16 bit integer/null | meter | 5 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Estimated horizontal Position (2D) Error in meters. Also known as Estimated Position Error (epe). Certainty unknown." If `eph` is present, `hdop` is always null. |
+| hdop | 32 bit integer/null |  | 69 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
 
 Example:
 
@@ -1032,7 +1034,9 @@ Example:
     "latitude": 60.613747999999994,
     "longitude": 17.414016999999998,
     "speed": 3,
-    "direction": 120
+    "direction": 120,
+    "eph": null,
+    "hdop": 69
   }
 ]
 ```
