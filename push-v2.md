@@ -1,10 +1,31 @@
-# Push integration v2
+# Push integration (data streams)
+
+Events from vehicles such as gps position, ignition etc. can be pushed to your system in real time.
+This is done by creating vehicle data streams and configuring an endpoint to receive the events.
 
 ## Endpoints
 
-Messages can be pushed to either a https POST endpoint or to Pub/Sub.
+Events can be pushed to either an HTTPS POST endpoint or to Pub/Sub.
 
-## Vehicle event types 
+Events are sent in bulk and should only be rejected in case you have issues parsing, validating or storing the full bulk. I.e. not knowing a `vehicleId` should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
+
+Events are sent at-least once, meaning there might be duplicates.
+
+Events will be retried every 10 seconds in case of failure.
+
+## Event types
+
+There's two different event types; vehicle events and admin events.
+
+- Vehicle events: Data points from vehicles such as gps position, ignition etc.
+- Admin events: Administrative events relating to access granted or revoked.
+
+Generally both event types will be sent to the same endpoint, but this can be changed.
+All admin events are enabled by default, whereas only the agreed vehicle events will be enabled.
+
+Events are sent as a JSON array.
+
+### Vehicle event types 
 
 The following fields are present on all vehicle events
 
@@ -17,7 +38,7 @@ The following fields are present on all vehicle events
 
 See the following list for a description of each event type.
 
-### calc_vehicle_idle
+#### calc_vehicle_idle
 
 Vehicle is idling or not
 
@@ -39,7 +60,7 @@ Example:
 ]
 ```
 
-### can_adblue_remaining_distance_km
+#### can_adblue_remaining_distance_km
 
 How many kilometers can be driven with the current adblue
 
@@ -61,7 +82,7 @@ Example:
 ]
 ```
 
-### can_ambient_air_temperature_celsius
+#### can_ambient_air_temperature_celsius
 
 The temperature outside the car in degrees celsius
 
@@ -83,7 +104,7 @@ Example:
 ]
 ```
 
-### can_distance_with_mil_on_km
+#### can_distance_with_mil_on_km
 
 Distance driven with MIL lamp on in km
 
@@ -105,7 +126,7 @@ Example:
 ]
 ```
 
-### can_dtc
+#### can_dtc
 
 Raw vehicle diagnostic codes
 
@@ -153,7 +174,7 @@ Example:
 ]
 ```
 
-### can_engine_code
+#### can_engine_code
 
 Engine code of the car
 
@@ -175,7 +196,7 @@ Example:
 ]
 ```
 
-### can_engine_coolant_temperature_celsius
+#### can_engine_coolant_temperature_celsius
 
 The engine coolant temperature in degrees celsius
 
@@ -196,7 +217,7 @@ Example:
     }
 ]
 ```
-### can_exceeded_oil_change_days
+#### can_exceeded_oil_change_days
 
 Days passed after oil service should have been done
 
@@ -218,7 +239,7 @@ Example:
 ]
 ```
 
-### can_exceeded_oil_change_km
+#### can_exceeded_oil_change_km
 
 Kilometers driven after oil service should have been done
 
@@ -240,7 +261,7 @@ Example:
 ]
 ```
 
-### can_fuel_level_liters
+#### can_fuel_level_liters
 
 The fuel level of the car in whole liters
 
@@ -261,7 +282,7 @@ Example:
     }
 ]
 ```
-### can_fuel_level_percent
+#### can_fuel_level_percent
 
 The fuel level in percent in the vehicle
 
@@ -283,7 +304,7 @@ Example:
 ]
 ```
 
-### can_high_voltage_battery_charge_percent
+#### can_high_voltage_battery_charge_percent
 
 High voltage battery charge in percent
 
@@ -305,7 +326,7 @@ Example:
 ]
 ```
 
-### can_high_voltage_battery_temperature_celsius
+#### can_high_voltage_battery_temperature_celsius
 
 High voltage battery temperature in celsius
 
@@ -327,7 +348,7 @@ Example:
 ]
 ```
 
-### can_last_oil_change_days
+#### can_last_oil_change_days
 
 Days since last oil service
 
@@ -349,7 +370,7 @@ Example:
 ]
 ```
 
-### can_last_oil_change_km
+#### can_last_oil_change_km
 
 Km since last oil service
 
@@ -371,7 +392,7 @@ Example:
 ]
 ```
 
-### can_last_service_at_date
+#### can_last_service_at_date
 
 The date at the latest service
 
@@ -393,7 +414,7 @@ Example:
 ]
 ```
 
-### can_last_service_at_odometer
+#### can_last_service_at_odometer
 
 The odometer at the latest service
 
@@ -415,7 +436,7 @@ Example:
 ]
 ```
 
-### can_last_service_days
+#### can_last_service_days
 
 Amount of days since last service
 
@@ -437,7 +458,7 @@ Example:
 ]
 ```
 
-### can_last_service_km
+#### can_last_service_km
 
 Amount of km since last service
 
@@ -459,7 +480,7 @@ Example:
 ]
 ```
 
-### can_mil_lamp
+#### can_mil_lamp
 
 [MIL](https://en.wikipedia.org/wiki/Check_engine_light) on or off
 
@@ -481,7 +502,7 @@ Example:
 ]
 ```
 
-### can_next_oil_change_30days
+#### can_next_oil_change_30days
 
 Days until next oil service in 30 day increments
 
@@ -503,7 +524,7 @@ Example:
 ]
 ```
 
-### can_next_oil_change_days
+#### can_next_oil_change_days
 
 Days until next oil service
 
@@ -525,7 +546,7 @@ Example:
 ]
 ```
 
-### can_next_oil_change_km
+#### can_next_oil_change_km
 
 Kilometers until next oil service
 
@@ -546,7 +567,7 @@ Example:
     }
 ]
 ```
-### can_next_service_30days
+#### can_next_service_30days
 
 Days until next service in 30 day increments
 
@@ -568,7 +589,7 @@ Example:
 ]
 ```
 
-### can_next_service_days
+#### can_next_service_days
 
 Days until next service
 
@@ -590,7 +611,7 @@ Example:
 ]
 ```
 
-### can_next_service_km
+#### can_next_service_km
 
 Kilometers until next service
 
@@ -612,7 +633,7 @@ Example:
 ]
 ```
 
-### can_odometer_km
+#### can_odometer_km
 
 The odometer from the CAN of the vehicle in kilometers
 
@@ -635,7 +656,7 @@ Example:
 ```
 
 
-### can_odometer10_km
+#### can_odometer10_km
 
 Odometer from CAN in 10 km increments
 
@@ -657,7 +678,7 @@ Example:
 ]
 ```
 
-### can_oil_change_interval_fixed_days
+#### can_oil_change_interval_fixed_days
 
 The number of days between oil service for fixed oil service
 
@@ -678,7 +699,7 @@ Example:
     }
 ]
 ```
-### can_oil_change_interval_fixed_km
+#### can_oil_change_interval_fixed_km
 
 The number of km between oil service for fixed oil service
 
@@ -700,7 +721,7 @@ Example:
 ]
 ```
 
-### can_oil_change_interval_variable_days
+#### can_oil_change_interval_variable_days
 
 The maximum number of days between oil service for variable oil service
 
@@ -721,7 +742,7 @@ Example:
     }
 ]
 ```
-### can_oil_change_interval_variable_km
+#### can_oil_change_interval_variable_km
 
 The maximum number of km between oil service for variable oil service
 
@@ -743,7 +764,7 @@ Example:
 ]
 ```
 
-### can_oil_change_type_is_fixed
+#### can_oil_change_type_is_fixed
 
 Whether oil service is fixed or variable
 
@@ -765,7 +786,7 @@ Example:
 ]
 ```
 
-### can_oil_degration_percent
+#### can_oil_degration_percent
 
 How many percent the oil has degraded
 
@@ -787,7 +808,7 @@ Example:
 ]
 ```
 
-### can_service_interval_days
+#### can_service_interval_days
 
 The car's service interval in days
 
@@ -809,7 +830,7 @@ Example:
 ]
 ```
 
-### can_service_interval_km
+#### can_service_interval_km
 
 The car's service interval in km
 
@@ -831,7 +852,7 @@ Example:
 ]
 ```
 
-### can_vehicle_speed_kph
+#### can_vehicle_speed_kph
 
 The vehicle speed in kilometers per hour
 
@@ -853,7 +874,7 @@ Example:
 ]
 ```
 
-### can_vin
+#### can_vin
 
 The [VIN](https://en.wikipedia.org/wiki/Vehicle_identification_number) of the vehicle
 
@@ -875,7 +896,7 @@ Example:
 ]
 ```
 
-### car_battery_voltage
+#### car_battery_voltage
 
 Car battery's voltage
 
@@ -897,7 +918,7 @@ Example:
 ]
 ```
 
-### car_ignition
+#### car_ignition
 
 Ignition on/off
 
@@ -919,7 +940,7 @@ Example:
 ]
 ```
 
-### car_odometer_km
+#### car_odometer_km
 
 The odometer from the vehicle in kilometers, from CAN or gps
 
@@ -941,7 +962,7 @@ Example:
 ]
 ```
 
-### car_profiling
+#### car_profiling
 
 Each unit is instrumented with a gsensor that monitors the gravitational force on the car. The g-force has to be minimum 0.2 before it's getting reported by the unit.
 
@@ -965,7 +986,7 @@ Example:
 ]
 ```
 
-### gpio_battery_external_disconnect
+#### gpio_battery_external_disconnect
 
 Event when the unit in the vehicle is disconnected
 
@@ -987,7 +1008,7 @@ Example:
 ]
 ```
 
-### gpio_battery_internal_voltage
+#### gpio_battery_internal_voltage
 
 Unit internal battery voltage
 
@@ -1009,7 +1030,7 @@ Example:
 ]
 ```
 
-### gps_position
+#### gps_position
 
 Gps position from vehicle
 
@@ -1026,23 +1047,23 @@ Example:
 
 ``` json
 [
-  {
-    "type": "gps_position",
-    "id": 157659647,
-    "vehicleId": 228745,
-    "time": "2022-10-12T07:06:45.000Z",
-    "latitude": 60.613747999999994,
-    "longitude": 17.414016999999998,
-    "speed": 3,
-    "direction": 120,
-    "eph": null,
-    "hdop": 69
-  }
+    {
+        "type": "gps_position",
+        "id": 157659647,
+        "vehicleId": 228745,
+        "time": "2022-10-12T07:06:45.000Z",
+        "latitude": 60.613747999999994,
+        "longitude": 17.414016999999998,
+        "speed": 3,
+        "direction": 120,
+        "eph": null,
+        "hdop": 69
+    }
 ]
 ```
 
 
-## Admin events types
+### Admin event types
 
 The following fields are present on all admin events.
 
@@ -1054,7 +1075,7 @@ The following fields are present on all admin events.
 
 See the following list for a description of each event type.
 
-### access_granted_to_fleet
+#### access_granted_to_fleet
 
 Sent when a fleet grants the integration owning the data stream access to the fleet.
 
@@ -1075,7 +1096,7 @@ Example:
 ]
 ```
 
-### access_granted_to_vehicle
+#### access_granted_to_vehicle
 
 Sent when a vehicle grants the integration owning the data stream access to the vehicle.
 
@@ -1096,7 +1117,7 @@ Example:
 ]
 ```
 
-### access_removed_from_fleet
+#### access_removed_from_fleet
 
 Sent when a fleet removes access from the integration owning the data stream. If a fleet is completely removed from our system, this event will also be sent.
 
@@ -1118,7 +1139,7 @@ Example:
 ]
 ```
 
-### access_removed_from_vehicle
+#### access_removed_from_vehicle
 
 Sent when a vehicle removes access from the integration owning the data stream.
 
@@ -1141,7 +1162,7 @@ Example:
 ```
 
 
-### vehicle_added_to_fleet
+#### vehicle_added_to_fleet
 
 Sent when a vehicle is added to a fleet. If a vehicle is moved from one fleet to another, we'll first send a `vehicle_removed_from_fleet` event followed by a `vehicle_added_to_fleet` event for the new fleet.
 
@@ -1164,7 +1185,7 @@ Example:
 ]
 ```
 
-### vehicle_removed_from_fleet
+#### vehicle_removed_from_fleet
 
 Sent when a vehicle is removed from a fleet. If a vehicle is moved from one fleet to another, we'll first send a `vehicle_removed_from_fleet` event followed by a `vehicle_added_to_fleet` event for the new fleet.
 
@@ -1186,3 +1207,332 @@ Example:
     }
 ]
 ```
+
+## Managing vehicle data streams
+
+Managing what vehicles to receive data from is done through our [GraphQL API](./README.md#graphql-api).
+The GraphQL API should be called with a service account that Connected Cars will help set up.
+
+The following actions are possible:
+
+- List the vehicles that have consented to an integration
+- Create vehicle data streams for a topic in an integration
+- Get a list of current vehicle data streams
+- Delete certian vehicle data streams
+- Delete all vehicle data streams for some vehicles
+- Modify a vehicle data stream
+- Revoke access to a vehicle or fleet
+
+Below samples are given for each action, but more documentation can be found on [GraphiQL](https://api.connectedcars.io/graphql/graphiql/).
+
+### List the vehicles that have consented to an integration
+The service account should call our GraphQL api with a query like the following:
+
+``` graphql
+query consentedIntegrationVehicles {
+  consentedIntegrationVehicles(fleetIds:[1], first:2) {
+    items {
+      id
+      vin
+      unitSerial
+      unitProvider
+      fleetId
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+```
+This returns the first two integration vehicles from the fleet with `id` = 1.
+
+The result could look like the following:
+``` json
+{
+  "data": {
+    "vehicles": {
+      "items": [
+        {
+          "id": "51848",
+          "vin": "ABCDEFGHIJKLMNOPQ",
+          "unitSerial": "someUnitSerial",
+          "unitProvider": "cc",
+          "fleetId": 1
+        },
+        {
+          "id": "51879",
+          "vin": "ABCDEFGHIJKLMNOPQ",
+          "unitSerial": "someUnitSerial",
+          "unitProvider": "cc",
+          "fleetId": 1
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "bz01MTg0OCUyMzUxODQ4",
+        "endCursor": "bz01MTg3OSUyMzUxODc5"
+      }
+    }
+  }
+}
+```
+
+The resulting `endCursor` can then be used in another query with a new `after` parameter to page through the results. Paging is only necessary for large results. The `first` parameter would usually be 100.
+
+Here's an example of paging:
+
+``` graphql
+query consentedIntegrationVehicles {
+  consentedIntegrationVehicles(fleetIds:[1,2], first:2, after:"bz01MTg3OSUyMzUxODc5"){
+    items {
+      id
+      vin
+      unitSerial
+      unitProvider
+      fleetId
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+```
+
+The query can be called with the following filters: `fleetIds` (parent fleet ids) and `vehicleIds`.
+The filters can also be combined.
+
+There are more fields available for the vehicles such as `licensePlate`, `make`, `model` etc.
+
+### Create vehicle data streams for a topic in an integration
+The service account should call our GraphQL api with a query like the following:
+
+``` graphql
+mutation addVehicleDataStreams {
+  addVehicleDataStreams(input: [
+	  {vehicleId: 1, integrationTopicId: 87, referenceUrl: "test.com/1" },
+	  {vehicleId: 2, integrationTopicId: 87, referenceUrl: "test.com/2" }]
+  ) {
+      id
+      vehicleId
+      integrationTopicId
+      referenceUrl
+    }
+}
+```
+
+This would add a data stream for the vehicles with ids 1 and 2 for the topic with id 87 and adds a reference url for each.
+The result is a list of data streams each with their own `id` and the supplied `vehicleId`, `integrationTopicId` and `referenceUrl`. Such as:
+``` json
+{
+  "data": {
+    "addVehicleDataStreams": [
+      {
+        "id": 787,
+        "vehicleId": 1,
+        "integrationTopicId": 87,
+        "referenceUrl": "test.com/1"
+      },
+      {
+        "id": 788,
+        "vehicleId": 2,
+        "integrationTopicId": 87,
+        "referenceUrl": "test.com/2"
+      }
+    ]
+  }
+}
+```
+
+An error is thrown if the service account does not have the correct permissions (such as access to any of the vehicles or the topic), in which case none of the data streams will be created.
+
+An error is thrown if there are duplicates in the input, i.e. multiple entries with the same `vehicleId` and `integrationTopicId`.
+
+If an active vehicle data stream already exists in the database, the input will be ignored, and the existing one will be returned.
+
+### Get a list of current vehicle data streams
+The service account should call our GraphQL api with a query like the following:
+
+
+``` graphql
+query vehicleDataStreams {
+  vehicleDataStreams(first:100) {
+    items {
+      id
+      vehicleId
+      integrationTopicId
+      referenceUrl
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+```
+
+This will return the first 100 accesible vehicle data streams, i.e. objects with an `id`, a `vehicleId`, a `integrationTopicId`, and a `referenceUrl`. It could look like the following: 
+``` json
+{
+  "data": {
+    "vehicles": {
+      "items": [
+        {
+          "id": 787,
+          "vehicleId": 1,
+          "integrationTopicId": 87,
+          "referenceUrl": "test.com/1"
+      	},
+        {
+          "id": 788,
+          "vehicleId": 2,
+          "integrationTopicId": 87,
+          "referenceUrl": "test.com/2"
+      	}
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "bz01MTg0OCUyMzUxODQ4",
+        "endCursor": "bz01MTg3OSUyMzUxODc5"
+      }
+    }
+  }
+}
+```
+
+Only the vehicle data streams that the service account has access to will be returned.
+
+An optional `integrationTopicIds` or `vehicleIds` can also be used to narrow the results, like the following:
+``` graphql
+query vehicleDataStreams {
+  vehicleDataStreams(first:100, integrationTopicIds: [87], vehicleIds: [1,2]) {
+    items {
+      id
+      vehicleId
+      integrationTopicId
+      referenceUrl
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+```
+It is not necessary to use both at the same time, and both can be a list with a single item or with multiple entries.
+
+### Delete certain vehicle data streams
+The service account should call our GraphQL api with a query like the following:
+
+``` graphql
+mutation deleteVehicleDataStreams {
+  deleteVehicleDataStreams(input: [1,2,3,4,5] )
+}
+
+```
+The above mutation will delete the vehicle data streams with ids 1,2,3,4, and 5.
+The result is a boolean and looks like: 
+``` json
+{
+  "data": {
+    "deleteVehicleDataStreams": true
+  }
+}
+```
+
+The result should always be true, and the vehicle data streams will be deleted. An error is thrown if the service account does not have access to any of the vehicle data streams, in which case none of the data streams will be deleted.
+
+### Delete all vehicle data streams for some vehicles
+
+The service account should call our GraphQL api with a query like the following:
+``` graphql
+mutation deleteAllVehicleDataStreams {
+  deleteAllVehicleDataStreams(input: { vehicleIds:[1,2,3,4,5]} )
+}
+```
+This will delete all vehicle data streams for the five vehicles.
+The result is a boolean and looks like: 
+``` json
+{
+  "data": {
+    "deleteAllVehicleDataStreams": true
+  }
+}
+```
+
+The result should always be true, and the vehicles' data streams will be deleted. 
+Deletes all vehicle data streams for the vehicleIds for the integrations the user has permission to manage.
+Does not throw an error if no vehicle data streams are deleted.
+Does not throw an error if the user does not have access to any of the supplied vehicleIds. As long as the vehicle data streams are part of an integration that the user can manage, they are allowed to delete the vehicle data streams.
+Throws an error if no vehicleIds are supplied.
+
+### Modify a vehicle data stream
+The service account should call our GraphQL api with a query like the following:
+``` graphql
+mutation updateVehicleDataStream {
+ updateVehicleDataStream(input: { id: 787, referenceUrl: "newurl.com/1"} ) {
+    id
+    vehicleId
+    integrationTopicId
+    referenceUrl
+  }
+}
+```
+This will update the `referenceUrl` of the vehicle data stream with id = 787.
+The result looks like this:
+``` json
+{
+  "data": {
+    "updateVehicleDataStream": {
+      "id": 787,
+      "vehicleId": 1,
+      "integrationTopicId": 87,
+      "referenceUrl": "newurl.com/1"
+    }
+  }
+}
+
+```
+
+### Revoke access to a vehicle or fleet
+The service account should call our GraphQL api with a query like the following:
+``` graphql
+mutation revokeIntegrationAccess {
+ revokeIntegrationAccess(input: { integrationId: 787, fleetId: 1} )
+}
+```
+
+This will revoke the access from the integration with id 787 from the fleet with id 1.
+The result looks like this:
+``` json
+{
+  "data": {
+    "revokeIntegrationAccess": true
+  }
+}
+```
+
+It's also possible to revoke the access for a vehicle instead, if the vehicle has granted direct access and not through the fleet:
+
+``` graphql
+mutation revokeIntegrationAccess {
+ revokeIntegrationAccess(input: { integrationId: 787, vehicleId: 123} )
+}
+```
+This will revoke the access from the integration with id 787 from the vehicle with id 123.
+
+Revoking access will delete all data streams related to the fleet or the vehicle for that integration.
+
+If the vehicle or fleet has not granted access to the integration (or it has already been revoked) the mutation does nothing.
