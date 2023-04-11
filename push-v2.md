@@ -33,7 +33,7 @@ The following fields are present on all vehicle events
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique per event since each shard has their own counter   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
-| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded. Millisecond presicion is only available for some events |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded. Millisecond precision is only available for some events |
 | type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
 See the following list for a description of each event type.
@@ -144,7 +144,7 @@ Raw vehicle diagnostic codes
 | rxLocalId    | string/null   |                     | null                        | local id requested on the canbus       |
 | txLocalId    | string/null   |                     | null                        | local id to listen for response on the canbus       |
 | serviceAndDid    | string/null   | service and dids in hex   | 1902FF    | the service requested and the parameters       |
-| useFunctionalAdressing    | boolean/null   |                     | null                        | use functional adressing (true) or not (false)      |
+| useFunctionalAddressing    | boolean/null   |                     | null                        | use functional addressing (true) or not (false)      |
 | sessionType    | string/null   |                     | 01                        | session type       |
 
 Example:
@@ -166,7 +166,7 @@ Example:
         "rxLocalId": null,
         "txLocalId": null,
         "serviceAndDid": "19028C",
-        "useFunctionalAdressing": null,
+        "useFunctionalAddressing": null,
         "sessionType": "01",
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
@@ -1038,8 +1038,8 @@ Gps position from vehicle
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | latitude | decimal   | decimal degrees             | 60.613747999999994       | Latitude of the position. NB: We work with the unaltered coordinates as floats from our GPS sensor, which can have many decimals in the coordinates. However, it should not be expected that the accuracy of the GPS positions from cars is better than around 10m. This accuracy is heavily influenced by factors such as high buildings, heavy tree cover, hills, tunnels, and parking cellars.        |
 | longitude| decimal   | decimal degrees            | 17.414016999999998       | Longitude of the position. NB: We work with the unaltered coordinates as floats from our GPS sensor, which can have many decimals in the coordinates. However, it should not be expected that the accuracy of the GPS positions from cars is better than around 10m. This accuracy is heavily influenced by factors such as high buildings, heavy tree cover, hills, tunnels, and parking cellars.       |
-| speed    | 16 bit integer/null   | km/h      | 50                       | The travelling speed of the vehicle when the position was recorded. This value is available based on the hardware.      |
-| direction| 16 bit integer/null   | degrees      | 0                        | The degree in which the vehicle is travelling (between 0 to 360, where both 0 and 360 is north). This value may be null in cases where speed is 0, as the travelling direction of the vehicle cannot be calculated between the last two positions.       |
+| speed    | 16 bit integer/null   | km/h      | 50                       | The traveling speed of the vehicle when the position was recorded. This value is available based on the hardware.      |
+| direction| 16 bit integer/null   | degrees      | 0                        | The degree in which the vehicle is traveling (between 0 to 360, where both 0 and 360 is north). This value may be null in cases where speed is 0, as the traveling direction of the vehicle cannot be calculated between the last two positions.       |
 | eph | 16 bit integer/null | meter | 5 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Estimated horizontal Position (2D) Error in meters. Also known as Estimated Position Error (epe). Certainty unknown." If `eph` is present, `hdop` is always null. |
 | hdop | 32 bit integer/null |  | 69 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
 
@@ -1218,7 +1218,7 @@ The following actions are possible:
 - List the vehicles that have consented to an integration
 - Create vehicle data streams for a topic in an integration
 - Get a list of current vehicle data streams
-- Delete certian vehicle data streams
+- Delete certain vehicle data streams
 - Delete all vehicle data streams for some vehicles
 - Modify a vehicle data stream
 - Revoke access to a vehicle or fleet
@@ -1380,7 +1380,7 @@ query vehicleDataStreams {
 }
 ```
 
-This will return the first 100 accesible vehicle data streams, i.e. objects with an `id`, a `vehicleId`, a `integrationTopicId`, and a `referenceUrl`. It could look like the following: 
+This will return the first 100 accessible vehicle data streams, i.e. objects with an `id`, a `vehicleId`, a `integrationTopicId`, and a `referenceUrl`. It could look like the following: 
 ``` json
 {
   "data": {

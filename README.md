@@ -29,7 +29,7 @@ Source code: https://github.com/connectedcars/docs/tree/master/samples/
 
 ## Push (data streams)
 
-The push api integration provides a close to real time data steam for all the collected parameters and makes it possible to manage which exact vehicles to get data from.
+The push api integration provides a close to real time data stream for all the collected parameters, and makes it possible to manage which exact vehicles to get data from.
 
 [Read more here](./push-v2.md)
 
