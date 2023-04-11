@@ -1141,7 +1141,7 @@ Example:
 
 #### access_removed_from_vehicle
 
-Sent when a vehicle removes access from the integration owning the data stream.
+Sent when a vehicle removes access from the integration owning the data stream. This event is also sent when a vehicle is removed from a fleet, which had granted access to the integration.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
