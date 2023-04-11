@@ -7,11 +7,9 @@ This is done by creating vehicle data streams and configuring an endpoint to rec
 
 Events can be pushed to either an HTTPS POST endpoint or to Pub/Sub.
 
-Events are sent in bulk and should only be rejected in case you have issues parsing, validating or storing the full bulk. I.e. not knowing a `vehicleId` should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages.
+Events are sent in bulk and should only be rejected in case you have issues parsing, validating or storing the full bulk. I.e. not knowing a `vehicleId` should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages. Bulks will be retried in case of failure.
 
 Events are sent at-least once, meaning there might be duplicates.
-
-Events will be retried every 10 seconds in case of failure.
 
 ## Event types
 
