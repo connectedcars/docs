@@ -1030,7 +1030,11 @@ Example:
 
 #### gps_position
 
-Gps position from vehicle
+Gps position from vehicle.
+
+The metadata and sample rate will vary based on unit provider type. For `traffilog` units the sampling interval varies depending on the travelling speed of the vehicle (according to the vendor specification, the sampling rate happens every 1 minute OR every 500 meters OR every 10 meters if the accelerometer detects a turn) - generally the sampling happens every 5 seconds but may vary up to 30 seconds. For `cc` units the sampling interval will mostly be around 4 to 5 seconds regardless of the travelling speed of the vehicle (but may be adjusted in indivudal cases) with `eph` values outside the 0-500 range being discarded on the unit.
+
+This might change in the future as we constantly optimize the data collection.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
@@ -1038,8 +1042,8 @@ Gps position from vehicle
 | longitude| decimal   | decimal degrees            | 17.414016999999998       | Longitude of the position. NB: We work with the unaltered coordinates as floats from our GPS sensor, which can have many decimals in the coordinates. However, it should not be expected that the accuracy of the GPS positions from cars is better than around 10m. This accuracy is heavily influenced by factors such as high buildings, heavy tree cover, hills, tunnels, and parking cellars.       |
 | speed    | 16 bit integer/null   | km/h      | 50                       | The traveling speed of the vehicle when the position was recorded. This value is available based on the hardware.      |
 | direction| 16 bit integer/null   | degrees      | 0                        | The degree in which the vehicle is traveling (between 0 to 360, where both 0 and 360 is north). This value may be null in cases where speed is 0, as the traveling direction of the vehicle cannot be calculated between the last two positions.       |
-| eph | 16 bit integer/null | meter | 5 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Estimated horizontal Position (2D) Error in meters. Also known as Estimated Position Error (epe). Certainty unknown." If `eph` is present, `hdop` is always null. |
-| hdop | 32 bit integer/null |  | 69 | This value needs to be divided by 100. From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
+| eph | 16 bit integer/null | meter | 5 | "Estimated horizontal Position (2D) Error in meters. Also known as Estimated Position Error (epe). Certainty unknown." If `eph` is present, `hdop` is always null. |
+| hdop | 32 bit integer/null |  | 69 | This value needs to be divided by 100. "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
 
 Example:
 
