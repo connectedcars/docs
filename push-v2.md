@@ -1039,7 +1039,7 @@ Gps position from vehicle
 | speed    | 16 bit integer/null   | km/h      | 50                       | The traveling speed of the vehicle when the position was recorded. This value is available based on the hardware.      |
 | direction| 16 bit integer/null   | degrees      | 0                        | The degree in which the vehicle is traveling (between 0 to 360, where both 0 and 360 is north). This value may be null in cases where speed is 0, as the traveling direction of the vehicle cannot be calculated between the last two positions.       |
 | eph | 16 bit integer/null | meter | 5 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Estimated horizontal Position (2D) Error in meters. Also known as Estimated Position Error (epe). Certainty unknown." If `eph` is present, `hdop` is always null. |
-| hdop | 32 bit integer/null |  | 69 | From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
+| hdop | 32 bit integer/null |  | 69 | This value needs to be divided by 100. From [gpsd documentation](https://gpsd.gitlab.io/gpsd/gpsd_json.html): "Horizontal dilution of precision, a dimensionless factor which should be multiplied by a base UERE to get a circular error estimate." If `hdop` is present, `eph` is always null. |
 
 Example:
 
