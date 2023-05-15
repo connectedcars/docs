@@ -1034,6 +1034,8 @@ Gps position from vehicle.
 
 The metadata and sample rate will vary based on unit provider type. For `traffilog` units the sampling interval varies depending on the travelling speed of the vehicle (according to the vendor specification, the sampling rate happens every 1 minute OR every 500 meters OR every 10 meters if the accelerometer detects a turn) - generally the sampling happens every 5 seconds but may vary up to 30 seconds. For `cc` units the sampling interval will mostly be around 4 to 5 seconds regardless of the travelling speed of the vehicle (but may be adjusted in indivudal cases) with `eph` values outside the 0-500 range being discarded on the unit.
 
+When the vehicle is in ignition off state, the unit will normally wake every two hours and send position along with its normal heartbeat package.
+
 This might change in the future as we constantly optimize the data collection.
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
