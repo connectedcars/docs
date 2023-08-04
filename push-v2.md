@@ -984,6 +984,28 @@ Example:
 ]
 ```
 
+#### daily_can_odometers_km
+
+The daily odometer from the CAN of the vehicle in kilometers
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | integer   |  whole km            | 94636                    | odometer in whole km       |
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_odometer_km",
+        "id": 433642,
+        "value": 94636,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
 #### gpio_battery_external_disconnect
 
 Event when the unit in the vehicle is disconnected
