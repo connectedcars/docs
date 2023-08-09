@@ -997,7 +997,7 @@ Example:
 ``` json
 [
     {
-        "type": "can_odometer_km",
+        "type": "daily_can_odometer_km",
         "id": 433642,
         "value": 94636,
         "vehicleId": 1337,
