@@ -984,7 +984,7 @@ Example:
 ]
 ```
 
-#### daily_can_odometers_km
+#### daily_can_odometer_km
 
 The daily odometer from the CAN of the vehicle in kilometers
 
