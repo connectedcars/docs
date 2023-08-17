@@ -7,6 +7,9 @@ The endpoint should be available via HTTPS and can require authentication via a 
 
 Once the endpoint is ready, provide Connected Cars with the details. Connected Cars will then implement the automatic removal of vehicle access based on the provided endpoint.
 
+_Sequence diagram_
+![Sequence diagram](./ownership-change-sequence-diagram.png)
+
 ## Field descriptions
 | Key            | Type                                         | Example                    | Notes    |
 |:---------------|:---------------------------------------------|:---------------------------|:---------|
