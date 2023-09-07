@@ -1355,6 +1355,7 @@ mutation addVehicleDataStreams {
 ```
 
 This would add a data stream for the vehicles with ids 1 and 2 for the topic with id 87 and adds a reference url for each.
+`referenceUrl` is optional and should only be used if you want to store some reference from your own system on the data stream to more easily identify it later. The `referenceUrl` is not part of any events sent.
 The result is a list of data streams each with their own `id` and the supplied `vehicleId`, `integrationTopicId` and `referenceUrl`. Such as:
 ``` json
 {
@@ -1562,3 +1563,137 @@ This will revoke the access from the integration with id 787 from the vehicle wi
 Revoking access will delete all data streams related to the fleet or the vehicle for that integration.
 
 If the vehicle or fleet has not granted access to the integration (or it has already been revoked) the mutation does nothing.
+
+
+## Example of setting up a push data stream
+
+This section details an end to end scenario of setting up a new data stream for a vehicle.
+
+### Prerequisites
+
+Choose events from the [vehicle event types list](#vehicle-event-types) that should be part of the integration.
+Multiple different integration topics can be created which can receive different events. 
+After having chosen some events Connected Cars will set up an integration topic for the events and let you know the id. In this example we'll choose just the `car_ignition` event type and we'll use id `555` for this vehicle events integration topic.
+
+Connected Cars will set up another integration topic for the admin events. All relevant admin events are sent, so you do not have to choose anything in the [admin event types list](#admin-event-types).
+You automatically receive admin events for all vehicles that have consented to your integration.
+
+Then decide for each integration topic whether to receive the events via an HTTP POST endpoint or Pub/Sub. Connected Cars will need info on how to connect to your endpoint of choice. This is usually done via a service account for Pub/Sub or a webhook url for HTTP POST with some sort of authentication.
+The vehicle events and admin events can be sent to the same endpoint or different endpoints.
+
+Then you'll need access to our [GraphQL API](./README.md#graphql-api). For this we'll create a Connected Cars service account for you.
+You can find more info on how we set up service accounts and how to use them [here](./samples/node/README.md).
+
+Before being able to receive data from a vehicle, the vehicle needs to consent to the integration. Depending on the integration this is done differently internally in the Connected Cars system.
+
+### Adding a data stream for a vehicle that has consented to an integration
+
+With the prerequisites in place, the next step is to create a data stream for the vehicle you wish to receive car ignition data for.
+
+To see a list of all vehicles that have consented to your integration, use the `consentedIntegrationVehicles` [query](#list-the-vehicles-that-have-consented-to-an-integration).
+
+E.g. we run the following query:
+``` graphql
+query consentedIntegrationVehicles {
+  consentedIntegrationVehicles(first:1) {
+    items {
+      id
+      vin
+      unitSerial
+      unitProvider
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+```
+And get the following result:
+``` json
+{
+  "data": {
+    "vehicles": {
+      "items": [
+        {
+          "id": "51848",
+          "vin": "ABCDEFGHIJKLMNOPQ",
+          "unitSerial": "someUnitSerial",
+          "unitProvider": "cc"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "bz01MTg0OCUyMzUxODQ4",
+        "endCursor": "bz01MTg3OSUyMzUxODc5"
+      }
+    }
+  }
+}
+```
+
+We can see that the vehicle with id `51848` has consented to our integration. We can therefore use the `addVehicleDataStreams` [mutation](#create-vehicle-data-streams-for-a-topic-in-an-integration) to add a data stream for the vehicle. Our integration topic for `car_ignition` events had the id `555`. We therefore run the following mutation:
+``` graphql
+mutation addVehicleDataStreams {
+  addVehicleDataStreams(input: [
+	  {vehicleId: 51848, integrationTopicId: 555 }]
+  ) {
+      id
+      vehicleId
+      integrationTopicId
+    }
+}
+```
+Which gives the following result:
+``` json
+{
+  "data": {
+    "addVehicleDataStreams": [
+      {
+        "id": 787,
+        "vehicleId": 51848,
+        "integrationTopicId": 555
+      }
+    ]
+  }
+}
+```
+
+The data stream for the vehicle has now been set up, and you will now receive `car_ignition` events for this vehicle on your chosen endpoint whenever the vehicle generates an ignition event. 
+
+### Knowing when new vehicles grant access to your integration
+
+When a new vehicle grants access to your integration you will receive an `access_granted_to_vehicle` event on your endpoint for admin events. The event could look like so:
+
+``` json
+[
+    {
+        "type": "access_granted_to_vehicle",
+        "id": 123,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+To start receiving vehicle events for the vehicle with id `1337` that has granted access to your integration, follow the example above in [Adding vehicles to an integration](#adding-vehicles-to-an-integration).
+
+### Vehicles revoking access to your integration
+
+When a vehicle revokes access to your integration you will receive an `access_removed_from_vehicle` event on your endpoint for admin events. The event could look like so:
+
+``` json
+[
+    {
+        "type": "access_removed_from_vehicle",
+        "id": 123,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+When access is revoked we will immediately stop all data streams for that vehicle for your integration, and you will therefore no longer receive vehicle events for the vehicle.
