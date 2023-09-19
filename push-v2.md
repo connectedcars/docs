@@ -137,7 +137,7 @@ Raw vehicle diagnostic codes
 | txId    | string   |                     | 713                        | listen for response from the ecu on this id on the canbus       |
 | transport    | string   | `ISOTP`, `TP2`, `ISOTP-NOPAD`,                     | `ISOTP`             | the transport protocol used to communicate with the ecu       |
 | application    | string   | `UDS`, `KWP2000`,                     | `UDS`                        | the application protocol used to communicate with the ecu       |
-| ecu    | string/null   | `engine`, `aircondition`, `brakes`, `central_electrics`, `driver_door`, `engine`, `gateway`, `instruments`, `transmission` | `engine`                        | from which ecu the dtc is from       |
+| ecu    | string/null   | `airbag`, `aircondition`, `brakes`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
 | type    | string   | `vag`, `j2012`                    | `vag`                        | the format of the error code       |
 | rxLocalId    | string/null   |                     | null                        | local id requested on the canbus       |
 | txLocalId    | string/null   |                     | null                        | local id to listen for response on the canbus       |
