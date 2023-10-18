@@ -27,6 +27,8 @@ Sample code and service account creation:
 
 Source code: https://github.com/connectedcars/docs/tree/master/samples/
 
+[See deprecations](./api-deprecations.md)
+
 ## Push (data streams)
 
 The push api integration provides a close to real time data stream for all the collected parameters, and makes it possible to manage which exact vehicles to get data from.
