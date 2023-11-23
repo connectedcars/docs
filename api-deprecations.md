@@ -1,6 +1,8 @@
 # API deprecations
 Deprecations to mutations, queries, fields, etc. in the GraphQL API happens at least 6 months before the deprecated entity is then removed.
 
+ * 2023-11-23: Query `dataReports`
+ * 2023-11-23: Field `Vehicle.dataReports`
  * 2023-09-29: Field `StatusTile.tags`
  * 2023-09-29: Field `StatusTile.definition`
  * 2023-09-23: Field `Unit.pendingUnitCommands`
