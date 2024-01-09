@@ -138,7 +138,7 @@ Raw vehicle diagnostic codes
 | transport    | string   | `ISOTP`, `TP2`, `ISOTP-NOPAD`,                     | `ISOTP`             | the transport protocol used to communicate with the ecu       |
 | application    | string   | `UDS`, `KWP2000`,                     | `UDS`                        | the application protocol used to communicate with the ecu       |
 | ecu    | string/null   | `airbag`, `aircondition`, `brakes`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
-| type    | string   | `vag`, `j2012`                    | `vag`                        | the format of the error code       |
+| sourceType    | string   | `vag`, `j2012`                    | `vag`                        | the format of the error code       |
 | rxLocalId    | string/null   |                     | null                        | local id requested on the canbus       |
 | txLocalId    | string/null   |                     | null                        | local id to listen for response on the canbus       |
 | serviceAndDid    | string/null   | service and dids in hex   | 1902FF    | the service requested and the parameters       |
@@ -160,7 +160,7 @@ Example:
         "transport": "ISOTP",
         "application": "UDS",
         "ecu": "engine",
-        "type": "vag",
+        "sourceType": "vag",
         "rxLocalId": null,
         "txLocalId": null,
         "serviceAndDid": "19028C",
