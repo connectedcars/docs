@@ -5,6 +5,9 @@ By autofilling the form for online service booking, the customer can get through
 
 This integration will take care of populating the form with the customer's information by injecting the data in the link, normally using query parameters.
 
+_Booking autofill demo_
+![Demo](./booking-autofill-demo.gif)
+
 _Flow diagram_
 ![Flow diagram](./booking-autofill-flow-diagram.png)
 
