@@ -23,3 +23,6 @@ The booking links can be populated with various variables (see screenshot below)
 
 _Screenshot of booking autofill variables_
 ![Booking autofill variables](./booking-autofill-variables-screenshot.png)
+
+## Demo
+![Booking autofill demo](./booking-autofill-demo.gif)

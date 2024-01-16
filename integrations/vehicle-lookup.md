@@ -45,3 +45,6 @@ X-Api-Key: some-api-key
   "fuelTankSizeInLiters": 60
 }
 ```
+
+## Demo
+![Vehicle lookup demo](./vehicle-lookup-demo.gif)
