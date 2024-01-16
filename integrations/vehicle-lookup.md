@@ -7,6 +7,9 @@ The endpoint should be available via HTTPS and can require authentication via a 
 
 Once the endpoint is ready, provide Connected Cars with the details. Connected Cars will then implement the prefill based on the provided endpoint.
 
+_Vehicle lookup demo_
+![Demo](./vehicle-lookup-demo.gif)
+
 _Flow diagram_
 ![Flow diagram](./vehicle-lookup-flow-diagram.png)
 
