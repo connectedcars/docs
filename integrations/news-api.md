@@ -7,9 +7,6 @@ The endpoint should be available via HTTPS and can require authentication via a 
 
 Once the endpoint is ready, provide Connected Cars with the details. Connected Cars will then implement the prefill based on the provided endpoint.
 
-_News feed in app_
-![App demo](./news-videos-feed.gif)
-
 ## Field descriptions
 | Key           | Type                                     | Example                                             | Notes                                              |
 |:--------------|:-----------------------------------------|:----------------------------------------------------|:---------------------------------------------------|
@@ -56,3 +53,6 @@ X-Api-Key: some-api-key
   }
 ]
 ```
+
+## Demo
+![News feed demo](./news-videos-feed.gif)
