@@ -32,5 +32,5 @@ Prefill form data on the "Add vehicle" page and the "vehicle activation guide" i
 Example request:
 
 ```
-/integration/vehicle/add?queryType=vin&source=some_system&vehicleVin=WVWZZZ1KZAW123456&customerEmail=johnsmith%40example.com
+https://workshop.connectedcars.io/integration/vehicle/add?queryType=vin&source=some_system&vehicleVin=WVWZZZ1KZAW123456&customerEmail=johnsmith%40example.com
 ```
