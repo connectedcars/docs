@@ -1,6 +1,7 @@
 # API deprecations
 Deprecations to mutations, queries, fields, etc. in the GraphQL API happens at least 6 months before the deprecated entity is then removed.
 
+ * 2024-03-04: Field `Unit.simId`
  * 2024-02-14: Field `OrganizationNamespace.googleClientId`
  * 2024-02-14: Field `OrganizationNamespace.googleSecret`
  * 2024-02-14: Field `UpdateOrganizationNamespaceInput.googleClientId`
