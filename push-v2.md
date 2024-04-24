@@ -5,7 +5,7 @@ This is done by creating vehicle data streams and configuring an endpoint to rec
 
 ## Endpoints
 
-Events can be pushed to either an HTTPS POST endpoint or to Pub/Sub.
+Events can be pushed to either an HTTPS POST endpoint, Pub/Sub in GCP or Event Hubs in Azure.
 
 Events are sent in bulk and should only be rejected in case you have issues parsing, validating or storing the full bulk. I.e. not knowing a `vehicleId` should not result in rejection as this is a configuration synchronization issue and not related to the transfer of the messages. Bulks will be retried in case of failure.
 
@@ -1088,6 +1088,26 @@ Example:
 ]
 ```
 
+####  service_reminder_lead
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | datetime  | RFC 3339          | 2022-08-25T00:00:00.000Z      | Service date
+
+
+Example:
+
+``` json
+[
+    {
+        "type": "service_reminder_lead",
+        "id": 12095712,
+        "vehicleId": 59821,
+        "time": "2022-01-02T18:31:03.000Z",
+        "value": "2022-08-25T00:00:00.000Z"
+    }
+]
+```
 
 ### Admin event types
 
