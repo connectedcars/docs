@@ -5,6 +5,9 @@ Service bookings can be pushed to Connected Cars when they are added, changed or
 
 The import of service bookings uses the standard GraphQL pull API via the `addBookings`, `changeBookings` and `cancelBookings` mutations. Descriptions of the fields and example requests can be found below. Further details on working with the pull API can be found on [the dedicated page](./integrations/pull-api).
 
+_Screenshot of booking data show in ConnectedWorkshop_
+![Booking data show in ConnectedWorkshop](./booking-import-screenshot.png)
+
 ## Field descriptions
 | Key             | Type              | Example                    | Notes    |
 |:----------------|:------------------|:---------------------------|:---------|
