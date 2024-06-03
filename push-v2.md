@@ -784,20 +784,20 @@ Example:
 ]
 ```
 
-#### can_oil_degration_percent
+#### can_oil_degradation_percent
 
 How many percent the oil has degraded
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | integer   | percent                    | 5                        | oil degration in percent       |
+| value    | integer   | percent                    | 5                        | oil degradation in percent       |
 
 Example:
 
 ``` json
 [
     {
-        "type": "can_oil_degration_percent",
+        "type": "can_oil_degradation_percent",
         "id": 433642,
         "value": 5,
         "vehicleId": 1337,
