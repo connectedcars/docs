@@ -1,9 +1,9 @@
 [Go back to Integrations](./integrations/intro)
 
 # Prefill via vehicle lookup
-When the users of ConnectedWorkshop creates a vehicle, they enter the VIN or license plate and the system then uses that to look up vehicle details from an endpoint you make available. The vehicle details needed are listed below and should be retrieved from either the manufacturer or the national vehicle registry.
+When the users of ConnectedWorkshop/ConnectedLeasing creates a vehicle, they enter the VIN or license plate and the system then uses that to look up vehicle details from an endpoint you make available. The vehicle details needed are listed below and should be retrieved from either the manufacturer or the national vehicle registry.
 
-The endpoint should be available via HTTPS and can require authentication via a symmetric key (like an API key listed in the example below). The endpoint must accept both VIN and license plate as input (query parameters) and one of them should be required. If a vehicle is found, the endpoint must return a JSON response with a 200 status code. If a vehicle is not found, the endpoint must return a 404 status code. The endpoint should respond within 2 seconds to ensure a satisfactory user experience for the workshop employees working in ConnectedWorkshop.
+The endpoint should be available via HTTPS and can require authentication via a symmetric key (like an API key listed in the example below). The endpoint must accept both VIN and license plate as input (query parameters) and one of them should be required. If a vehicle is found, the endpoint must return a JSON response with a 200 status code. If a vehicle is not found, the endpoint must return a 404 status code. The endpoint should respond within 2 seconds to ensure a satisfactory user experience for the workshop employees working in ConnectedWorkshop/ConnectedLeasing.
 
 Once the endpoint is ready, provide Connected Cars with the details. Connected Cars will then implement the prefill based on the provided endpoint.
 
