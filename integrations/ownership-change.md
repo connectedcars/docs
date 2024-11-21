@@ -16,7 +16,7 @@ _Sequence diagram_
 | `vin`          | String                                       | `WVWZZZAUZKW123456`        | Required |
 | `changedAt`    | Datetime, RFC3339                            | `2022-08-23T13:37:00.000Z` | Required |
 | `reason`       | Enum(`deregistration`, `new_owner`, `other`) | `deregistration`           | Optional, `deregistration` could be when a vehicle gets exported or scrapped while `new_owner` could be the vehicle getting sold to another person |
-| `previousUser` | String                                       | `old-email@example.com`    | Optional |
+| `oldUser`      | String                                       | `old-email@example.com`    | Optional |
 | `newUser`      | String                                       | `new-email@example.com`    | Optional |
 
 ## Example request and output
