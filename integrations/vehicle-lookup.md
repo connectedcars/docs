@@ -24,7 +24,11 @@ _Sequence diagram_
 | `brand`                | String                                                                                       | `Volkswagen`                           | Optional, will be derived from VIN if not provided         |
 | `model`                | String                                                                                       | `Golf`                                 | Optional, will be derived from description if not provided |
 | `fuelType`             | Enum(`diesel`, `gasoline`, `electric`, `hybrid`, `hybrid_diesel`, `natural_gas`, `hydrogen`) | `gasoline`                             | Optional, will be derived from description if not provided |
-| `fuelTankSizeInLiters` | Number                                                                                       | 60                                     | Optional                                                   |
+| `fuelTankSizeInLiters` | Number                                                                                       | 60                                     | Optional                                  
+| `dealerId` | String                                                                                       | `01452`                                     | Optional (recommended), unique dealer identification associated with vehicle. Common examples:  KVPS `DNKN50191`, dealer partner key: `50191`, dealer number `91`                                             |
+|  |
+
+</table>
 
 ## Example request and output
 ```
@@ -42,7 +46,8 @@ X-Api-Key: some-api-key
   "brand": "Volkswagen",
   "model": "Golf",
   "fuelType": "gasoline",
-  "fuelTankSizeInLiters": 60
+  "fuelTankSizeInLiters": 60,
+  "dealerId": "01452"
 }
 ```
 
