@@ -1,6 +1,11 @@
 # API deprecations
 Deprecations to mutations, queries, fields, etc. in the GraphQL API happens at least 6 months before the deprecated entity is then removed.
 
+ * 2024-12-09: Field `User.intercomUserHash`
+ * 2024-12-09: Field `OrganizationNamespace.intercomKey`
+ * 2024-12-09: Field `OrganizationNamespace.intercomIdentityVerificationSecret`
+ * 2024-12-09: Field `UpdateOrganizationNamespaceInput.intercomKey`
+ * 2024-12-09: Field `UpdateOrganizationNamespaceInput.intercomIdentityVerificationSecret`
  * 2024-06-19: Field `AlarmStats.criticalLamps`
  * 2024-04-08: Field `WorkshopStats.averageAlarmClosingTime`
  * 2024-03-25: Field `VehicleTrip.odometerMileage`
