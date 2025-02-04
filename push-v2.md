@@ -1254,6 +1254,57 @@ Example:
 ]
 ```
 
+#### car_service_booking
+
+##### BookingStatus enum
+
+| Value    | Description |
+|----------|-------------|
+| `NEW`    | The booking is newly created. |
+| `CHANGED`| The booking has been modified. |
+| `CANCELLED` | The booking has been cancelled. |
+
+
+Represents a car service booking record with the status of the booking and the appointment date. 
+
+|         Name         |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:--------------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| bookingSource        | string   |                     | 'online'                 | Source of the booking                           | No       |
+| bookingId            | string   |                     | 'BKG123456'              | Booking ID from the booking system              | No       |
+| bookingStatus        | string   |                     | 'NEW'                    | Status of the booking. Detailed in [BookingStatus](#bookingstatus-enum) | No       |
+| bookingDealer        | string   |                     | 'KVPS123'                | Dealer number, KVPS or similar for the booking  | No       |
+| vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
+| fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
+| fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
+| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional)               | Yes      |
+| reasonText           | string   |                     | 'Regular maintenance'    | Reason text for booking (optional)              | Yes      |
+| workshopId           | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
+| value                | datetime | RFC 3339            | 2022-01-01T12:30:10Z     | Timestamp of the booking in UTC                 | No       |
+
+Example:
+```json
+[
+  {
+    "id": 9812321,
+    "type": "car_service_booking",
+    "vehicleId": 1337,
+    "bookingSource": "online",
+    "bookingId": "BKG123456",
+    "bookingStatus": "NEW",
+    "bookingDealer": "KVPS123",
+    "vin": "WVWZZZ1JZ3W000000",
+    "fleetId": 47583,
+    "fleetExternalReference": "550e8400-e29b-41d4-a716-446655440000",
+    "reasonKey": "maintenance",
+    "reasonText": "Regular maintenance",
+    "workshopId": 9876,
+    "value": "2025-06-05T12:30:10Z",
+    "time": "2025-01-01T10:30:10Z"
+  }
+]
+```
+
+
 ## Managing vehicle data streams
 
 Managing what vehicles to receive data from is done through our [GraphQL API](./README.md#graphql-api).
