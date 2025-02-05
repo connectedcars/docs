@@ -11,7 +11,7 @@ Events are sent in bulk and should only be rejected in case you have issues pars
 
 Events are sent at-least once, meaning there might be duplicates.
 
-## Event types
+## Event types - JSON 
 
 There's two different event types; vehicle events and admin events.
 
@@ -1253,6 +1253,173 @@ Example:
     }
 ]
 ```
+
+#### car_service_booking
+
+Represents a car service booking record with the status of the booking and the appointment date. 
+
+|         Name         |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:--------------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| bookingSource        | string   |                     | 'online'                 | Source of the booking                           | No       |
+| bookingId            | string   |                     | 'BKG123456'              | Booking ID from the booking system              | No       |
+| bookingStatus        | string   |                     | 'NEW'                    | Status of the booking. Detailed in [BookingStatus](#bookingstatus-enum) | No       |
+| bookingDealer        | string   |                     | 'KVPS123'                | Dealer number, KVPS or similar for the booking  | No       |
+| vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
+| fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
+| fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
+| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional)               | Yes      |
+| reasonText           | string   |                     | 'Regular maintenance'    | Reason text for booking (optional)              | Yes      |
+| workshopId           | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
+| value                | datetime | RFC 3339            | 2022-01-01T12:30:10Z     | Timestamp of the booking in UTC                 | No       |
+
+Example:
+```json
+[
+  {
+    "id": 9812321,
+    "type": "car_service_booking",
+    "vehicleId": 1337,
+    "bookingSource": "online",
+    "bookingId": "BKG123456",
+    "bookingStatus": "NEW",
+    "bookingDealer": "KVPS123",
+    "vin": "WVWZZZ1JZ3W000000",
+    "fleetId": 47583,
+    "fleetExternalReference": "550e8400-e29b-41d4-a716-446655440000",
+    "reasonKey": "maintenance",
+    "reasonText": "Regular maintenance",
+    "workshopId": 9876,
+    "value": "2025-06-05T12:30:10Z",
+    "time": "2025-01-01T10:30:10Z"
+  }
+]
+```
+
+## Event types - Protobuf
+
+Sending events via Protobuf is also supported. Vehicle event types follow a similar structure to their JSON counterparts.
+
+- Syntax: `"proto3"`
+- Timestamps: `google.protobuf.Timestamp`,
+- For a Pub/Sub example, refer to the [Google Cloud Pub/Sub documentation](https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-proto-messages#pubsub_subscribe_proto_messages-cpp).
+
+#### Vehicle event types
+
+
+Besides the `google.protobuf.Timestamp`, Protobuf files are self-contained. The base structure of most vehicle event types follows the following message definition:
+```proto
+message GenericVehicleEventType {
+    string type = 1;        // String enum describing event type, see types below
+    int64 id = 2;           // An auto incrementing ID, not unique per event since each shard has their own counter
+    int64 vehicle_id = 4;   // ID of the associated vehicle
+    google.protobuf.Timestamp time = 5;  // Timestamp
+}
+```
+
+Note on `google.protobuf.Timestamp`: This is a requirement but if you encounter issues with Schema creations, it can be replaced to be a self contained message. 
+This is a known limitation of Pub/Sub topic schema creation [Google Cloud Pub/Sub documentation](https://cloud.google.com/pubsub/docs/schemas#schema-info).
+```proto
+message GenericVehicleEventType {
+  string type = 1;        // String enum describing event type, see types below
+  int64 id = 2;           // An auto incrementing ID, not unique per event since each shard has their own counter
+  int64 vehicle_id = 4;   // ID of the associated vehicle
+  message Timestamp {
+    // Represents seconds of UTC time since Unix epoch
+    // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+    // 9999-12-31T23:59:59Z inclusive.
+    int64 seconds = 1;
+
+    // Non-negative fractions of a second at nanosecond resolution. Negative
+    // second values with fractions must still have non-negative nanos values
+    // that count forward in time. Must be from 0 to 999,999,999
+    // inclusive.
+    int32 nanos = 2;
+  }
+  Timestamp time = 5;
+}
+```
+  
+
+
+
+### CanOdometerKm
+The odometer from the CAN of the vehicle in kilometers
+```proto
+syntax = "proto3";
+
+package cc.protobuf.vehicle.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message CanOdometerKm {
+    string type = 1;        // Message type "can_odometer_km"
+    int64 id = 2;           // Unique identifier for the reading
+    int64 value = 3;        // Odometer value (in kilometers)
+    int64 vehicle_id = 4;    // ID of the associated vehicle
+    google.protobuf.Timestamp time = 5;  // Timestamp
+}
+```
+
+
+
+### CanNextServiceKm
+Kilometers until next service
+```proto
+syntax = "proto3";
+
+package cc.protobuf.vehicle.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message CanNextServiceKm {
+    string type = 1;        // Message type "can_next_service_km"
+    int64 id = 2;           // Unique identifier for the service entry
+    int64 value = 3;        // Remaining kilometers until the next service
+    int64 vehicle_id = 4;    // ID of the associated vehicle
+    google.protobuf.Timestamp time = 5;  // Timestamp
+}
+```
+
+
+### CarServiceBookings
+Represents a car service booking record with the status of the booking and the appointment date.
+See [BookingStatus](#bookingstatus-enum) for possible `booking_status` values
+```proto
+syntax = "proto3";
+
+package cc.protobuf.booking.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message CarServiceBooking {
+    int64 id = 1; // Unique identifier for the car service booking record
+    string booking_source = 2; // Source of the booking
+    string booking_id = 3; // Booking ID from the booking system
+    string booking_status = 4; // Booking status
+    string booking_dealer = 5; // Dealer number, KVPS or similar for the booking
+    int64 vehicle_id = 6; // ID of the associated vehicle
+    string vin = 7; // Vehicle identification number
+    int64 fleet_id = 8; // Fleet ID (optional)
+    string fleet_external_reference = 9; // Fleet external reference (optional)
+    string reason_key = 10; // Reason key for booking (optional)
+    string reason_text = 11; // Reason text for booking (optional)
+    int64 workshop_id = 12; // Workshop ID (optional)
+    google.protobuf.Timestamp appointment_date = 13; // Timestamp of the booking in UTC
+    google.protobuf.Timestamp created_date = 14; // Timestamp of the record creation in UTC
+}
+```
+
+
+## Enum Types
+
+### BookingStatus
+
+| Value    | Description |
+|----------|-------------|
+| `NEW`    | The booking is newly created. |
+| `CHANGED`| The booking has been modified. |
+| `CANCELLED` | The booking has been cancelled. |
+
 
 ## Managing vehicle data streams
 
