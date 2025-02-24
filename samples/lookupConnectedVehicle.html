@@ -79,7 +79,7 @@
             url: 'https://api.connectedcars.io/graphql', 
             data: JSON.stringify({
               operationName: 'LookupConnectedVehicle',
-              query: 'query LookupConnectedVehicle($query: String!) { lookupConnectedVehicle(country: dk, query: $query) { vin, supported, connected } }',
+              query: 'query LookupConnectedVehicle($query: String!) { lookupConnectedVehicle(countryCode: "dk", query: $query) { vin, supported, connected } }',
               variables: { query: query }
             }),
             contentType: 'application/json'
