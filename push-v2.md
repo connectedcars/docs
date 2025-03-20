@@ -1267,7 +1267,7 @@ Represents a car service booking record with the status of the booking and the a
 | vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
 | fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
 | fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
-| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional)               | Yes      |
+| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional). Detailed in [BookingReasonKey](#bookingreasonkey) | Yes      |
 | reasonText           | string   |                     | 'Regular maintenance'    | Reason text for booking (optional)              | Yes      |
 | workshopId           | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
 | value                | datetime | RFC 3339            | 2022-01-01T12:30:10Z     | Timestamp of the booking in UTC                 | No       |
@@ -1383,7 +1383,8 @@ message CanNextServiceKm {
 
 ### CarServiceBookings
 Represents a car service booking record with the status of the booking and the appointment date.
-See [BookingStatus](#bookingstatus-enum) for possible `booking_status` values
+- See [BookingStatus](#bookingstatus) for possible `booking_status` values
+- See [BookingReasonKey](#bookingreasonkey) for possible `reason_key` values
 ```proto
 syntax = "proto3";
 
@@ -1411,6 +1412,16 @@ message CarServiceBooking {
 
 
 ## Enum Types
+
+### BookingReasonKey
+#### Note: 
+- The following reason keys only apply for bookings managed by Connected Cars.
+- External booking sources may have their own reason key which are not documented here.
+
+| Value    | Description |
+|----------|-------------|
+| `automatically_expired`    | The booking has been `CANCELLED` because the booking has expired |
+
 
 ### BookingStatus
 
