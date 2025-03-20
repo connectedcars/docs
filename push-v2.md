@@ -1385,6 +1385,7 @@ message CanNextServiceKm {
 Represents a car service booking record with the status of the booking and the appointment date.
 - See [BookingStatus](#bookingstatus) for possible `booking_status` values
 - See [BookingReasonKey](#bookingreasonkey) for possible `reason_key` values
+
 ```proto
 syntax = "proto3";
 
