@@ -1,6 +1,7 @@
 # API deprecations
 Deprecations to mutations, queries, fields, etc. in the GraphQL API happens at least 6 months before the deprecated entity is then removed.
 
+ * 2025-03-25: Query `quotes`
  * 2025-03-10: Argument `tripType` on mutation `vehicleActivityFeed`
  * 2025-02-19: Mutation input `CancelBookingsInput`
  * 2025-02-19: Mutation `cancelBookings`
