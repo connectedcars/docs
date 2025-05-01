@@ -1073,7 +1073,7 @@ Status: 200 OK
 ```
 
 ### Register device
-Registers a device for the logged in user.
+Registers a device for the logged in user. Device tokens can be automatically deleted after one year of inactivity (i.e. no logins made via the device token).
 
 ```
 POST /user/registerDevice
