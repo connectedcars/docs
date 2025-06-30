@@ -1264,6 +1264,7 @@ Represents a car service booking record with the status of the booking and the a
 | bookingId            | string   |                     | 'BKG123456'              | Booking ID from the booking system              | No       |
 | bookingStatus        | string   |                     | 'NEW'                    | Status of the booking. Detailed in [BookingStatus](#bookingstatus-enum) | No       |
 | bookingDealer        | string   |                     | 'KVPS123'                | Dealer number, KVPS or similar for the booking  | No       |
+| bookingCreatedDate    | datetime | RFC 3339 | 2025-01-01T13:10:10Z | Timestamp of when the booking was created in the booking system | No
 | vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
 | fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
 | fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
@@ -1408,6 +1409,7 @@ message CarServiceBooking {
     int64 workshop_id = 12; // Workshop ID (optional)
     google.protobuf.Timestamp appointment_date = 13; // Timestamp of the booking in UTC
     google.protobuf.Timestamp created_date = 14; // Timestamp of the record creation in UTC
+    google.protobuf.Timestamp booking_created_date = 15; // Timestamp of when the booking was created in the booking system
 }
 ```
 
