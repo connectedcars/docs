@@ -1443,6 +1443,7 @@ The GraphQL API should be called with a service account that Connected Cars will
 The following actions are possible:
 
 - List the vehicles that have consented to an integration
+- List the integration topics
 - Create vehicle data streams for a topic in an integration
 - Get a list of current vehicle data streams
 - Delete certain vehicle data streams
@@ -1537,6 +1538,53 @@ The query can be called with the following filters: `fleetIds` (parent fleet ids
 The filters can also be combined.
 
 There are more fields available for the vehicles such as `licensePlate`, `make`, `model` etc.
+
+### List the integration topics
+The service account should call our GraphQL api with a query like the following:
+
+``` graphql
+query integrationTopics {
+  integrationTopics {
+      id
+      name
+      integrationId
+      destinationType
+      destinationContext
+      parameters
+    }
+}
+```
+
+It is also possible to add a `vehicleDataStreams` field to the query. But it's recommended to use the `vehicleDataStreams` query instead.
+
+The result could look like the following:
+
+``` json
+{
+  "data": {
+    "integrationTopics": [
+      {
+        "id": 787,
+        "name": "Test odometer topic",
+        "integrationId": 87,
+        "desinationType": "google-pubsub",
+        "destinationContext": null,
+        "parameters": ["can_odometer_km"]
+      },
+      {
+        "id": 788,
+        "name": "Test gps topic",
+        "integrationId": 87,
+        "desinationType": "google-pubsub",
+        "destinationContext": null,
+        "parameters": ["gps_position"]
+      },
+    ]
+  }
+}
+```
+
+An error is thrown if the service account does not have access to any integrations. If there are no integration topics, an empty list is returned.
 
 ### Create vehicle data streams for a topic in an integration
 The service account should call our GraphQL api with a query like the following:
