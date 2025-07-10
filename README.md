@@ -13,7 +13,7 @@ List of common integrations for markets.
 The Organization Key (`organizationKey`) is a globally unique identifier (GUID).
 It defines which market or country your data belongs to and guarantees that all IDs are correctly scoped and isolated across regions. 
 
-[Read more here](./multi-region-integrations.md)
+[Read more here](./multi-market-integrations.md)
 
 
 ## Auth API
