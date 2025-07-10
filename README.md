@@ -8,6 +8,14 @@ List of common integrations for markets.
 
 [Read more here](./integrations/intro)
 
+## Organization Key (`organizationKey`): Multi-Market and Region Isolation
+
+The Organization Key (`organizationKey`) is a globally unique identeifier (GUID).
+It defines which market or country your data belongs to and guarantees that all IDs are correctly scoped and isolated across regions. 
+
+[Read more here](./multi-region-integrations.md)
+
+
 ## Auth API
 
 The auth API provides a RESTful API that gives access to registering, authorizing and in a limited capacity manage users.
