@@ -29,15 +29,60 @@ Other domains may be relevant depending on your use case.
 
 ---
 
-### **2. Service account mapping and authentication**
+### **2. Service account mapping, organization namespaces, and authentication**
 
-Each organization must have its own service account.
-You must:
+Each organization must have its own **service account**, tied to an **organization namespace**.
+An **organization namespace** is simply the combination of your `organizationKey` and a product-specific suffix — for example:
 
-* Select the correct service account based on the `organizationKey`.
-* Authenticate using the correct `authApiDomain` for that organization.
-* Send GraphQL queries to the correct `apiDomain`.
-* Never reuse tokens across different `organizationKeys`.
+```
+${organizationKey}:workshop
+```
+
+**Example:**
+
+```
+"connectedcarsdk:workshop"
+```
+
+---
+
+**Why this matters:**
+If your integration uses **multiple products** under the same `organizationKey`, each product will have its own **organization namespace**.
+For example:
+
+* `${organizationKey}:workshop` — for the workshop product
+* `${organizationKey}:default` — for the fleet product
+* `${organizationKey}:leasing` — for the leasing product
+
+Connected Cars will provide you with multiple service accounts if this is the case.
+
+---
+
+**Key point:**
+If you operate more than one product, you must ensure your integration:
+
+* Uses the **correct organization namespace** for each product.
+* Uses the **matching service account** that is scoped to that namespace.
+* Does not reuse a service account or token across different organization namespaces.
+
+---
+
+**How to handle this:**
+
+* Map each **organization namespace** and service account in your configuration, based on the product you are using,
+  
+* The list of namespaces can be fetched from the `namespaces` field in the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query.
+
+When you authenticate:
+
+* Use the correct **service account** for the resolved organization namespace.
+* Use the correct **`authApiDomain`** for that organization.
+* Send GraphQL queries to the correct **`apiDomain`**.
+* Never reuse tokens across different `organizationKeys` or namespaces.
+
+> **Important:** If you work with multiple products, the **organization namespace** must always match the product.
+> Always resolve the correct namespace based on the `organizationKey` **and** product context.
+> Do not assume `:workshop` applies to every scenario.
 
 ---
 
