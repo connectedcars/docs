@@ -10,7 +10,7 @@ It defines which market or country your data belongs to and guarantees that all 
 
 ### **1. Use the `globalOrganization` query**
 
-Always start by calling the [`globalOrganization`](https://api.connectedcars.io/graphql/graphiql/) query.
+Always start by calling the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query.
 
 * This query does **not require authentication** — you can always get the complete list of organizations and their configuration.
 * It works globally, so any API endpoint returns the same results.
@@ -22,7 +22,7 @@ The most relevant domains are:
 * **`apiDomain`** — the GraphQL API endpoint for that organization.
   [See API documentation](https://docs.connectedcars.io/#/?id=graphql-api)
 
-* **`authDomain`** — the authorization endpoint for service account tokens and logins.
+* **`authApiDomain`** — the authorization endpoint for service account tokens and logins.
   [See Auth documentation](https://docs.connectedcars.io/#/?id=auth-api)
 
 Other domains may be relevant depending on your use case.
@@ -35,7 +35,7 @@ Each organization must have its own service account.
 You must:
 
 * Select the correct service account based on the `organizationKey`.
-* Authenticate using the correct `authDomain` for that organization.
+* Authenticate using the correct `authApiDomain` for that organization.
 * Send GraphQL queries to the correct `apiDomain`.
 * Never reuse tokens across different `organizationKeys`.
 
@@ -81,7 +81,7 @@ When you receive data from us through the push integration [See Push integration
 
 The `organizationKey` is your trusted scope.
 
-* Always use the [`globalOrganization`](https://api.connectedcars.io/graphql/graphiql/) query to get accurate, up-to-date configuration for each market.
+* Always use the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query to get accurate, up-to-date configuration for each market.
 * Always store the `organizationKey` with every ID.
 * Always route your API and auth calls to the correct domains for each organization.
 
