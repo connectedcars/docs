@@ -1,6 +1,6 @@
 ## **Organization Key (`organizationKey`): Multi-Market and Region Isolation**
 
-The Organization Key (`organizationKey`) is a globally unique identeifier (GUID).
+The Organization Key (`organizationKey`) is a globally unique identifier (GUID).
 It defines which market or country your data belongs to and guarantees that all IDs are correctly scoped and isolated across regions. 
 
 
