@@ -1028,28 +1028,6 @@ Example:
 ]
 ```
 
-#### gpio_battery_internal_voltage
-
-Unit internal battery voltage
-
-|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | decimal   | volt                    | 4.016                        | voltage of the internal battery       |
-
-Example:
-
-``` json
-[
-    {
-        "type": "gpio_battery_internal_voltage",
-        "id": 433642,
-        "value": 4.016,
-        "vehicleId": 1337,
-        "time": "2022-01-01T12:30:10Z",
-    }
-]
-```
-
 #### gps_position
 
 Gps position from vehicle.
