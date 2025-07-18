@@ -938,7 +938,9 @@ Example:
 ]
 ```
 
-#### car_odometer_km
+#### [Deprecated] car_odometer_km
+
+**Notice: This event type has been marked as deprecated and [can_odometer_km](#can_odometer_km) should be used instead**
 
 The odometer from the vehicle in kilometers, from CAN or gps
 
