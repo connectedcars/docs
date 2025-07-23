@@ -1094,6 +1094,7 @@ POST /user/registerDevice
 curl \
   -X POST \
   -H "X-Organization-Namespace: organization:namespace" \
+  -H "Authorization: Bearer TOKEN" \
   https://auth-api.connectedcars.io/user/registerDevice \
   -d '{"deviceName":"deviceName","deviceModel":"deviceModel"}'
 ```
