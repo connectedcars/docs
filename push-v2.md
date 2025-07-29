@@ -1544,17 +1544,17 @@ The result could look like the following:
   "data": {
     "integrationTopics": [
       {
-        "id": 787,
+        "id": 87,
         "name": "Test odometer topic",
-        "integrationId": 87,
+        "integrationId": 787,
         "desinationType": "google-pubsub",
         "destinationContext": null,
         "parameters": ["can_odometer_km"]
       },
       {
-        "id": 788,
+        "id": 88,
         "name": "Test gps topic",
-        "integrationId": 87,
+        "integrationId": 787,
         "desinationType": "google-pubsub",
         "destinationContext": null,
         "parameters": ["gps_position"]
