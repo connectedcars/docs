@@ -1284,6 +1284,9 @@ Sending events via Protobuf is also supported. Vehicle event types follow a simi
 - Timestamps: `google.protobuf.Timestamp`,
 - For a Pub/Sub example, refer to the [Google Cloud Pub/Sub documentation](https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-proto-messages#pubsub_subscribe_proto_messages-cpp).
 
+### **Important note on `organization_key`** 
+- All Protobuf events will include the `organization_key` field to support the multi-market approach. [Read more here](./multi-market-integrations.md)
+
 #### Vehicle event types
 
 
@@ -1304,6 +1307,7 @@ message GenericVehicleEventType {
   string type = 1;        // String enum describing event type, see types below
   int64 id = 2;           // An auto incrementing ID, not unique per event since each shard has their own counter
   int64 vehicle_id = 4;   // ID of the associated vehicle
+  string organization_key = 6; // Organization key for the vehicle
   message Timestamp {
     // Represents seconds of UTC time since Unix epoch
     // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
@@ -1337,8 +1341,8 @@ message CanOdometerKm {
     int64 id = 2;           // Unique identifier for the reading
     int64 value = 3;        // Odometer value (in kilometers)
     int64 vehicle_id = 4;    // ID of the associated vehicle
+    string organization_key = 6; // Organization key for the vehicle
     google.protobuf.Timestamp time = 5;  // Timestamp
-}
 ```
 
 
@@ -1357,6 +1361,7 @@ message CanNextServiceKm {
     int64 id = 2;           // Unique identifier for the service entry
     int64 value = 3;        // Remaining kilometers until the next service
     int64 vehicle_id = 4;    // ID of the associated vehicle
+    string organization_key = 6; // Organization key for the vehicle
     google.protobuf.Timestamp time = 5;  // Timestamp
 }
 ```
@@ -1382,6 +1387,7 @@ message CarServiceBooking {
     string booking_dealer = 5; // Dealer number, KVPS or similar for the booking
     int64 vehicle_id = 6; // ID of the associated vehicle
     string vin = 7; // Vehicle identification number
+    string organization_key = 16; // Organization key for the vehicle
     int64 fleet_id = 8; // Fleet ID (optional)
     string fleet_external_reference = 9; // Fleet external reference (optional)
     string reason_key = 10; // Reason key for booking (optional)
