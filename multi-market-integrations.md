@@ -1,21 +1,27 @@
-## **Organization Key (`organizationKey`): Multi-Market and Region Isolation**
+# **Organization Key (`organizationKey`): Multi-Market and Region Isolation**
 
 The Organization Key (`organizationKey`) is a globally unique identifier (GUID).
-It defines which market or country your data belongs to and guarantees that all IDs are correctly scoped and isolated across regions. 
-
-
-### **How to implement a Multi-Market or Multi-Region Integration**
+It defines which market or country your data belongs to and guarantees that all IDs are correctly scoped and isolated across regions.
 
 ---
 
-### **1. Use the `globalOrganization` query**
+### **Summary**
 
-Always start by calling the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query.
+The `organizationKey` is your **trusted scope**:
 
-* This query does **not require authentication** — you can always get the complete list of organizations and their configuration.
-* It works globally, so any API endpoint returns the same results.
-* Each `GlobalOrganization` includes a unique `key` — this is the `organizationKey` you will use to scope all IDs.
-* The query also returns important domain information for each organization.
+* ✅ Always route your API and auth calls to the correct domains for each organization.
+* ✅ Always store the `organizationKey` with every ID. [More details](#3-always-store-ids-with-the-organizationkey)
+
+This ensures your integration remains isolated, consistent, and ready to scale across multiple markets.
+
+---
+
+## **How to implement a Multi-Market or Multi-Region Integration**
+
+
+### 1. Domain information
+
+Connected Cars will provide you with the domain information for each `organizationKey`.
 
 The most relevant domains are:
 
@@ -29,10 +35,10 @@ Other domains may be relevant depending on your use case.
 
 ---
 
-### **2. Service account mapping, organization namespaces, and authentication**
+### 2. Service account mapping, organization namespaces, and authentication
 
 Each organization must have its own **service account**, tied to an **organization namespace**.
-An **organization namespace** is simply the combination of your `organizationKey` and a product-specific suffix — for example:
+An **organization namespace** is the combination of your `organizationKey` and a product-specific suffix:
 
 ```
 ${organizationKey}:workshop
@@ -47,14 +53,13 @@ ${organizationKey}:workshop
 ---
 
 **Why this matters:**
-If your integration uses **multiple products** under the same `organizationKey`, each product will have its own **organization namespace**.
-For example:
+If your integration uses **multiple products** under the same `organizationKey`, each product has its own namespace:
 
-* `${organizationKey}:workshop` — for the workshop product
-* `${organizationKey}:default` — for the fleet product
-* `${organizationKey}:leasing` — for the leasing product
+* `${organizationKey}:workshop` — workshop product
+* `${organizationKey}:default` — fleet product
+* `${organizationKey}:leasing` — leasing product
 
-Connected Cars will provide you with multiple service accounts if this is the case.
+Connected Cars will provide you with multiple service accounts if required.
 
 ---
 
@@ -62,37 +67,36 @@ Connected Cars will provide you with multiple service accounts if this is the ca
 If you operate more than one product, you must ensure your integration:
 
 * Uses the **correct organization namespace** for each product.
-* Uses the **matching service account** that is scoped to that namespace.
-* Does not reuse a service account or token across different organization namespaces.
+* Uses the **matching service account** scoped to that namespace.
+* ❌ Does **not reuse** a service account or token across different organization namespaces.
 
 ---
 
 **How to handle this:**
 
-* Map each **organization namespace** and service account in your configuration, based on the product you are using,
-  
-* The list of namespaces can be fetched from the `namespaces` field in the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query.
+* Map each **organization namespace** and service account in your configuration.
 
-When you authenticate:
+When authenticating:
 
-* Use the correct **service account** for the resolved organization namespace.
-* Use the correct **`authApiDomain`** for that organization.
-* Send GraphQL queries to the correct **`apiDomain`**.
+* Use the correct **service account** for the resolved namespace.
+* Use the correct **`authApiDomain`**.
+* Send GraphQL queries to the correct **`apiDomain`** and include the **namespace** in the `X-Organization-Namespace` header.
 * Never reuse tokens across different `organizationKeys` or namespaces.
 
-> **Important:** If you work with multiple products, the **organization namespace** must always match the product.
-> Always resolve the correct namespace based on the `organizationKey` **and** product context.
-> Do not assume `:workshop` applies to every scenario.
+> ⚠️ **Important:**
+>
+> * The **organization namespace must always match the product**.
+> * Always resolve the correct namespace based on both the `organizationKey` **and** product context.
+> * Do **not** assume `:workshop` applies to every scenario.
 
 ---
 
-### **3. Always store IDs with the `organizationKey`**
+### 3. Always store IDs with the `organizationKey`
 
-IDs like `vehicleId`, `fleetId`, and `workshopId` are only unique within their `organizationKey`.
-You must always store every ID together with its `organizationKey`.
+IDs (`vehicleId`, `fleetId`, `workshopId`) are only unique within their `organizationKey`.
+Always store them together with their `organizationKey`.
 
 **Example:**
-A vehicle with `"vehicleId": 1234` in `"organizationKey": "connectedcarsdk"` is a different from a vehicle with `"vehicleId": 1234` in `organizationKey: "connectedcarsde"`.
 
 ```json
 {
@@ -112,22 +116,63 @@ If you drop the `organizationKey`, you lose the ability to route, scope, or link
 
 ---
 
-### **Receiving Data via Push (Data Streams)**
+### Receiving Data via Push (Data Streams)
 
-When you receive data from us through the push integration [See Push integration (Data Streams) documentation](https://docs.connectedcars.io/#/./push-v2)
+When receiving data through push integration [See docs](https://docs.connectedcars.io/#/./push-v2):
 
-* The `organizationKey` will always be included with every message.
-* You must persist the `organizationKey` with every ID you store.
-* If you link resources (for example, vehicles to fleets), they must always have the **same `organizationKey`**. Cross-org linking is not supported.
+* The `organizationKey` is always included with every message.
+* You must persist it with every ID you store.
+* Linked resources (e.g., vehicles to fleets) must always share the **same `organizationKey`**.
+* ❌ Cross-org linking is not supported.
 
 ---
 
-## **Key takeaway**
+## **Additional Resources**
 
-The `organizationKey` is your trusted scope.
+### Programmatically obtaining domain information (GraphQL API)
 
-* Always use the [`globalOrganizations`](https://api.connectedcars.io/graphql/graphiql/) query to get accurate, up-to-date configuration for each market.
-* Always store the `organizationKey` with every ID.
-* Always route your API and auth calls to the correct domains for each organization.
+⚠️ **Important Note:**
 
-This ensures your integration remains isolated, consistent, and ready to scale across multiple markets.
+* This query is **not required** for your integration. Connected Cars will provide domain information for each `organizationKey` [See details](#1-domain-information).
+* You can treat this as **static reference data** — it will not change.
+* The query is only a **utility** if you want to confirm or explore the mapping of organizations and domains.
+
+---
+
+
+* This query does **not require authentication** — you can always get the complete list of organizations and their configuration.
+* It works globally, so any API production endpoint returns the same results.
+* Each `GlobalOrganization` includes a unique `key` — this is the `organizationKey`.
+* The query also returns important domain information for each organization.
+
+**Query Example:**
+
+```gql
+query {
+  globalOrganizations {
+    key
+    apiDomain
+    authApiDomain
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+"data": {
+  "globalOrganizations": [
+    {
+      "key": "connectedcarsdk",
+      "apiDomain": "api.eu2.connectedcars.io",
+      "authApiDomain": "auth-api.eu2.connectedcars.io"
+    },
+    {
+      "key": "connectedcarse",
+      "apiDomain": "api.eu4.connectedcars.io",
+      "authApiDomain": "auth-api.eu4.connectedcars.io"
+    }
+  ]
+}
+```
+
