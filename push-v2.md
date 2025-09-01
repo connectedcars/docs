@@ -806,6 +806,28 @@ Example:
 ]
 ```
 
+#### can_range_total_km 
+
+The car's total range in km
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value    | integer   | km                    | 5                        | car range in km 
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_range_total_km",
+        "id": 433642,
+        "value": 5,
+        "vehicleId": 1337,
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
 #### can_service_interval_days
 
 The car's service interval in days
