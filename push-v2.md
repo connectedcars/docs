@@ -484,7 +484,10 @@ Example:
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value    | boolean  |                     | false                    | whether the mil lamp has turned off (false) or on (true)       |
+| enabled | boolean   | | false       | whether the mil lamp has turned off (false) or on (true)|
+| type| string   | | `exhaust` | type of the mil lamp |
+| color    | string   | | `yellow` | color of the mil lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the mil lamp. Either `solid` or `blinking`|
 
 Example:
 
@@ -493,7 +496,10 @@ Example:
     {
         "type": "can_mil_lamp",
         "id": 123,
-        "value": false,
+        "enabled": false,
+        "color": "yellow",
+        "type": "exhaust",
+        "frequency": "solid",
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
