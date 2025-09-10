@@ -496,9 +496,9 @@ Example:
     {
         "type": "can_mil_lamp",
         "id": 123,
-        "enabled": false,
+        "value": false,
         "color": "yellow",
-        "type": "exhaust",
+        "lampType": "exhaust",
         "frequency": "solid",
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
