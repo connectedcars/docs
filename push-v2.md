@@ -485,7 +485,7 @@ Example:
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | enabled | boolean   | | false       | whether the mil lamp has turned off (false) or on (true)|
-| type| string   | | `exhaust` | type of the mil lamp |
+| lampType| string   | | `exhaust` | type of the mil lamp |
 | color    | string   | | `yellow` | color of the mil lamp. Either `yellow` or `red`      |
 | frequency    | string   | | `solid` | frequency of the mil lamp. Either `solid` or `blinking`|
 
