@@ -26,16 +26,7 @@ The auth API provides a RESTful API that gives access to registering, authorizin
 
 The GraphQL API provides a pull API that gives access to all collected parameters with a flexible extraction.
 
-[Read more here](https://api.connectedcars.io/graphql/graphiql/)
-
-Sample code and service account creation:
-
-* [Java](./samples/java/full-example/README.md)
-* [NodeJS](./samples/node/README.md)
-
-Source code: https://github.com/connectedcars/docs/tree/master/samples/
-
-[See deprecations](./api-deprecations.md)
+[Read more here](./graphql.md)
 
 ## Push (data streams)
 
