@@ -1111,6 +1111,36 @@ Example:
 ]
 ```
 
+#### car_roadworthy_inspection_date
+
+Represents the date of the vehicle's roadworthy inspection.
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:---------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string          |                     | 'car_roadworthy_inspection_date' | Event type                              | No       |
+| vin                       | string          |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
+| fleetId                   | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
+| fleetExternalReference    | string          |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
+| workshopId                | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
+| value                     | datetime        | RFC 3339            | 2022-08-25T00:00:00.000Z | Roadworthy inspection date in UTC (**Time is always set to 00:00:00 (midnight) UTC**)       | No       |
+
+Example:
+```json
+[
+  {
+    "id": 12095712,
+    "type": "car_roadworthy_inspection_date",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "fleetId": 47583,
+    "fleetExternalReference": "fleet47583",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
 ### Admin event types
 
 The following fields are present on all admin events.
@@ -1418,6 +1448,31 @@ message CarServiceBooking {
     google.protobuf.Timestamp appointment_date = 13; // Timestamp of the booking in UTC
     google.protobuf.Timestamp created_date = 14; // Timestamp of the record creation in UTC
     google.protobuf.Timestamp booking_created_date = 15; // Timestamp of when the booking was created in the booking system
+}
+```
+
+
+### CarRoadworthyInspectionDate
+Represents the date of the vehicle's roadworthy inspection.
+
+```proto
+
+syntax = "proto3";
+
+package cc.protobuf.vehicle.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message CarRoadworthyInspectionDate {
+	int64 id = 1; // Unique identifier for roadworthy inspection date record
+	int64 vehicle_id = 2; // ID of the associated vehicle
+	string vin = 3; // Vehicle identification number
+	string organization_key = 4; // Organization key for the vehicle
+	int64 fleet_id = 5; // Fleet ID (optional)
+	string fleet_external_reference = 6; // Fleet external reference (optional)
+	int64 workshop_id = 7; // Workshop ID (optional)
+	google.protobuf.Timestamp roadworthy_inspection_date = 8; // Timestamp of the roadworthy inspection date in UTC. Time is always set to 00:00:00 (midnight) UTC.
+	google.protobuf.Timestamp created_date = 9; // Timestamp of the record creation in UTC.
 }
 ```
 
