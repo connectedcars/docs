@@ -175,32 +175,32 @@ Example:
 
 #### mapped_dtc 
 
-Raw vehicle diagnostic codes
+Vehicle diagnostic codes with descriptions
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | codeId    | string   |   |     P135500                    |        |
 | vendorId    | string   |  |  `VAG`, `HEGU`, `TL`                        |  Vendor for dtc mapping      |
 | rawCode    | string/null   |    DTC code in hex                 | 77D                        |  remote diagnostic info on the vehicle      |
-| status    |DTCStatusObject    |                     | 713                        | object describing the current state of the error code       |
+| status    |DTCStatusObject    |                     |                         | object describing the current state of the error code       |
 | enabled    | boolean   |                      | `true`, `false`             |  whether the code is on or off      |
 | ecu    | string   | `airbag`, `aircondition`, `brakes`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
-| descriptionDanish    | string/null   |    |     | description of the error code in danish       |
-| descriptionEnglish    | string/null   |    |     | description of the error code in english       |
-| descriptionGerman    | string/null   |    |     | description of the error code in german       |
-| descriptionNorwegian    | string/null   |    |     | description of the error code in norwegian       |
-| descriptionSpanish    | string/null   |    |     | description of the error code in spanish       |
-| descriptionSwedish    | string/null   |    |     | description of the error code in swedish       |
+| descriptionDanish    | string/null   |    |     | description of the error code in Danish       |
+| descriptionEnglish    | string/null   |    |     | description of the error code in English       |
+| descriptionGerman    | string/null   |    |     | description of the error code in German       |
+| descriptionNorwegian    | string/null   |    |     | description of the error code in Norwegian       |
+| descriptionSpanish    | string/null   |    |     | description of the error code in Spanish       |
+| descriptionSwedish    | string/null   |    |     | description of the error code in Swedish       |
 
 DTCStatusObject
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| pending    | boolean  |       | `true`, `false`                    | DTC failed on the current or previous operation cycle  |
-| confirmed  | boolean   |       |  `true`, `false`                  | DTC is confirmed at the time of the request  |
-| testNotCompletedSinceLastClear  | boolean   |       |  `true`, `false`| DTC test not completed since the last code clear   |
-| testFailedSinceLastClear  | boolean   |       |  `true`, `false`                  | DTC test failed at least once since  last code clear  |
-| warningIndicatorRequested  | boolean   |       |  `true`, `false`                  | Server is requesting warning indicator to be active  |
+| pending    | boolean  |       | `true`                    | DTC failed on the current or previous operation cycle  |
+| confirmed  | boolean   |       |  `true`                  | DTC is confirmed at the time of the request  |
+| testNotCompletedSinceLastClear  | boolean   |       |  `true`| DTC test not completed since the last code clear   |
+| testFailedSinceLastClear  | boolean   |       |  `true`           | DTC test failed at least once since  last code clear  |
+| warningIndicatorRequested  | boolean   |       |  `true`                 | ECU is requesting warning indicator to be active  |
 
 
 Example:
@@ -209,28 +209,28 @@ Example:
 [
     {
 
-    id: 2,
-    type: 'mapped_dtc',
-    vehicleId: 456,
-    codeId: 'P0010',
-    enabled: true,
-    rawCode: expect.any(String),
-    recordedAt: new Date('2020-01-02'),
-    status: {
-      confirmed: false,
-      pending: false,
-      testFailedSinceLastClear: false,
-      testNotCompletedSinceLastClear: true,
-      warningIndicatorRequested: false
+    "id": 2,
+    "type": "mapped_dtc",
+    "vehicleId": 456,
+    "codeId": "P0010",
+    "enabled": true,
+    "rawCode": "004307",
+    "recordedAt": '2020-01-02',
+    "status": {
+      "confirmed": false,
+      "pending": false,
+      "testFailedSinceLastClear": false,
+      "testNotCompletedSinceLastClear": true,
+      "warningIndicatorRequested": false
     },
-    vendorId: '2012',
-    ecu: 'engine',
-    descriptionDanish: 'Motorlampe',
-    descriptionEnglish: 'Check engine (MIL lamp)',
-    descriptionGerman: null,
-    descriptionNorwegian: null,
-    descriptionSpanish: null,
-    descriptionSwedish: null
+    "vendorId": "2012",
+    "ecu": "engine",
+    "descriptionDanish": "Motorlampe",
+    "descriptionEnglish": "Check engine (MIL lamp)",
+    "descriptionGerman": null,
+    "descriptionNorwegian": null,
+    "descriptionSpanish": null,
+    "descriptionSwedish": null
     }
 ]
 ```
