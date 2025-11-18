@@ -10,13 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@connectedcars/jwtutils": "^1.0.24",
+    "@connectedcars/jwtutils": "^3.0.4",
     "axios": "^0.19.2"
   },
   "devDependencies": {
+    "@connectedcars/test": "^4.0.0",
     "eslint": "^5.13.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.1",
+    "express": "^5.1.0",
     "mocha": "^5.2.0",
     "nyc": "^14.0.0",
     "prettier": "^1.13.5",

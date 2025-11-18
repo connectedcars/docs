@@ -17,7 +17,6 @@ public class JwtBody {
     @JsonProperty("sub")
     private String subject;
 
-
     /**
      * @return the audience
      */

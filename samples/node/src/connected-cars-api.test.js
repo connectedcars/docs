@@ -2,7 +2,7 @@ const expect = require('unexpected')
 const sinon = require('sinon')
 const axios = require('axios')
 const ConnectedCarsApi = require('./connected-cars-api')
-const { JwtUtils } = require('@connectedcars/jwtutils')
+const { jwtUtils } = require('@connectedcars/jwtutils')
 
 describe('utils/cc-api/connectedcars-api.js', () => {
   const jwtHeader = {
@@ -10,6 +10,7 @@ describe('utils/cc-api/connectedcars-api.js', () => {
     alg: 'RS256',
     kid: '1'
   }
+
   // Don't use this key for anything but testing as this is the key from jwt.io
   const TEST_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
 MIICWwIBAAKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw
@@ -26,20 +27,20 @@ fSSjAkLRi54PKJ8TFUeOP15h9sQzydI8zJU+upvDEKZsZc/UhT/SySDOxQ4G/523
 Y0sz/OZtSWcol/UMgQJALesy++GdvoIDLfJX5GBQpuFgFenRiRDabxrE9MNUZ2aP
 FaFp+DyAe+b4nDwuJaW2LURbr8AEZga7oQj0uYxcYw==
 -----END RSA PRIVATE KEY-----`
+
   beforeEach(() => {
     this.clock = sinon.useFakeTimers(new Date('2020-02-21 00:00:00'))
     const fakeServiceAccount = `----- BEGIN CONNECTEDCARS INFO -----
 iss: testing@cc.serviceaccount.connectedcars.io
 aud: https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter
-kid: 999
+kid: 1
 ----- END CONNECTEDCARS INFO -----
------BEGIN RSA PRIVATE KEY-----
-could_totally_be_a_real_key
------END RSA PRIVATE KEY-----`
+${TEST_PRIVATE_KEY}`
     this.ccApi = new ConnectedCarsApi(fakeServiceAccount)
     this.postStub = sinon.stub(axios, 'post').resolves()
   })
-  afterEach(async () => {
+
+  afterEach(() => {
     sinon.restore()
   })
 
@@ -48,29 +49,26 @@ could_totally_be_a_real_key
       expect(this.ccApi._parsedServiceAccountInfo, 'to equal', {
         iss: 'testing@cc.serviceaccount.connectedcars.io',
         aud: 'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter',
-        kid: '999',
-        rsa: '-----BEGIN RSA PRIVATE KEY-----\ncould_totally_be_a_real_key\n-----END RSA PRIVATE KEY-----'
+        kid: '1',
+        rsa: TEST_PRIVATE_KEY
       })
     })
+
     it('throws error on malformed service data', () => {
       let badServiceAccountData = 'qwerty'
       expect(() => new ConnectedCarsApi(badServiceAccountData), 'to be rejected with', 'Malformed service account file')
       badServiceAccountData = `----- BEGIN CONNECTEDCARS INFO -----
 iss: testing@cc.serviceaccount.connectedcars.io
-kid: 999
+kid: 1
 ----- END CONNECTEDCARS INFO -----
------BEGIN RSA PRIVATE KEY-----
-could_totally_be_a_real_key
------END RSA PRIVATE KEY-----`
+${TEST_PRIVATE_KEY}`
       expect(() => new ConnectedCarsApi(badServiceAccountData), 'to be rejected with', 'Malformed service account file')
       badServiceAccountData = `----- BEGIN CONNECTEDCARS INFO -----
 iss: testing@cc.serviceaccount.connectedcars.io
 aud: https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter
 kid: 
 ----- END CONNECTEDCARS INFO -----
------BEGIN RSA PRIVATE KEY-----
-could_totally_be_a_real_key
------END RSA PRIVATE KEY-----`
+${TEST_PRIVATE_KEY}`
       expect(() => new ConnectedCarsApi(badServiceAccountData), 'to be rejected with', 'Malformed service account file')
     })
   })
@@ -88,37 +86,35 @@ could_totally_be_a_real_key
       const unixNow = Date.now() / 1000
 
       let jwtBody = {
-        aud: 'connectedcars/app',
-        iss: 'https://auth-api',
+        aud: 'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter',
+        iss: 'testing@cc.serviceaccount.connectedcars.io',
         iat: unixNow,
         exp: unixNow + 3600
       }
 
-      const jwt = JwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
 
-      // Stub encode that _getToken calls
-      this.encodeStub = sinon.stub(JwtUtils, 'encode').returns('jwt')
       this.postStub.resolves({
         status: 200,
         statusText: 'success',
         data: { token: jwt, expires: 3600 }
       })
+
       const token = await this.ccApi.getAccessToken()
       const sameToken = await this.ccApi.getAccessToken()
       expect(token, 'to equal', sameToken)
 
-      expect(
-        token,
-        'to equal',
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJjb25uZWN0ZWRjYXJzL2FwcCIsImlzcyI6Imh0dHBzOi8vYXV0aC1hcGkiLCJpYXQiOjE1ODIyNDMyMDAsImV4cCI6MTU4MjI0NjgwMH0.gOdbG9xSWKvBbUx9aiO_6QB_iZh4aM2Hw2YTp4XAdqGAq40k43ytaFq26QWe3oOst7l3FyEnzEDpahwWFOoL2S_Ep-GBRhZMPq9MU00gWIPPojVga89qi4-lgEmZtlo2_AL3_wmUMc35VlWfUVmNV0iL1UVyzuLIuMpbS6OBnLQ'
-      )
+      expect(token, 'to equal', jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody))
       expect(this.postStub.callCount, 'to be', 1)
-      expect(this.postStub.args[0], 'to equal', [
+      expect(this.postStub.args[0], 'to exhaustively satisfy', [
         'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
-        { token: 'jwt' },
+        {
+          token: expect.it('to be a string')
+        },
         { headers: { 'x-organization-namespace': 'semler:workshop' } }
       ])
     })
+
     it('does not get a new token if it is not close to expiration', async () => {
       this.ccApi._ccAccessToken = {
         expires: Date.now() + 10 * 60 * 1000,
@@ -131,6 +127,7 @@ could_totally_be_a_real_key
 
       expect(this.postStub.callCount, 'to be', 0)
     })
+
     it('gets a new token if close to expiration', async () => {
       const unixNow = Date.now() / 1000
 
@@ -148,11 +145,9 @@ could_totally_be_a_real_key
         exp: unixNow + 3600
       }
 
-      const jwt = JwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
-      const secondJwt = JwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, secondJwtBody)
+      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const secondJwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, secondJwtBody)
 
-      // Stub encode that _getToken calls
-      this.encodeStub = sinon.stub(JwtUtils, 'encode').returns('jwt')
       this.postStub.onCall(0).resolves({
         status: 200,
         statusText: 'success',
@@ -163,6 +158,7 @@ could_totally_be_a_real_key
         statusText: 'success',
         data: { token: secondJwt, expires: 3600 }
       })
+
       const token = await this.ccApi.getAccessToken()
       const anotherToken = await this.ccApi.getAccessToken()
       expect(token, 'not to equal', anotherToken)
@@ -178,19 +174,23 @@ could_totally_be_a_real_key
         'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJjb25uZWN0ZWRjYXJzL2FwcCIsImlzcyI6Imh0dHBzOi8vYXV0aC1hcGkiLCJpYXQiOjE1ODIyNDMyMDAsImV4cCI6MTU4MjI0NjgwMH0.gOdbG9xSWKvBbUx9aiO_6QB_iZh4aM2Hw2YTp4XAdqGAq40k43ytaFq26QWe3oOst7l3FyEnzEDpahwWFOoL2S_Ep-GBRhZMPq9MU00gWIPPojVga89qi4-lgEmZtlo2_AL3_wmUMc35VlWfUVmNV0iL1UVyzuLIuMpbS6OBnLQ'
       )
       expect(this.postStub.callCount, 'to be', 2)
-      expect(this.postStub.args[0], 'to equal', [
+      expect(this.postStub.args[0], 'to exhaustively satisfy', [
         'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
-        { token: 'jwt' },
+        {
+          token: expect.it('to be a string')
+        },
         { headers: { 'x-organization-namespace': 'semler:workshop' } }
       ])
-      expect(this.postStub.args[1], 'to equal', [
+      expect(this.postStub.args[1], 'to exhaustively satisfy', [
         'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
-        { token: 'jwt' },
+        {
+          token: expect.it('to be a string')
+        },
         { headers: { 'x-organization-namespace': 'semler:workshop' } }
       ])
     })
+
     it('throws error on missing response data', async () => {
-      this.encodeStub = sinon.stub(JwtUtils, 'encode').returns('jwt')
       this.postStub.onCall(0).resolves({
         status: 200,
         statusText: 'success',
@@ -234,7 +234,8 @@ could_totally_be_a_real_key
         { headers: { Authorization: 'Bearer testToken', 'x-organization-namespace': 'semler:workshop' } }
       ])
     })
-    it('Retries on 401', async () => {
+
+    it('retries on 401', async () => {
       // This gets rejected
       this.ccApi._ccAccessToken = {
         expires: Date.now() + 10 * 60 * 1000,
@@ -249,10 +250,8 @@ could_totally_be_a_real_key
         exp: unixNow + 3600
       }
 
-      const jwt = JwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
 
-      // Stub encode that _getToken calls
-      this.encodeStub = sinon.stub(JwtUtils, 'encode').returns('jwt')
       // API call
       this.postStub.onCall(0).rejects({ response: { status: 401 } })
       // Auth API call
@@ -277,9 +276,9 @@ could_totally_be_a_real_key
         { query: 'query Viewer {\n        viewer {\n          firstname\n        }\n      }' },
         { headers: { Authorization: 'Bearer badToken', 'x-organization-namespace': 'semler:workshop' } }
       ])
-      expect(this.postStub.args[1], 'to equal', [
+      expect(this.postStub.args[1], 'to exhaustively satisfy', [
         'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
-        { token: 'jwt' },
+        { token: expect.it('to be a string') },
         { headers: { 'x-organization-namespace': 'semler:workshop' } }
       ])
       expect(this.postStub.args[2], 'to equal', [
@@ -294,6 +293,7 @@ could_totally_be_a_real_key
         }
       ])
     })
+
     it('test where it throws an error since its not 401', async () => {
       const error = new Error('Request failed with status code 400')
       error.response = { status: 400 }

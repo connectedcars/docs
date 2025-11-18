@@ -12,8 +12,31 @@ kid: XXX
 -----BEGIN RSA PRIVATE KEY-----
 YOU_CREATE_THIS
 -----END RSA PRIVATE KEY-----
-
 ```
+
+Only the `iss`, `aud`, and `kid` fields are necessary and the `kid` field must be a string. If there are other fields in the token header or body that you send they will need to conform to the types specified in the [`JwtHeader`](/docs/samples/java/sample-api-client/src/main/java/io/connectedcars/authentication/JwtHeader.java) class for the header and the below types for the body (json property names must be as specified, member field names are suggestions).
+
+```java
+@JsonProperty("ons")
+private String organizationNamespace;
+@JsonProperty("acr")
+private String authenticationLevel;
+@JsonProperty("jti")
+private String uniqueTokenId;
+@JsonProperty("sid")
+private String uniqueSessionId;
+@JsonProperty("amr")
+private String[] accessMethods;
+@JsonProperty("clt")
+private long currentLifetime;
+@JsonProperty("email")
+private String email;
+@JsonProperty("email_verified")
+private boolean emailVerified;
+@JsonProperty("scope")
+private String scope;
+```
+
 After you receive your service account data you must generate an RSA key pair.  
 This can be done as follows:  
 ```bash

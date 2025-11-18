@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { JwtUtils } = require('@connectedcars/jwtutils')
+const { jwtUtils } = require('@connectedcars/jwtutils')
 
 const _readServiceAccountData = ccServiceAccountKeyData => {
   const [ccInfo, rsa] = ccServiceAccountKeyData.split('----- END CONNECTEDCARS INFO -----\n')
@@ -42,7 +42,7 @@ const _getToken = async (parsedServiceAccountInfo, authApiEndpoint, organization
       exp: unixNow + 3600
     }
 
-    let jwt = JwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
+    let jwt = jwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
 
     const res = await axios.default.post(
       authApiEndpoint,
