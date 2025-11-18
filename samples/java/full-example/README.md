@@ -14,7 +14,7 @@ YOU_CREATE_THIS
 -----END RSA PRIVATE KEY-----
 ```
 
-Only the `iss`, `aud`, and `kid` fields are necessary and the `kid` field must be a string. If there are other fields in the token header or body that you send they will need to conform to the types specified in the [`JwtHeader`](/docs/samples/java/sample-api-client/src/main/java/io/connectedcars/authentication/JwtHeader.java) class for the header and the below types for the body (json property names must be as specified, member field names are suggestions).
+Only the `iss`, `aud`, and `kid` fields are necessary and the `kid` field must be a string. If there are other fields in the token header or body that you send they will need to conform to the types specified in the [`JwtHeader`](/samples/java/sample-api-client/src/main/java/io/connectedcars/authentication/JwtHeader.java) class for the header and the below types for the body (json property names must be as specified, member field names are suggestions).
 
 ```java
 @JsonProperty("ons")
