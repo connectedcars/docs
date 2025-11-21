@@ -17,6 +17,7 @@ YOU_CREATE_THIS
 -----END RSA PRIVATE KEY-----
 
 ```
+
 After you receive your service account data you must generate an RSA key pair.  
 This can be done as follows:  
 ```bash
@@ -72,6 +73,34 @@ example()
 ```
 
 The `ConnectedCarsApi` class takes care of converting your serviceaccount info into a token, the caching of the token, and refreshing your token. 
+
+If there are other fields in the token header or body that you send they will need to conform to the following types (shown here as TypeScript types):
+
+```
+interface JwtHeader {
+  typ?: string | null
+  alg?: string | null
+  kid?: string | null
+}
+
+interface JwtBody {
+  iss?: string | null
+  ons?: string | null
+  sub?: string | null
+  aud?: string | string[] | null
+  acr?: string | null
+  jti?: string | null
+  sid?: string | null
+  amr?: string[] | null
+  exp?: number | null
+  iat?: number | null
+  nbf?: number | null
+  clt?: number | null
+  email?: string | null
+  email_verified?: boolean | null
+  scope?: string | string[] | null
+}
+```
 
 ## Try out the example against the staging environment
 If your service account file is named `connectedcars_serviceaccount.pem` and is in the root of the project then you don't have to change anything.  

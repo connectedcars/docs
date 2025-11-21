@@ -12,8 +12,8 @@ kid: XXX
 -----BEGIN RSA PRIVATE KEY-----
 YOU_CREATE_THIS
 -----END RSA PRIVATE KEY-----
-
 ```
+
 After you receive your service account data you must generate an RSA key pair.  
 This can be done as follows:  
 ```bash
@@ -62,6 +62,30 @@ public static void main(String[] args) {
 ```
 
 The `ConnectedCarsApi` Class takes care of converting your serviceaccount info into a token, the caching of the token, and refreshing your token.
+
+If there are other fields in the token header or body that you send they will need to conform to the types specified in the [`JwtHeader`](/samples/java/sample-api-client/src/main/java/io/connectedcars/authentication/JwtHeader.java)
+class for the header and the below types for the body (json property names must be as specified, member field names are suggestions).
+
+```java
+@JsonProperty("ons")
+private String organizationNamespace;
+@JsonProperty("acr")
+private String authenticationLevel;
+@JsonProperty("jti")
+private String uniqueTokenId;
+@JsonProperty("sid")
+private String uniqueSessionId;
+@JsonProperty("amr")
+private String[] accessMethods;
+@JsonProperty("clt")
+private long currentLifetime;
+@JsonProperty("email")
+private String email;
+@JsonProperty("email_verified")
+private boolean emailVerified;
+@JsonProperty("scope")
+private String scope;
+```
 
 ## Try out the example against the staging environment
 If your service account file is named `connectedcars_serviceaccount.pem` and is in the root of the project then you don't have to change anything.
