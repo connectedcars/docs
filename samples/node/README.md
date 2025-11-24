@@ -111,4 +111,4 @@ Start the example by calling `npm start`. This will query your user details and 
 To call the production environment simply change the endpoints in `npm start` or delete the `CC_API_ENDPOINT` and `CC_AUTH_API_ENDPOINT` environment variables in `package.json` to default to production.
 
 
-TODO: Include information about the GraphQL API itself.
+# TODO: Include information about the GraphQL API itself.
