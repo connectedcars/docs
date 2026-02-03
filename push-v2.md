@@ -31,6 +31,8 @@ The following fields are present on all vehicle events
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
 | id       | 64 bit integer   |       | 458964867                | An auto incrementing ID, not unique per event since each shard has their own counter   |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            |
+| vin      | string    | ISO 3779  | WVWZZZ1JZ3W000000 | Vehicle VIN  |
+| organizationKey | string    |             | connectedcars      | A globally unique identifier for the organization |V
 | time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded. Millisecond precision is only available for some events |
 | type     | string   |                     | car_ignition             | String enum describing event type, see types below               |
 
@@ -53,6 +55,8 @@ Example:
         "id": 433642,
         "value": false,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -75,6 +79,8 @@ Example:
         "id": 433642,
         "value": 14154,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -97,6 +103,8 @@ Example:
         "id": 433642,
         "value": 10.50,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -119,6 +127,8 @@ Example:
         "id": 433642,
         "value": 4352,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -167,6 +177,8 @@ Example:
         "useFunctionalAddressing": null,
         "sessionType": "01",
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -212,6 +224,8 @@ Example:
     "id": 2,
     "type": "mapped_dtc",
     "vehicleId": 456,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
     "codeId": "P0010",
     "enabled": true,
     "rawCode": "004307",
@@ -253,6 +267,8 @@ Example:
         "id": 433642,
         "value": "DFBA",
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -275,6 +291,8 @@ Example:
         "id": 433642,
         "value": 75,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -296,6 +314,8 @@ Example:
         "id": 433642,
         "value": 0,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -318,6 +338,8 @@ Example:
         "id": 433642,
         "value": 380,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -340,6 +362,8 @@ Example:
         "id": 433642,
         "value": 34,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -361,6 +385,8 @@ Example:
         "id": 433642,
         "value": 68,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -383,6 +409,8 @@ Example:
         "id": 433642,
         "value": 97.5,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -405,6 +433,8 @@ Example:
         "id": 433642,
         "value": 22.5,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -427,6 +457,8 @@ Example:
         "id": 433642,
         "value": 46,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -449,6 +481,8 @@ Example:
         "id": 433642,
         "value": 4144,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -471,6 +505,8 @@ Example:
         "id": 433642,
         "value": "2014-01-03",
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -493,6 +529,8 @@ Example:
         "id": 433642,
         "value": 115446,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -515,6 +553,8 @@ Example:
         "id": 433642,
         "value": 207,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -537,6 +577,8 @@ Example:
         "id": 433642,
         "value": 14700,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -564,6 +606,8 @@ Example:
         "lampType": "exhaust",
         "frequency": "solid",
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -586,6 +630,8 @@ Example:
         "id": 433642,
         "value": 300,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -608,6 +654,8 @@ Example:
         "id": 433642,
         "value": 290,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -630,6 +678,8 @@ Example:
         "id": 433642,
         "value": 13100,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -651,6 +701,8 @@ Example:
         "id": 433642,
         "value": 390,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -673,6 +725,8 @@ Example:
         "id": 433642,
         "value": 28,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -695,6 +749,8 @@ Example:
         "id": 433642,
         "value": 4700,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -717,6 +773,8 @@ Example:
         "id": 433642,
         "value": 94636,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -740,6 +798,8 @@ Example:
         "id": 433642,
         "value": 67740,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -762,6 +822,8 @@ Example:
         "id": 433642,
         "value": 365,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -783,6 +845,8 @@ Example:
         "id": 433642,
         "value": 15000,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -805,6 +869,8 @@ Example:
         "id": 433642,
         "value": 730,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -826,6 +892,8 @@ Example:
         "id": 433642,
         "value": 30000,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -848,6 +916,8 @@ Example:
         "id": 433642,
         "value": true,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -870,6 +940,8 @@ Example:
         "id": 433642,
         "value": 5,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -892,6 +964,8 @@ Example:
         "id": 433642,
         "value": 5,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -914,6 +988,8 @@ Example:
         "id": 433642,
         "value": 730,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -936,6 +1012,8 @@ Example:
         "id": 433642,
         "value": 30000,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -958,6 +1036,8 @@ Example:
         "id": 433642,
         "value": 110.54,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -980,6 +1060,8 @@ Example:
         "id": 433642,
         "value": "ZAR94000007021883",
         "vehicleId": 1337,
+        "vin": "ZAR94000007021883",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1002,6 +1084,8 @@ Example:
         "id": 433642,
         "value": 3.989,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1024,6 +1108,8 @@ Example:
         "id": 433642,
         "value": false,
         "vehicleId": "1337",
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1048,6 +1134,8 @@ Example:
         "id": 433642,
         "value": 94636.363,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1072,6 +1160,8 @@ Example:
         "gForce": 0.24,
         "direction": "acceleration_medium",
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1094,6 +1184,8 @@ Example:
         "id": 433642,
         "value": 94636,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T00:00:00.000Z"
     }
 ]
@@ -1116,6 +1208,8 @@ Example:
         "id": 433642,
         "value": true,
         "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-01T12:30:10Z",
     }
 ]
@@ -1148,6 +1242,8 @@ Example:
         "type": "gps_position",
         "id": 157659647,
         "vehicleId": 228745,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-10-12T07:06:45.000Z",
         "latitude": 60.613747999999994,
         "longitude": 17.414016999999998,
@@ -1174,6 +1270,8 @@ Example:
         "type": "service_reminder_lead",
         "id": 12095712,
         "vehicleId": 59821,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
         "time": "2022-01-02T18:31:03.000Z",
         "value": "2022-08-25T00:00:00.000Z"
     }
@@ -1201,6 +1299,7 @@ Example:
     "type": "car_roadworthy_inspection_date",
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
     "fleetId": 47583,
     "fleetExternalReference": "fleet47583",
     "workshopId": 9876,
@@ -1381,6 +1480,8 @@ Example:
     "id": 9812321,
     "type": "car_service_booking",
     "vehicleId": 1337,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
     "bookingSource": "online",
     "bookingId": "BKG123456",
     "bookingStatus": "NEW",
