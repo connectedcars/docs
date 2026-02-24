@@ -1,6 +1,7 @@
 # API deprecations
 Deprecations to mutations, queries, fields, etc. in the GraphQL API happens at least 6 months before the deprecated entity is then removed.
 
+ * 2026-02-24: Field `Vehicle.leasing`
  * 2025-08-15: Field `VehicleEventCode.ecu`
  * 2025-06-27: Field `LookupInstallationVehicleResult.installationPossible`
  * 2025-05-07: Query `vehicleDriverScore`
