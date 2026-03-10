@@ -229,7 +229,7 @@ Example:
     "codeId": "P0010",
     "enabled": true,
     "rawCode": "004307",
-    "recordedAt": "2020-01-02",
+    "time": "2022-01-01T12:30:10Z",
     "status": {
       "confirmed": false,
       "pending": false,
