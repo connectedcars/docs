@@ -147,13 +147,16 @@ Raw vehicle diagnostic codes
 | txId    | string   |                     | 713                        | listen for response from the ecu on this id on the canbus       |
 | transport    | string   | `ISOTP`, `TP2`, `ISOTP-NOPAD`,                     | `ISOTP`             | the transport protocol used to communicate with the ecu       |
 | application    | string   | `UDS`, `KWP2000`,                     | `UDS`                        | the application protocol used to communicate with the ecu       |
-| ecu    | string/null   | `airbag`, `aircondition`, `brakes`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
+| ecu    | string/null   | `airbag`, `aircondition`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
 | sourceType    | string   | `vag`, `j2012`                    | `vag`                        | the format of the error code       |
 | rxLocalId    | string/null   |                     | null                        | local id requested on the canbus       |
 | txLocalId    | string/null   |                     | null                        | local id to listen for response on the canbus       |
 | serviceAndDid    | string/null   | service and dids in hex   | 1902FF    | the service requested and the parameters       |
 | useFunctionalAddressing    | boolean/null   |                     | null                        | use functional addressing (true) or not (false)      |
 | sessionType    | string/null   |                     | 01                        | session type       |
+
+Notes
+- ecu: `brakes` are excluded for safety reasons
 
 Example:
 
@@ -196,7 +199,7 @@ Vehicle diagnostic codes with descriptions
 | rawCode    | string/null   |    DTC code in hex                 | 77D                        |  remote diagnostic info on the vehicle      |
 | status    |DTCStatusObject    |                     |                         | object describing the current state of the error code       |
 | enabled    | boolean   |                      | `true`, `false`             |  whether the code is on or off      |
-| ecu    | string   | `airbag`, `aircondition`, `brakes`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
+| ecu    | string   | `airbag`, `aircondition`, `central_electrics`, `central_electrics_secondary`, `driver_door`, `electric_drive`, `electric_drive_secondary`, `engine`, `engine_secondary`, `high_voltage_battery`, `gateway`, `instruments`, `online_communication_unit`, `transmission` | `engine`                        | from which ecu the dtc is from       |
 | descriptionDanish    | string/null   |    |     | description of the error code in Danish       |
 | descriptionEnglish    | string/null   |    |     | description of the error code in English       |
 | descriptionGerman    | string/null   |    |     | description of the error code in German       |
@@ -214,6 +217,8 @@ DTCStatusObject
 | testFailedSinceLastClear  | boolean   |       |  `true`           | DTC test failed at least once since  last code clear  |
 | warningIndicatorRequested  | boolean   |       |  `true`                 | ECU is requesting warning indicator to be active  |
 
+Notes
+- ecu: `brakes` are excluded for safety reasons
 
 Example:
 
