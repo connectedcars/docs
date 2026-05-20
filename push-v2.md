@@ -608,7 +608,148 @@ Example:
         "id": 123,
         "value": false,
         "color": "yellow",
-        "lampType": "exhaust",
+        "frequency": "solid",
+        "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+
+#### can_brake_fluid_level_low_lamp
+
+Brake fluid level low lamp on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | boolean   | | false       | whether the brake fluid level low lamp has turned off (false) or on (true)|
+| color    | string   | | `yellow` | color of the brake fluid level low lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the brake fluid level low lamp. Either `solid` or `blinking`|
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_brake_fluid_level_low_lamp",
+        "id": 123,
+        "value": false,
+        "color": "red",
+        "frequency": "solid",
+        "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+#### can_coolant_level_low_lamp
+
+Coolant level low lamp on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | boolean   | | false       | whether the coolant level low lamp has turned off (false) or on (true)|
+| color    | string   | | `yellow` | color of the coolant level low lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the coolant level low lamp. Either `solid` or `blinking`|
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_coolant_level_low_lamp",
+        "id": 123,
+        "value": false,
+        "color": "red",
+        "frequency": "solid",
+        "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+#### can_brake_pads_wear_lamp
+
+Brake pads wear lamp on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | boolean   | | false       | whether the brake pads wear lamp has turned off (false) or on (true)|
+| color    | string   | | `yellow` | color of the brake pads wear lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the brake pads wear lamp. Either `solid` or `blinking`|
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_brake_pads_wear_lamp",
+        "id": 123,
+        "value": false,
+        "color": "yellow",
+        "frequency": "solid",
+        "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+#### can_washer_fluid_level_low_lamp
+
+Washer fluid level low lamp on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | boolean   | | false       | whether the washer fluid level low lamp has turned off (false) or on (true)|
+| color    | string   | | `yellow` | color of the washer fluid level low lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the washer fluid level low lamp. Either `solid` or `blinking`|
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_washer_fluid_level_low_lamp",
+        "id": 123,
+        "value": false,
+        "color": "yellow",
+        "frequency": "solid",
+        "vehicleId": 1337,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-01T12:30:10Z",
+    }
+]
+```
+
+
+#### can_tyre_pressure_lamp
+
+Tyre pressure lamp on or off
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
+| value | boolean   | | false       | whether the tyre pressure lamp has turned off (false) or on (true)|
+| color    | string   | | `yellow` | color of the tyre pressure lamp. Either `yellow` or `red`      |
+| frequency    | string   | | `solid` | frequency of the tyre pressure lamp. Either `solid` or `blinking`|
+
+Example:
+
+``` json
+[
+    {
+        "type": "can_tyre_pressure_lamp",
+        "id": 123,
+        "value": false,
+        "color": "yellow",
         "frequency": "solid",
         "vehicleId": 1337,
         "vin": "WVWZZZ1JZ3W000000",
