@@ -1455,6 +1455,138 @@ Example:
 ]
 ```
 
+#### brake_fluid_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'brake_fluid_lamp_lead'  | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "brake_fluid_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
+#### brake_pad_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'brake_pad_lamp_lead'    | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "brake_pad_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
+#### coolant_level_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'coolant_level_lamp_lead'| Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "coolant_level_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
+#### tire_pressure_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'tire_pressure_lamp_lead'| Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "tire_pressure_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
+#### washer_fluid_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'washer_fluid_lamp_lead' | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "washer_fluid_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
+#### engine_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'engine_lamp_lead'       | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "engine_lamp_lead",
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
 ### Admin event types
 
 The following fields are present on all admin events.
