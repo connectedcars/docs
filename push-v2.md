@@ -1587,6 +1587,26 @@ Example:
 ]
 ```
 
+#### adblue_remaining_days
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'adblue_remaining_days'       | Event type                                      | No       |
+| value                     | decimal          | Days                | 2                             | estimated days until the vehicle is out of adblue                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "adblue_remaining_days",
+    "vehicleId": 59821,
+    "workshopId": 9876,
+    "value": "2",
+    "time": "2022-01-02T18:31:03.000Z"
+  }
+]
+```
+
 ### Admin event types
 
 The following fields are present on all admin events.
@@ -2457,3 +2477,4 @@ When a vehicle revokes access to your integration you will receive an `access_re
 ```
 
 When access is revoked we will immediately stop all data streams for that vehicle for your integration, and you will therefore no longer receive vehicle events for the vehicle.
+
