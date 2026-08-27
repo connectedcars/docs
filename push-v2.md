@@ -1401,29 +1401,6 @@ Example:
 ]
 ```
 
-####  service_reminder_lead
-
-|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   |
-|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|
-| value | datetime  | RFC 3339          | 2022-08-25T00:00:00.000Z      | Service date
-
-
-Example:
-
-``` json
-[
-    {
-        "type": "service_reminder_lead",
-        "id": 12095712,
-        "vehicleId": 59821,
-        "vin": "WVWZZZ1JZ3W000000",
-        "organizationKey": "connectedcars",
-        "time": "2022-01-02T18:31:03.000Z",
-        "value": "2022-08-25T00:00:00.000Z"
-    }
-]
-```
-
 #### car_roadworthy_inspection_date
 
 Represents the date of the vehicle's roadworthy inspection.
@@ -1455,138 +1432,6 @@ Example:
 ]
 ```
 
-#### brake_fluid_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'brake_fluid_lamp_lead'  | Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "brake_fluid_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
-#### brake_pad_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'brake_pad_lamp_lead'    | Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "brake_pad_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
-#### coolant_level_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'coolant_level_lamp_lead'| Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "coolant_level_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
-#### tire_pressure_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'tire_pressure_lamp_lead'| Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "tire_pressure_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
-#### washer_fluid_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'washer_fluid_lamp_lead' | Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "washer_fluid_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
-#### engine_lamp_lead
-
-|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| type                      | string           |                     | 'engine_lamp_lead'       | Event type                                      | No       |
-| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
-
-Example:
-```json
-[
-  {
-    "type": "engine_lamp_lead",
-    "vehicleId": 59821,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "workshopId": 9876,
-    "value": "2022-08-25T00:00:00.000Z",
-    "time": "2022-01-02T18:31:03.000Z"
-  }
-]
-```
-
 #### adblue_remaining_days
 
 |         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
@@ -1606,6 +1451,245 @@ Example:
   }
 ]
 ```
+
+#### car_service_booking
+
+Represents a car service booking record with the status of the booking and the appointment date. 
+
+|         Name         |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:--------------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| bookingSource        | string   |                     | 'online'                 | Source of the booking                           | No       |
+| bookingId            | string   |                     | 'BKG123456'              | Booking ID from the booking system              | No       |
+| bookingStatus        | string   |                     | 'NEW'                    | Status of the booking. Detailed in [BookingStatus](#bookingstatus) | No       |
+| bookingDealer        | string   |                     | 'KVPS123'                | Dealer number, KVPS or similar for the booking  | No       |
+| bookingCreatedDate    | datetime | RFC 3339 | 2025-01-01T13:10:10Z | Timestamp of when the booking was created in the booking system | No
+| vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
+| fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
+| fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
+| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional). Detailed in [BookingReasonKey](#bookingreasonkey) | Yes      |
+| reasonText           | string   |                     | 'Regular maintenance'    | Reason text for booking (optional)              | Yes      |
+| workshopId           | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
+| value                | datetime | RFC 3339            | 2022-01-01T12:30:10Z     | Timestamp of the booking in UTC                 | No       |
+
+Example:
+```json
+[
+  {
+    "id": 9812321,
+    "type": "car_service_booking",
+    "vehicleId": 1337,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "bookingSource": "online",
+    "bookingId": "BKG123456",
+    "bookingStatus": "NEW",
+    "bookingDealer": "KVPS123",
+    "vin": "WVWZZZ1JZ3W000000",
+    "fleetId": 47583,
+    "fleetExternalReference": "550e8400-e29b-41d4-a716-446655440000",
+    "reasonKey": "maintenance",
+    "reasonText": "Regular maintenance",
+    "workshopId": 9876,
+    "value": "2025-06-05T12:30:10Z",
+    "time": "2025-01-01T10:30:10Z"
+  }
+]
+```
+
+### Lead event types
+
+The following fields are present on all lead events (common fields):
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| id       | 64 bit integer   |       | 458964867                | An auto incrementing ID for the lead   | No       |
+| vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            | No       |
+| vin      | string    | ISO 3779  | WVWZZZ1JZ3W000000 | Vehicle VIN  | No       |
+| organizationKey | string    |             | connectedcars      | A globally unique identifier for the organization | No       |
+| time     | datetime | RFC 3339            | 2022-05-19T18:31:03.000Z | Time the data was recorded. Millisecond precision is only available for some events | No       |
+| type     | string   |                     | service_reminder_lead             | String enum describing lead event type, see types below               | No       |  
+| status    | string   |                     | "open"                    | Status of the lead.  Detailed in [LeadStatus](#leadstatus)          | No       |
+| leadInboxId | string |  | "5009b00000gsueYAAQ" | Present if there is a lead inbox associated with the service reminder lead (optional). | Yes       |
+
+See the following list for a description of each event type.
+
+#### service_reminder_lead
+
+|   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'service_reminder_lead'  | Event type                                      | No       |
+| value | datetime  | RFC 3339          | 2022-08-25T00:00:00.000Z      | Service date                                  | No       |
+
+
+Example:
+
+``` json
+[
+    {
+        "type": "service_reminder_lead",
+        "id": 12095712,
+        "vehicleId": 59821,
+        "vin": "WVWZZZ1JZ3W000000",
+        "organizationKey": "connectedcars",
+        "time": "2022-01-02T18:31:03.000Z",
+        "value": "2022-08-25T00:00:00.000Z",
+        "status": "open",
+        "leadInboxId": null
+    }
+]
+```
+
+#### brake_fluid_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'brake_fluid_lamp_lead'  | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "brake_fluid_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "open",
+    "leadInboxId": null,
+  }
+]
+```
+
+#### brake_pad_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'brake_pad_lamp_lead'    | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "brake_pad_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "closed",
+    "leadInboxId": null
+  }
+]
+```
+
+#### coolant_level_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'coolant_level_lamp_lead'| Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+
+Example:
+```json
+[
+  {
+    "type": "coolant_level_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "closed",
+    "leadInboxId": null
+  }
+]
+```
+
+#### tire_pressure_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'tire_pressure_lamp_lead'| Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "tire_pressure_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "closed",
+    "leadInboxId": null
+  }
+]
+```
+
+#### washer_fluid_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'washer_fluid_lamp_lead' | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "washer_fluid_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "open",
+    "leadInboxId": null
+  }
+]
+```
+
+#### engine_lamp_lead
+
+|         Name              |   Type           |  Unit/Format        | Example                  |                   Description                   | Nullable |
+|:------------------------: |:----------------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
+| type                      | string           |                     | 'engine_lamp_lead'       | Event type                                      | No       |
+| value                     | datetime         | RFC 3339            | 2022-08-25T00:00:00.000Z | When the lamp was first seen                    | No       |
+
+Example:
+```json
+[
+  {
+    "type": "engine_lamp_lead",
+    "id": 12345,
+    "vehicleId": 59821,
+    "vin": "WVWZZZ1JZ3W000000",
+    "organizationKey": "connectedcars",
+    "workshopId": 9876,
+    "value": "2022-08-25T00:00:00.000Z",
+    "time": "2022-01-02T18:31:03.000Z",
+    "status": "open",
+    "leadInboxId": null
+  }
+]
+```
+
 
 ### Admin event types
 
@@ -1749,50 +1833,6 @@ Example:
         "vehicleId": 1337,
         "time": "2022-01-01T12:30:10Z",
     }
-]
-```
-
-#### car_service_booking
-
-Represents a car service booking record with the status of the booking and the appointment date. 
-
-|         Name         |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
-|:--------------------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| bookingSource        | string   |                     | 'online'                 | Source of the booking                           | No       |
-| bookingId            | string   |                     | 'BKG123456'              | Booking ID from the booking system              | No       |
-| bookingStatus        | string   |                     | 'NEW'                    | Status of the booking. Detailed in [BookingStatus](#bookingstatus-enum) | No       |
-| bookingDealer        | string   |                     | 'KVPS123'                | Dealer number, KVPS or similar for the booking  | No       |
-| bookingCreatedDate    | datetime | RFC 3339 | 2025-01-01T13:10:10Z | Timestamp of when the booking was created in the booking system | No
-| vin                  | string   |                     | 'WVWZZZ1JZ3W000000'      | Vehicle identification number                   | No       |
-| fleetId              | 32 bit integer  |                     | 47583                    | Fleet ID (optional)                             | Yes      |
-| fleetExternalReference | string |                     | 'fleet47583'             | Fleet external reference (optional)             | Yes      |
-| reasonKey            | string   |                     | 'maintenance'            | Reason key for booking (optional). Detailed in [BookingReasonKey](#bookingreasonkey) | Yes      |
-| reasonText           | string   |                     | 'Regular maintenance'    | Reason text for booking (optional)              | Yes      |
-| workshopId           | 32 bit integer  |                     | 9876                     | Workshop ID (optional)                          | Yes      |
-| value                | datetime | RFC 3339            | 2022-01-01T12:30:10Z     | Timestamp of the booking in UTC                 | No       |
-
-Example:
-```json
-[
-  {
-    "id": 9812321,
-    "type": "car_service_booking",
-    "vehicleId": 1337,
-    "vin": "WVWZZZ1JZ3W000000",
-    "organizationKey": "connectedcars",
-    "bookingSource": "online",
-    "bookingId": "BKG123456",
-    "bookingStatus": "NEW",
-    "bookingDealer": "KVPS123",
-    "vin": "WVWZZZ1JZ3W000000",
-    "fleetId": 47583,
-    "fleetExternalReference": "550e8400-e29b-41d4-a716-446655440000",
-    "reasonKey": "maintenance",
-    "reasonText": "Regular maintenance",
-    "workshopId": 9876,
-    "value": "2025-06-05T12:30:10Z",
-    "time": "2025-01-01T10:30:10Z"
-  }
 ]
 ```
 
@@ -1964,6 +2004,14 @@ message CarRoadworthyInspectionDate {
 | `NEW`    | The booking is newly created. |
 | `CHANGED`| The booking has been modified. |
 | `CANCELLED` | The booking has been cancelled. |
+
+
+### LeadStatus
+
+| Value    | Description |
+|----------|-------------|
+| `open`   | The lead is currently open. |
+| `closed` | The lead has been closed. |
 
 
 ## Managing vehicle data streams
