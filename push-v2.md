@@ -1502,7 +1502,8 @@ The following fields are present on all lead events (common fields):
 
 |   Name   |   Type   |  Unit/Format        | Example                  |                   Description                   | Nullable |
 |:--------:|:--------:|:-------------------:|--------------------------|-------------------------------------------------|:--------:|
-| id       | 64 bit integer   |       | 458964867                | An auto incrementing ID for the lead   | No       |
+| id       | 64 bit integer   |       | 458964867                | An auto incrementing ID for the lead changes | No       |
+| leadId       | 32 bit integer   |       | 164867                | Lead id reference | No       |
 | vehicleId| 32 bit integer   |       | 324122                   | Vehicle id reference                            | No       |
 | vin      | string    | ISO 3779  | WVWZZZ1JZ3W000000 | Vehicle VIN  | No       |
 | organizationKey | string    |             | connectedcars      | A globally unique identifier for the organization | No       |
@@ -1528,6 +1529,7 @@ Example:
     {
         "type": "service_reminder_lead",
         "id": 12095712,
+        "leadId": 164867,
         "vehicleId": 59821,
         "vin": "WVWZZZ1JZ3W000000",
         "organizationKey": "connectedcars",
@@ -1552,6 +1554,7 @@ Example:
   {
     "type": "brake_fluid_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
@@ -1577,6 +1580,7 @@ Example:
   {
     "type": "brake_pad_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
@@ -1603,6 +1607,7 @@ Example:
   {
     "type": "coolant_level_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
@@ -1628,6 +1633,7 @@ Example:
   {
     "type": "tire_pressure_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
@@ -1653,6 +1659,7 @@ Example:
   {
     "type": "washer_fluid_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
@@ -1678,6 +1685,7 @@ Example:
   {
     "type": "engine_lamp_lead",
     "id": 12345,
+    "leadId": 164867,
     "vehicleId": 59821,
     "vin": "WVWZZZ1JZ3W000000",
     "organizationKey": "connectedcars",
