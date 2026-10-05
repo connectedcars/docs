@@ -11,8 +11,14 @@ describe('utils/cc-api/connectedcars-api.js', () => {
     kid: '1'
   }
 
-  // Don't use this key for anything but testing as this is the key from jwt.io
-  const TEST_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
+  // Ed25519 private key for testing. Don't use this key for anything but testing as this is the key from jwt.io
+  const ED25519_TEST_PRIVATE_KEY = `-----BEGIN PRIVATE KEY-----
+MC4CAQAwBQYDK2VwBCIEIFxEb2I7tPuKvihV4PgA55HDyMoVPHs2p0/nqJOBeuGG
+-----END PRIVATE KEY-----`
+
+  // RSA private key for testing. Don't use this key for anything but testing as this is the key from jwt.io
+  // eslint-disable-next-line no-unused-vars
+  const RSA_TEST_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
 MIICWwIBAAKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw
 33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW
 +jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB
@@ -35,7 +41,7 @@ iss: testing@cc.serviceaccount.connectedcars.io
 aud: https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter
 kid: 1
 ----- END CONNECTEDCARS INFO -----
-${TEST_PRIVATE_KEY}`
+${ED25519_TEST_PRIVATE_KEY}`
     this.ccApi = new ConnectedCarsApi(fakeServiceAccount)
     this.postStub = sinon.stub(axios, 'post').resolves()
   })
@@ -50,7 +56,7 @@ ${TEST_PRIVATE_KEY}`
         iss: 'testing@cc.serviceaccount.connectedcars.io',
         aud: 'https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter',
         kid: '1',
-        rsa: TEST_PRIVATE_KEY
+        rsa: ED25519_TEST_PRIVATE_KEY
       })
     })
 
@@ -61,14 +67,14 @@ ${TEST_PRIVATE_KEY}`
 iss: testing@cc.serviceaccount.connectedcars.io
 kid: 1
 ----- END CONNECTEDCARS INFO -----
-${TEST_PRIVATE_KEY}`
+${ED25519_TEST_PRIVATE_KEY}`
       expect(() => new ConnectedCarsApi(badServiceAccountData), 'to be rejected with', 'Malformed service account file')
       badServiceAccountData = `----- BEGIN CONNECTEDCARS INFO -----
 iss: testing@cc.serviceaccount.connectedcars.io
 aud: https://auth-api.staging.connectedcars.io/auth/login/serviceAccountConverter
 kid: 
 ----- END CONNECTEDCARS INFO -----
-${TEST_PRIVATE_KEY}`
+${ED25519_TEST_PRIVATE_KEY}`
       expect(() => new ConnectedCarsApi(badServiceAccountData), 'to be rejected with', 'Malformed service account file')
     })
   })
@@ -92,7 +98,7 @@ ${TEST_PRIVATE_KEY}`
         exp: unixNow + 3600
       }
 
-      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const jwt = jwtUtils.encode(ED25519_TEST_PRIVATE_KEY, jwtHeader, jwtBody)
 
       this.postStub.resolves({
         status: 200,
@@ -104,7 +110,7 @@ ${TEST_PRIVATE_KEY}`
       const sameToken = await this.ccApi.getAccessToken()
       expect(token, 'to equal', sameToken)
 
-      expect(token, 'to equal', jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody))
+      expect(token, 'to equal', jwtUtils.encode(ED25519_TEST_PRIVATE_KEY, jwtHeader, jwtBody))
       expect(this.postStub.callCount, 'to be', 1)
       expect(this.postStub.args[0], 'to exhaustively satisfy', [
         'https://auth-api.connectedcars.io/auth/login/serviceAccountConverter',
@@ -145,8 +151,8 @@ ${TEST_PRIVATE_KEY}`
         exp: unixNow + 3600
       }
 
-      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
-      const secondJwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, secondJwtBody)
+      const jwt = jwtUtils.encode(ED25519_TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const secondJwt = jwtUtils.encode(ED25519_TEST_PRIVATE_KEY, jwtHeader, secondJwtBody)
 
       this.postStub.onCall(0).resolves({
         status: 200,
@@ -250,7 +256,7 @@ ${TEST_PRIVATE_KEY}`
         exp: unixNow + 3600
       }
 
-      const jwt = jwtUtils.encode(TEST_PRIVATE_KEY, jwtHeader, jwtBody)
+      const jwt = jwtUtils.encode(ED25519_TEST_PRIVATE_KEY, jwtHeader, jwtBody)
 
       // API call
       this.postStub.onCall(0).rejects({ response: { status: 401 } })

@@ -1,8 +1,11 @@
 const axios = require('axios')
 const { jwtUtils } = require('@connectedcars/jwtutils')
 
+const PRIVATE_KEY_PASSWORD = process.env.PRIVATE_KEY_PASSWORD
+const JWT_ALGORITHM = 'Ed25519' // Or use 'RS256' if using RSA
+
 const _readServiceAccountData = ccServiceAccountKeyData => {
-  const [ccInfo, rsa] = ccServiceAccountKeyData.split('----- END CONNECTEDCARS INFO -----\n')
+  const [ccInfo, privateKey] = ccServiceAccountKeyData.split('----- END CONNECTEDCARS INFO -----\n')
 
   const ccRegex = /----- BEGIN CONNECTEDCARS INFO -----\niss: (.*)\naud: (.*)\nkid: (.*)\n/
   const match = ccInfo.match(ccRegex)
@@ -21,7 +24,7 @@ const _readServiceAccountData = ccServiceAccountKeyData => {
     iss,
     aud,
     kid,
-    rsa
+    privateKey
   }
 }
 
@@ -31,7 +34,7 @@ const _getToken = async (parsedServiceAccountInfo, authApiEndpoint, organization
 
     let jwtHeader = {
       typ: 'JWT',
-      alg: 'RS256',
+      alg: JWT_ALGORITHM,
       kid: parsedServiceAccountInfo.kid
     }
 
@@ -42,7 +45,16 @@ const _getToken = async (parsedServiceAccountInfo, authApiEndpoint, organization
       exp: unixNow + 3600
     }
 
-    let jwt = jwtUtils.encode(parsedServiceAccountInfo.rsa, jwtHeader, jwtBody)
+    if (!PRIVATE_KEY_PASSWORD) {
+      throw new Error('You must set PRIVATE_KEY_PASSWORD if using an encrypted private key')
+    }
+
+    // If you are using a encrypted private key
+    let jwt = jwtUtils.encode(parsedServiceAccountInfo.privateKey, jwtHeader, jwtBody, PRIVATE_KEY_PASSWORD)
+
+    // If you are using an unencrypted private key (also remove the check for
+    // PRIVATE_KEY_PASSWORD above)
+    // let jwt = jwtUtils.encode(parsedServiceAccountInfo.privateKey, jwtHeader, jwtBody)
 
     const res = await axios.default.post(
       authApiEndpoint,

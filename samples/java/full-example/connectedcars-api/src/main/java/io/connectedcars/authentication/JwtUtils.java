@@ -8,8 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 
 public class JwtUtils {
-
-    public static String encode(PrivateKey privateKey, JwtHeader jwtHeader, JwtBody jwtBody) throws JsonProcessingException, InvalidKeyException, SignatureException, NoSuchAlgorithmException, JWTException {
+    public static String encode(PrivateKey privateKey, JwtHeader jwtHeader, JwtBody jwtBody, String privateKeyPassword) throws JsonProcessingException, InvalidKeyException, SignatureException, NoSuchAlgorithmException, JWTException {
         // Convert header and body to Base64URL encoded JSON bytes
         ObjectMapper mapper = new ObjectMapper();
         byte[] headerBytes = Base64Utils.base64EncodeUrlSafe(mapper.writeValueAsBytes(jwtHeader));
@@ -21,6 +20,15 @@ public class JwtUtils {
             case RS256:
             case RS384:
             case RS512: {
+                Signature signature = Signature.getInstance(jwtHeader.getAlgorithm().getValue());
+                signature.initSign(privateKey);
+                signature.update(headerBytes);
+                signature.update((byte)46); // .
+                signature.update(bodyBytes);
+                signatureBytes = Base64Utils.base64EncodeUrlSafe(signature.sign());
+                break;
+            }
+            case ED25519: {
                 Signature signature = Signature.getInstance(jwtHeader.getAlgorithm().getValue());
                 signature.initSign(privateKey);
                 signature.update(headerBytes);

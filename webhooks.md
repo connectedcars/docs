@@ -21,7 +21,7 @@ Requests should only be rejected in case you have issues parsing, validating or 
 ## Security
 The `X-Request-Signature` header includes a [JWT](https://jwt.io/) containing the request identifier (`rid`) and a SHA256 hash of the request payload encoded as base64 (`sub`).
 
-The JWT can be verified via the public key found at http://api.connectedcars.io/webhooks/public-keys. Use the issue time (`iat`) to determine whether the the timing is within your tolerance.
+The JWT can be verified via the public key found at https://api.connectedcars.io/webhooks/public-keys. Use the issue time (`iat`) to determine whether the timing is within your tolerance.
 
 ## Event structure
 

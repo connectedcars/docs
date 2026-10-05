@@ -63,7 +63,6 @@ public class ServiceAccount {
         this.privateKey = CryptoUtils.loadPemPrivateKey(serviceAccountData);
     }
 
-
     public ServiceAccount(String kid, String pemPrivateKeyString, String iss, String aud) throws GeneralSecurityException, IOException {
         this(kid, CryptoUtils.loadPemPrivateKey(pemPrivateKeyString), iss, aud);
     }
@@ -75,10 +74,9 @@ public class ServiceAccount {
         this.iss = iss;
     }
 
-    public String getToken() {
-
+    public String getToken(Algorithm algorithm) {
         JwtHeader jwtHeader = new JwtHeader();
-        jwtHeader.setAlgorithm(Algorithm.RS256);
+        jwtHeader.setAlgorithm(algorithm);
         jwtHeader.setKeyId(this.kid);
 
         long unixTime = Instant.now().getEpochSecond();
@@ -93,7 +91,18 @@ public class ServiceAccount {
         jwtBody.setExpires(unixTime + 3600);
 
         try {
-            return JwtUtils.encode(this.privateKey, jwtHeader, jwtBody);
+            String privateKeyPassword = System.getenv('PRIVATE_KEY_PASSWORD')
+
+            if (!privateKeyPassword || privateKeyPassword.length() == 0) {
+                throw new RuntimeException("You must set PRIVATE_KEY_PASSWORD if using an encrypted private key");
+            }
+
+            // If you are using a encrypted private key
+            return JwtUtils.encode(this.privateKey, jwtHeader, jwtBody, privateKeyPassword);
+
+            // If you are using an unencrypted private key (also remove the check for
+            // PRIVATE_KEY_PASSWORD above)
+            // return JwtUtils.encode(this.privateKey, jwtHeader, jwtBody);
         } catch (Exception ex) {
             throw new RuntimeException("Unknown error", ex);
         }

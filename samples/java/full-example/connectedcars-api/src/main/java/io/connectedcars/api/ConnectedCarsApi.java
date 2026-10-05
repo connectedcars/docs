@@ -8,7 +8,6 @@ import java.security.GeneralSecurityException;
 import java.time.Instant;
 import java.util.stream.Collectors;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.connectedcars.authentication.*;
 import org.apache.http.HttpEntity;
@@ -18,7 +17,6 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-
 
 public class ConnectedCarsApi {
     private String endpoint;
@@ -30,7 +28,6 @@ public class ConnectedCarsApi {
     private ObjectMapper mapper = new ObjectMapper();
     private RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(20 * 1000).setSocketTimeout((20 * 1000)).build();
     private HttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).build();
-
 
     /**
      * Create an instance of the Connected Cars API, which can be used to call the GraphQL API. Requires specifying service account key data and endpoints
@@ -49,13 +46,12 @@ public class ConnectedCarsApi {
 
     }
 
-    private CCAccessToken getToken() throws IOException {
-
+    private CCAccessToken getToken(Algorithm algorithm) throws IOException {
         HttpPost httppost = new HttpPost(authEndpoint);
 
         // Wrap the token in a class for JSON
         TokenWrapper serviceAccountToken = new TokenWrapper();
-        serviceAccountToken.token = this.serviceAccount.getToken();
+        serviceAccountToken.token = this.serviceAccount.getToken(algorithm);
 
         httppost.addHeader("content-type", "application/json");
         httppost.addHeader("X-Organization-Namespace", this.organizationNamespace);
@@ -169,6 +165,3 @@ public class ConnectedCarsApi {
         public String query;
     }
 }
-
-
-
