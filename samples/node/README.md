@@ -4,40 +4,27 @@
 `npm install`
 
 ## Getting access to the API
+
 In order to give you access Connected Cars will create a service account for you.  
 A service account has data that looks like the following:
+
 ```
 ----- BEGIN CONNECTEDCARS INFO -----
 iss: XXX@XXX.serviceaccount.connectedcars.io
 aud: https://auth-api.connectedcars.io/auth/login/serviceAccountConverter
-kid: XXX
+kid: YYY
 ----- END CONNECTEDCARS INFO -----
------BEGIN RSA PRIVATE KEY-----
+-----BEGIN ZZZ PRIVATE KEY-----
 YOU_CREATE_THIS
------END RSA PRIVATE KEY-----
-
+-----END ZZZ PRIVATE KEY-----
 ```
 
-After you receive your service account data you must generate an RSA key pair.  
-This can be done as follows:  
-```bash
-# Here the key is encrypted with aes256
-openssl genrsa -aes256 -out private.pem 2048
-```
-Note: openssl now requires you to set a pass phrase for your private key, which you have to enter when running the above command. This is used to encrypt the key.  
-To create an unencrypted key, do the following (you will be prompted for your pass phrase):
-```bash
-openssl rsa -in private.pem -out private_unencrypted.pem
-```
-Then generate public key from the unencrypted private key:
-```bash
-openssl rsa -in private_unencrypted.pem -outform PEM -pubout -out public.pem
-```
+After you receive your service account data you must generate an asymmetric key pair. Refer to the documentation [here](../GenerateAsymmetricKeyPair.md).
 
-Now put your unencrypted private key into the RSA key block of your service account data. Then send Connected Cars your public key. After confirmation from Connected Cars you will have access to the staging environment.  
-After confirming that you can call the staging API you can get access to the production API.
+Now put your unencrypted private key into the key block of your service account data (also make sure to update the header `-----BEGIN ZZZ PRIVATE KEY-----` and footer `-----END ZZZ PRIVATE KEY-----` by replacing `ZZZ`). Then send Connected Cars your public key, your algorithm of choice (e.g. ed25519 or RSA), and the key size if relevant (e.g. 4096). After confirmation from Connected Cars you will have access to the staging environment. After confirming that you can call the staging API you can get access to the production API.
 
 ## Usage
+
 This example shows how to use the Connected Cars GraphQL API.  
 A `ConnectedCarsApi` class is provided in the `connectedcarsapi.js` file.  
 The `config.js` file shows how to make a singleton of the `ConnectedCarsApi` class, which can be used throughout your project. This means you don't have to query the Connected Cars auth API everytime you want to call the GraphQL API.  

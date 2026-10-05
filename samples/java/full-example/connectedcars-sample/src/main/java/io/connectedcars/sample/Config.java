@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 
 public class Config {
-
     private static ConnectedCarsApi CCApi;
 
     public static ConnectedCarsApi getCCApi() throws IOException, GeneralSecurityException {
